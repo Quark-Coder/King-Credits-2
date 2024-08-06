@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: king_credits
+  datasource:
+    name: king_credits
+    url: jdbc:postgresql://localhost:5432/postgres
+bot:
+  name: KingCreditsBot
+  token: 7073799477:AAEgoOz51E7VIu0D4L41QK3cLcDg46wVijU
