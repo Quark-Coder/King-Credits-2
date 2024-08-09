@@ -1,6 +1,6 @@
 package com.kingleaks.king_credits.initializer;
 
-import com.kingleaks.king_credits.bot.state.KingCreditsBot;
+import com.kingleaks.king_credits.bot.KingCreditsBot;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
