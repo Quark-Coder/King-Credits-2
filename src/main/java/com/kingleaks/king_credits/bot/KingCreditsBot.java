@@ -45,6 +45,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "/home":
                     commandRegistry.getCommand("homecommand").execute(chatId);
                     break;
+                case "Помощь":
+                    commandRegistry.getCommand("helpstate").execute(chatId);
                 default:
                     log.info("Unexpected message");
             }

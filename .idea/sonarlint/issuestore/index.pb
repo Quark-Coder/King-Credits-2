@@ -9,20 +9,12 @@ u
 Esrc/main/java/com/kingleaks/king_credits/initializer/Initializer.java,7/9/793ee5f3498bc7c0e42d5abfc0b9fa2cf493cbe3
 t
 Dsrc/main/java/com/kingleaks/king_credits/KingCreditsApplication.java,d/1/d197d2177d8b9269e65521fc5fbb28950029055c
-m
-=src/main/java/com/kingleaks/king_credits/bot/BotCommands.java,1/0/108e4cc5b344fe87fdf1d726d2ddacd3b21d54ac
 i
 9src/main/java/com/kingleaks/king_credits/bot/Buttons.java,6/b/6b2ba0757fad24d2a6ac73faa3f095905c35c749
-v
-Fsrc/main/java/com/kingleaks/king_credits/bot/state/KingCreditsBot.java,4/d/4d81d71cbbe353f91a73533ffc5e06c38ac6b930
-q
-Asrc/main/java/com/kingleaks/king_credits/bot/state/MainState.java,f/f/ffd5c38dfede05b117b113dc3cf0e37c20a09314
 p
 @src/main/java/com/kingleaks/king_credits/bot/KingCreditsBot.java,8/b/8bb160ff0e24c13908a3348fa13ff1fcda5230be
 s
 Csrc/main/java/com/kingleaks/king_credits/bot/state/HomeCommand.java,a/e/aee34da68cb5ab9dbbbb1605f2c77c789ef3df7d
-i
-9src/main/java/com/kingleaks/king_credits/bot/Command.java,7/3/73b50920c026ce2faa375b51ca20e231c02c1347
 q
 Asrc/main/java/com/kingleaks/king_credits/bot/command/Command.java,5/c/5c702754040a5b6c9eec9b32524110691278302e
 u
@@ -31,3 +23,5 @@ y
 Isrc/main/java/com/kingleaks/king_credits/bot/command/CommandRegistry.java,7/c/7c325a935a5f11107d8f2959ba96291d64173376
 l
 <src/main/java/com/kingleaks/king_credits/bot/BotService.java,d/d/dd97b08e957b4f3cf2c2a5cae31074afc3fc4ff6
+v
+Fsrc/main/java/com/kingleaks/king_credits/bot/state/help/HelpState.java,c/5/c52fd205966487641b7e71bddc3557ca12785d7d
