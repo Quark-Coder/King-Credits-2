@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -24,7 +25,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
-                          List<CallbackQueryHandler> callbackQueryHandlers) {
+                          @Lazy List<CallbackQueryHandler> callbackQueryHandlers) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -78,6 +79,15 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     @Override
     public void sendMessage(SendMessage message) {
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteMessage(DeleteMessage message) {
         try {
             execute(message);
         } catch (TelegramApiException e) {
