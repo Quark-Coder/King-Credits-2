@@ -1,18 +1,18 @@
-package com.kingleaks.king_credits.bot.state.help;
+package com.kingleaks.king_credits.bot.state.profile;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Component
-@Slf4j
-public class HelpState implements Command {
+public class ProfileState implements Command {
     private final BotService botService;
 
-    public HelpState(BotService botService) {
+    @Autowired
+    public ProfileState(BotService botService) {
         this.botService = botService;
     }
 
@@ -20,7 +20,7 @@ public class HelpState implements Command {
     public void execute(Update update) {
         SendMessage message = SendMessage.builder()
                 .chatId(update.getMessage().getChatId())
-                .text("Это страница помощи. Здесь вы можете найти ответы на часто задаваемые вопросы.")
+                .text("Это страница профиля. Здесь вы можете найти информацию о вашем профиле.")
                 .build();
 
         botService.sendMessage(message);

@@ -2,10 +2,13 @@ package com.kingleaks.king_credits.bot.state;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -23,10 +26,10 @@ public class HomeCommand implements Command {
     }
 
     @Override
-    public void execute(long chatId) {
+    public void execute(Update update) {
         SendMessage message = SendMessage
                 .builder()
-                .chatId(chatId)
+                .chatId(update.getMessage().getChatId())
                 .text("Это главная страница")
                 .build();
 
