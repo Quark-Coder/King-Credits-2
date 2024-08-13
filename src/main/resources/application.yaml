@@ -1,9 +1,19 @@
 spring:
+  jpa:
+    database: postgresql
   application:
     name: king_credits
   datasource:
     name: king_credits
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/king_credits
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-description: "init"
+    locations: classpath:db/migration
+    url: jdbc:postgresql://localhost:5432/king_credits
+    user: postgres
+    schemas: public
 bot:
   name: KingCreditsBot
   token: 7073799477:AAEgoOz51E7VIu0D4L41QK3cLcDg46wVijU
