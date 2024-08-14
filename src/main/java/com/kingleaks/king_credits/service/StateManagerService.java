@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class StateManager {
+public class StateManagerService {
     private final Map<Long, StatePaymentHistory> userStates = new HashMap<>();
 
     public StatePaymentHistory getUserState(Long telegramUserId) {

@@ -3,7 +3,8 @@ package com.kingleaks.king_credits.bot;
 import com.kingleaks.king_credits.bot.command.CommandRegistry;
 import com.kingleaks.king_credits.config.BotConfig;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
-import com.kingleaks.king_credits.service.StateManager;
+import com.kingleaks.king_credits.service.StateManagerService;
+import com.kingleaks.king_credits.service.SubscriptionVerificationService;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,18 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final BotConfig botConfig;
     private final CommandRegistry commandRegistry;
     private final List<CallbackQueryHandler> callbackQueryHandlers;
-    private final StateManager stateManager;
+    private final StateManagerService stateManager;
+    private final SubscriptionVerificationService subscriptionVerificationService;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
-                          @Lazy List<CallbackQueryHandler> callbackQueryHandlers, StateManager stateManager) {
+                          @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
+                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
         this.stateManager = stateManager;
+        this.subscriptionVerificationService = subscriptionVerificationService;
     }
 
     @Override
@@ -49,18 +53,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     public void onUpdateReceived(@NotNull Update update) {
         checkStateManager(update);
         checkCommand(update);
-
-        if (update.hasCallbackQuery()){
-            CallbackQuery callbackQuery = update.getCallbackQuery();
-            String callbackData = callbackQuery.getData();
-
-            for (CallbackQueryHandler handler : callbackQueryHandlers){
-                if(handler.canHandle(callbackData)){
-                    handler.handle(callbackQuery);
-                    break;
-                }
-            }
-        }
+        checkCallback(update);
     }
 
     @Override
@@ -83,24 +76,34 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     private void checkCommand(Update update){
         if (update.hasMessage() && update.getMessage().hasText()) {
-            String message = update.getMessage().getText();
+            Long telegramUserId = update.getMessage().getFrom().getId();
+            if (!subscriptionVerificationService.verifySubscription(telegramUserId)) {
+                SendMessage message = new SendMessage();
+                message.setChatId(update.getMessage().getChatId().toString());
+                message.setText("Пожалуста подпишитесь на этот канал прежде чем пользоваться ботом" +
+                        "\n<a href=\"https://t.me/xrayduru/15\">Подписаться на канал</a>");
+                message.setParseMode("HTML");
+                sendMessage(message);
+            } else {
+                String message = update.getMessage().getText();
 
-            switch (message) {
-                case "/start":
-                case "/home":
-                    commandRegistry.getCommand("homecommand").execute(update);
-                    break;
-                case "Помощь":
-                    commandRegistry.getCommand("helpstate").execute(update);
-                    break;
-                case "Профиль":
-                    commandRegistry.getCommand("profilestate").execute(update);
-                    break;
-                case "Пополнить баланс":
-                    commandRegistry.getCommand("topupbalancestate").execute(update);
-                    break;
-                default:
-                    log.info("Unexpected message");
+                switch (message) {
+                    case "/start":
+                    case "/home":
+                        commandRegistry.getCommand("homecommand").execute(update);
+                        break;
+                    case "Помощь":
+                        commandRegistry.getCommand("helpstate").execute(update);
+                        break;
+                    case "Профиль":
+                        commandRegistry.getCommand("profilestate").execute(update);
+                        break;
+                    case "Пополнить баланс":
+                        commandRegistry.getCommand("topupbalancestate").execute(update);
+                        break;
+                    default:
+                        log.info("Unexpected message");
+                }
             }
         }
     }
@@ -113,6 +116,20 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
 
             stateWaitingForAmount(paymentHistory, chatId, messageText, telegramUserId);
+        }
+    }
+
+    private void checkCallback(Update update){
+        if (update.hasCallbackQuery()){
+            CallbackQuery callbackQuery = update.getCallbackQuery();
+            String callbackData = callbackQuery.getData();
+
+            for (CallbackQueryHandler handler : callbackQueryHandlers){
+                if(handler.canHandle(callbackData)){
+                    handler.handle(callbackQuery);
+                    break;
+                }
+            }
         }
     }
 

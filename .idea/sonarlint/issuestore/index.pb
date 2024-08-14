@@ -33,13 +33,13 @@ Fsrc/main/java/com/kingleaks/king_credits/bot/CallbackQueryHandler.java,d/6/d60
 Xsrc/main/java/com/kingleaks/king_credits/bot/state/top_up_balance/TopUpBalanceState.java,c/1/c1697003ab6f046ddc224557f49959c7c4cef4e3
 
 Osrc/main/java/com/kingleaks/king_credits/domain/entity/StatePaymentHistory.java,2/6/263eb0e0ab2e9f9193ac37770a58edb021d450c1
-„
-Tsrc/main/java/com/kingleaks/king_credits/domain/enums/StatusStatePaymentHistoty.java,8/0/8068c3878683de50d5bb366b4d356c984770474e
-„
-Tsrc/main/java/com/kingleaks/king_credits/domain/enums/StatusStatePaymentHistory.java,6/7/670f9252ad3cf5a95855bd00c8e0699495490406
 €
 Psrc/main/java/com/kingleaks/king_credits/service/StatePaymentHistoryService.java,3/8/38c74f5588a74b2996cd9b6a23bb18afa09bddc4
 †
 Vsrc/main/java/com/kingleaks/king_credits/repository/StatePaymentHistoryRepository.java,b/7/b7d13e88bcc99af298e3021eb0085b21758f6eab
 r
 Bsrc/main/java/com/kingleaks/king_credits/service/StateManager.java,5/7/57ee5b85c474f4acef506d29ee594b2a82463c43
+…
+Usrc/main/java/com/kingleaks/king_credits/service/SubscriptionVerificationService.java,2/8/28ccd83f617a8503932ebd8cfb665109a1a5283a
+y
+Isrc/main/java/com/kingleaks/king_credits/service/StateManagerService.java,5/e/5eea570c7070d1406211826842d00948cd9fe026

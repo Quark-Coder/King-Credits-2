@@ -3,7 +3,7 @@ package com.kingleaks.king_credits.bot.callback;
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.CallbackQueryHandler;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
-import com.kingleaks.king_credits.service.StateManager;
+import com.kingleaks.king_credits.service.StateManagerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,7 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 @RequiredArgsConstructor
 public class TopUpBalanceCallback implements CallbackQueryHandler {
     private final BotService botService;
-    private final StateManager stateManager;
+    private final StateManagerService stateManager;
 
     @Override
     public boolean canHandle(String callbackData) {

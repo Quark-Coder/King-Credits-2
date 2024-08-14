@@ -1,6 +1,6 @@
 
-e
-java:S6208Z"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8šÔ‹å”2
-g
-java:S1874,"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ŸÔ‹å”2
-L	java:S106|"+Replace this use of System.out by a logger.(Ÿö·şÿÿÿÿ8¦Ô‹å”2
+‹
+java:S6208\"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8šÀ‘•2J$fcc24ba7-3e70-4cc2-b217-7700aab077e6
+
+java:S18740"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ğ¯‘•2J$db8375ff-f8d1-4543-a7bb-fd4226d3a869
+s	java:S106"+Replace this use of System.out by a logger.(Ÿö·şÿÿÿÿ8—ğ¯‘•2J$57c714ca-cf8c-4e86-966f-e45638489fcc

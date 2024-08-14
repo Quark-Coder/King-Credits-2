@@ -17,3 +17,7 @@ spring:
 bot:
   name: KingCreditsBot
   token: 7073799477:AAEgoOz51E7VIu0D4L41QK3cLcDg46wVijU
+telegram:
+  channel:
+    username: ${USERNAME:@xrayduru}
+    url: ${URL:https://www.youtube.com/watch?v=vZRsVFgAKS8}
