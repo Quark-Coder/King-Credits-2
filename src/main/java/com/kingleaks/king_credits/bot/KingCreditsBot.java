@@ -3,6 +3,7 @@ package com.kingleaks.king_credits.bot;
 import com.kingleaks.king_credits.bot.command.CommandRegistry;
 import com.kingleaks.king_credits.config.BotConfig;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
+import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import com.kingleaks.king_credits.service.SubscriptionVerificationService;
 import jakarta.validation.constraints.NotNull;
@@ -11,13 +12,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
-import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
+import org.telegram.telegrambots.meta.api.objects.*;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
+import org.telegram.telegrambots.meta.api.objects.File;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+
 
 @Component
 @Slf4j
@@ -27,16 +39,18 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final List<CallbackQueryHandler> callbackQueryHandlers;
     private final StateManagerService stateManager;
     private final SubscriptionVerificationService subscriptionVerificationService;
+    private final PaymentCheckPhotoService paymentCheckPhotoService;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
                           @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
-                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService) {
+                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
         this.stateManager = stateManager;
         this.subscriptionVerificationService = subscriptionVerificationService;
+        this.paymentCheckPhotoService = paymentCheckPhotoService;
     }
 
     @Override
@@ -67,6 +81,15 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     @Override
     public void deleteMessage(DeleteMessage message) {
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    @Override
+    public void sendPhoto(SendPhoto message) {
         try {
             execute(message);
         } catch (TelegramApiException e) {
@@ -109,13 +132,20 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     }
 
     private void checkStateManager(Update update){
-        if (update.hasMessage() && update.getMessage().hasText()){
+        if (update.hasMessage()){
             Long chatId = update.getMessage().getChatId();
             String messageText = update.getMessage().getText();
             Long telegramUserId = update.getMessage().getFrom().getId();
             StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
 
-            stateWaitingForAmount(paymentHistory, chatId, messageText, telegramUserId);
+            if (update.getMessage().hasText()){
+                stateWaitingForAmount(paymentHistory, chatId, messageText, telegramUserId);
+            } else if (update.getMessage().hasPhoto()){
+                List<PhotoSize> photos = update.getMessage().getPhoto();
+                PhotoSize photo = photos.get(photos.size() - 1);
+
+                stateWaitingForPaymentCheck(paymentHistory, chatId, photo, telegramUserId);
+            }
         }
     }
 
@@ -136,26 +166,70 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private void stateWaitingForAmount(StatePaymentHistory paymentHistory,
                                        Long chatId, String messageText, Long telegramUserID){
         if (paymentHistory != null && "WAITING_FOR_AMOUNT".equals(paymentHistory.getStatus()) ){
+            try {
+                double amount = Double.parseDouble(messageText);
+                System.out.println(amount);
+
+                SendMessage message = new SendMessage();
+                message.setChatId(chatId);
+                message.setText("Прекрасно! Теперь произведите оплату по одним из реквизитов ниже," +
+                        "\nпосле отправьте чек сюда");
+                sendMessage(message);
+
+                paymentHistory.setStatus("WAITING_FOR_PAYMENT_CHECK");
+                stateManager.setUserState(telegramUserID, paymentHistory);
+            } catch (NumberFormatException e) {
+                SendMessage message = new SendMessage();
+                message.setChatId(chatId);
+                message.setText("Ошибка: введите корректную сумму.");
+                sendMessage(message);
+            }
+        }
+    }
+
+    private void stateWaitingForPaymentCheck(StatePaymentHistory paymentHistory,
+                                             Long chatId, PhotoSize photo, Long telegramUserId){
+        if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
+            if (photo != null){
+                String fileId = photo.getFileId();
+                byte[] photoData = savePhotoToDatabase(fileId, telegramUserId);
+
+                ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
+                InputFile inputFile = new InputFile(inputStream, "photo.jpg");
+
+                // Создаем объект SendPhoto
+                SendPhoto sendPhoto = new SendPhoto();
+                sendPhoto.setChatId(chatId.toString());
+                sendPhoto.setPhoto(inputFile);
                 try {
-                    double amount = Double.parseDouble(messageText);
-                    System.out.println(amount);
-
-                    SendMessage message = new SendMessage();
-                    message.setChatId(chatId);
-                    message.setText("Прекрасно! Теперь произведите оплату по одним из реквизитов ниже," +
-                            "\nпосле отправьте чек сюда");
-                    sendMessage(message);
-
-                    paymentHistory.setStatus("COMPLETED");
-                    stateManager.setUserState(telegramUserID, paymentHistory);
-                    stateManager.deleteUserState(telegramUserID);
-                } catch (NumberFormatException e) {
-                    SendMessage message = new SendMessage();
-                    message.setChatId(chatId);
-                    message.setText("Ошибка: введите корректную сумму.");
-                    sendMessage(message);
+                    execute(sendPhoto);  // Отправляем фотографию
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
                 }
             }
+        }
+    }
 
+    public byte[] savePhotoToDatabase(String fileId, Long telegramUserId) {
+        byte[] photoData = downloadPhoto(fileId);
+        if (photoData != null) {
+            return paymentCheckPhotoService.savePhoto(photoData, telegramUserId);
+        } else {
+            return null;
+        }
+    }
+
+    public byte[] downloadPhoto(String fileId) {
+        GetFile getFileMethod = new GetFile();
+        getFileMethod.setFileId(fileId);
+        try {
+            File file = execute(getFileMethod);
+            String filePath = file.getFilePath();
+            java.io.File downloadedFile = downloadFile(filePath);
+            return Files.readAllBytes(downloadedFile.toPath());
+        } catch (TelegramApiException | IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

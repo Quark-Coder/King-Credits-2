@@ -1,6 +1,16 @@
 
+s
+java:S1066Á"/Merge this if statement with the enclosing one.(Ñ™ø­8Üÿ…ß•2J$3864fad5-3a25-4651-a612-6603acd691f1
 ‹
-java:S6208\"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8šÀ‘•2J$fcc24ba7-3e70-4cc2-b217-7700aab077e6
+java:S6208s"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8àÿ…ß•2J$175625a5-d216-4a4f-980f-ada59341647c
 
-java:S18740"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ğ¯‘•2J$db8375ff-f8d1-4543-a7bb-fd4226d3a869
-s	java:S106"+Replace this use of System.out by a logger.(Ÿö·şÿÿÿÿ8—ğ¯‘•2J$57c714ca-cf8c-4e86-966f-e45638489fcc
+java:S1874>"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8åÿ…ß•2J$8d7a529c-b026-4171-94f8-5eaf587e8a39
+s	java:S106«"+Replace this use of System.out by a logger.(Ÿö·şÿÿÿÿ8ìÿ…ß•2J$cf4a8d94-f596-4202-820d-586334fbabad
+j
+java:S1168Ú"&Return an empty array instead of null.(¥¹ï8ïÿ…ß•2J$f6d3b3da-d3c6-46da-ba05-e71de12fa51f
+j
+java:S1168è"&Return an empty array instead of null.(¥¹ï8ğÿ…ß•2J$dc5a263f-5f8c-48c5-87dc-9c691c4b3e75
+f
+java:S1128"Remove this duplicated import.(¡’ï»úÿÿÿÿ8Ğ·èŞ•2J$18cda859-aa18-4516-bb74-12d073e5ca81
+a
+java:S1128"Remove this duplicated import.(ò¹ôÖ8Ğ·èŞ•2J$e7d91861-9ccc-45b6-bef5-e8900d912314
