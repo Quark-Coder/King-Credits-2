@@ -21,7 +21,7 @@ public class CurrentRateState implements Command {
 
     @Override
     public void execute(Update update) {
-        String sellingRate = sellingRateService.getSellingRate();
+        String sellingRate = sellingRateService.getSellingRateString();
 
         SendMessage message = SendMessage.builder()
                 .chatId(update.getMessage().getChatId())

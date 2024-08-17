@@ -12,7 +12,7 @@ import java.util.Optional;
 public class SellingRateService {
     private final SellingRateRepository sellingRateRepository;
 
-    public String getSellingRate() {
+    public String getSellingRateString() {
         Optional<SellingRate> optionalSellingRate = sellingRateRepository.findById(1L);
 
         if (optionalSellingRate.isPresent()) {
@@ -27,5 +27,11 @@ public class SellingRateService {
         }
 
         return null;
+    }
+
+    public SellingRate getSellingRate() {
+        Optional<SellingRate> optionalSellingRate = sellingRateRepository.findById(1L);
+        return optionalSellingRate.orElse(null);
+
     }
 }

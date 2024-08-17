@@ -1,18 +1,14 @@
 
 r
-java:S1066O"/Merge this if statement with the enclosing one.(Ë´Ì8€¤Üÿ•2J$d407bfcb-3a95-4dda-a4a3-e614afcb9c50
-Œ
-java:S6208‹"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8ƒ¤Üÿ•2J$34ca9fa8-9c5c-42eb-bc1a-53877b46d9c2
-Œ
-java:S6208›"CMerge the previous cases into this one using comma-separated label.(ÓÈ—ÿúÿÿÿÿ8ÏÚ…€–2J$0a7affc7-2550-4c2e-a5ff-051b5034030f
+java:S1066T"/Merge this if statement with the enclosing one.(Ë´Ì8åè£„–2J$638e20e4-1456-4d49-89d7-e0754a46d52a
+‡
+java:S6208’"CMerge the previous cases into this one using comma-separated label.(ş†Œ8èè£„–2J$722b9a4c-3e12-42e3-aabe-410cd8edc8bf
 
-java:S1874H"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8‰¤Üÿ•2J$16348052-d8cf-4304-b6c6-23383d2463df
+java:S1874M"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ëè£„–2J$789f97f5-a29b-44b7-a716-b0b53a12cb74
 •
-java:S3776y"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8Œ¤Üÿ•2J$b441ed4d-8ed6-4436-9262-86ddeacd4c96
-”
-java:S1301Å"KReplace this "switch" statement by "if" statements to increase readability.(§ñğãşÿÿÿÿ8’¤Üÿ•2J$7ff53cc5-f7ba-417c-8aba-2c29a05f9816
-j	java:S131Å""Add a default case to this switch.(§ñğãşÿÿÿÿ8’¤Üÿ•2J$18b9de0e-ab5b-4213-8d85-4c5108cd4e26
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8íè£„–2J$ced8734b-f1d4-4304-a0a2-8b9299401c1e
+j	java:S131Ê""Add a default case to this switch.(§ñğãşÿÿÿÿ8òè£„–2J$7c53ba81-166b-4803-b71e-ce87174dcea8
 j
-java:S1168„"&Return an empty array instead of null.(¥¹ï8•¤Üÿ•2J$d856481c-32c3-47ce-a616-9b30790da2a9
+java:S1168‘"&Return an empty array instead of null.(¥¹ï8õè£„–2J$076e95e6-3914-435b-a8dd-788dc30b48d2
 j
-java:S1168’"&Return an empty array instead of null.(¥¹ï8•¤Üÿ•2J$ac1340d1-5ff4-44c5-80b4-9cc505fdc2ff
+java:S1168Ÿ"&Return an empty array instead of null.(¥¹ï8öè£„–2J$ad85ef46-0f0b-457f-b0ae-c0a98ce94829

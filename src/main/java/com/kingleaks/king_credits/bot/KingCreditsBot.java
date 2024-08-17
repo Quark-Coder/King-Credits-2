@@ -4,6 +4,8 @@ import com.kingleaks.king_credits.bot.callback.CallbackQueryHandler;
 import com.kingleaks.king_credits.bot.command.CommandRegistry;
 import com.kingleaks.king_credits.bot.waitingState.StateWaitingForAmount;
 import com.kingleaks.king_credits.bot.waitingState.StateWaitingForChangeNickname;
+import com.kingleaks.king_credits.bot.waitingState.StateWaitingForCreditsInRub;
+import com.kingleaks.king_credits.bot.waitingState.StateWaitingForRubInCredits;
 import com.kingleaks.king_credits.config.BotConfig;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
@@ -34,7 +36,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-
 @Component
 @Slf4j
 public class KingCreditsBot extends TelegramLongPollingBot implements BotService {
@@ -47,11 +48,13 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final TelegramUsersService telegramUsersService;
     private final StateWaitingForAmount stateWaitingForAmount;
     private final StateWaitingForChangeNickname stateWaitingForChangeNickname;
+    private final StateWaitingForCreditsInRub stateWaitingForCreditsInRub;
+    private final StateWaitingForRubInCredits stateWaitingForRubInCredits;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
                           @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
-                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService, StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname) {
+                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService, StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname, StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -61,6 +64,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.telegramUsersService = telegramUsersService;
         this.stateWaitingForAmount = stateWaitingForAmount;
         this.stateWaitingForChangeNickname = stateWaitingForChangeNickname;
+        this.stateWaitingForCreditsInRub = stateWaitingForCreditsInRub;
+        this.stateWaitingForRubInCredits = stateWaitingForRubInCredits;
     }
 
     @Override
@@ -137,6 +142,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 switch (message) {
                     case "/start":
                     case "/home":
+                    case "Назад":
+                    case "Меню":
                         StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
                         SendMessage errorMessage = new SendMessage();
                         errorMessage.setChatId(update.getMessage().getChatId());
@@ -150,8 +157,6 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                             commandRegistry.getCommand("homecommand").execute(update);
                         }
                         break;
-                    case "Назад":
-                    case "Меню":
                     case "Подписался":
                         commandRegistry.getCommand("homecommand").execute(update);
                         break;
@@ -202,6 +207,14 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     case "WAITING_FOR_CHANGE_NICKNAME":
                         sendMessage(stateWaitingForChangeNickname
                                 .waitingForChangeNickname(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
+                    case "WAITING_FOR_CALCULATION_CREDITSRUB":
+                        sendMessage(stateWaitingForCreditsInRub
+                                .waitingForCreditsInRub(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
+                    case "WAITING_FOR_CALCULATION_RUBCREDITS":
+                        sendMessage(stateWaitingForRubInCredits
+                                .waitingForRubInCredits(paymentHistory, chatId, messageText, telegramUserId));
                         break;
                 }
             } else if (update.getMessage().hasPhoto()){
