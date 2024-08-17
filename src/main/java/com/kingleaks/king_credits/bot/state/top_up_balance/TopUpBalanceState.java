@@ -7,7 +7,10 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.List;
 
@@ -30,6 +33,8 @@ public class TopUpBalanceState implements Command {
         SendMessage welcomeMessage = new SendMessage();
         welcomeMessage.setChatId(chatId);
         welcomeMessage.setText(getDescription());
+        welcomeMessage.setReplyMarkup(ReplyKeyboardMarkup.builder()
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
         botService.sendMessage(welcomeMessage);
 
         SendMessage message = new SendMessage();
@@ -43,8 +48,8 @@ public class TopUpBalanceState implements Command {
         List<InlineKeyboardButton> buttons = List.of(button);
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         markup.setKeyboard(List.of(buttons));
-        message.setReplyMarkup(markup);
 
+        message.setReplyMarkup(markup);
         botService.sendMessage(message);
     }
 }

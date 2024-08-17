@@ -18,12 +18,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.*;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.objects.File;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -113,6 +110,20 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 switch (message) {
                     case "/start":
                     case "/home":
+                        StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
+                        SendMessage errorMessage = new SendMessage();
+                        errorMessage.setChatId(update.getMessage().getChatId());
+                        if (paymentHistory != null && "WAITING_FOR_AMOUNT".equals(paymentHistory.getStatus()) ){
+                            errorMessage.setText("Вы не указали сумму пополнения счета, напишите:");
+                            sendMessage(errorMessage);
+                        } else if (paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
+                            errorMessage.setText("Вы не отправили чек оплаты вашего заказа, отправьте:");
+                            sendMessage(errorMessage);
+                        } else {
+                            commandRegistry.getCommand("homecommand").execute(update);
+                        }
+                        break;
+                    case "Меню":
                         commandRegistry.getCommand("homecommand").execute(update);
                         break;
                     case "Помощь":
@@ -168,12 +179,11 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         if (paymentHistory != null && "WAITING_FOR_AMOUNT".equals(paymentHistory.getStatus()) ){
             try {
                 double amount = Double.parseDouble(messageText);
-                System.out.println(amount);
+                paymentCheckPhotoService.createPaymentCheckPhoto(telegramUserID, amount);
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText("Прекрасно! Теперь произведите оплату по одним из реквизитов ниже," +
-                        "\nпосле отправьте чек сюда");
+                message.setText("Хорошо, завершите оплату, любым из способов ниже в течение 10 минут. После оплаты пришлите чек!");
                 sendMessage(message);
 
                 paymentHistory.setStatus("WAITING_FOR_PAYMENT_CHECK");
@@ -190,23 +200,25 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private void stateWaitingForPaymentCheck(StatePaymentHistory paymentHistory,
                                              Long chatId, PhotoSize photo, Long telegramUserId){
         if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
-            if (photo != null){
+
                 String fileId = photo.getFileId();
                 byte[] photoData = savePhotoToDatabase(fileId, telegramUserId);
 
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
                 InputFile inputFile = new InputFile(inputStream, "photo.jpg");
 
+                stateManager.deleteUserState(telegramUserId);
                 // Создаем объект SendPhoto
-                SendPhoto sendPhoto = new SendPhoto();
-                sendPhoto.setChatId(chatId.toString());
-                sendPhoto.setPhoto(inputFile);
-                try {
-                    execute(sendPhoto);  // Отправляем фотографию
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
+                SendPhoto returnPhoto = new SendPhoto();
+                returnPhoto.setChatId(chatId.toString());
+                returnPhoto.setPhoto(inputFile);
+
+                SendMessage message = new SendMessage();
+                message.setChatId(chatId);
+                message.setText("Хорошо, когда мы проверим оплату, деньги будут засчитаны на ваш баланс! Номер вашего чека:");
+
+                sendPhoto(returnPhoto);
+                sendMessage(message);
         }
     }
 

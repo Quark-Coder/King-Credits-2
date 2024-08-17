@@ -33,7 +33,7 @@ public class TopUpBalanceCallback implements CallbackQueryHandler {
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Пожалуйста, введите сумму для пополнения:");
+        sendMessage.setText("Для пополнения баланса введите сумму в рублях, которую вы хотите оплатить.");
         botService.sendMessage(sendMessage);
     }
 

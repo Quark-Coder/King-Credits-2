@@ -1,16 +1,13 @@
 
-s
-java:S1066Á"/Merge this if statement with the enclosing one.(Ñ™ø­8Üÿ…ß•2J$3864fad5-3a25-4651-a612-6603acd691f1
+¢
+java:S1192w"ZDefine a constant instead of duplicating this literal "WAITING_FOR_PAYMENT_CHECK" 3 times.(è—€Áùÿÿÿÿ8â¿›ø•2J$c4dada5f-fafb-462c-8b00-15b4abdaa705
 ‹
-java:S6208s"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8àÿ…ß•2J$175625a5-d216-4a4f-980f-ada59341647c
+java:S6208p"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8â¿›ø•2J$fd7d9a26-cdba-4a6d-b751-335e83418224
 
-java:S1874>"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8åÿ…ß•2J$8d7a529c-b026-4171-94f8-5eaf587e8a39
-s	java:S106«"+Replace this use of System.out by a logger.(Ÿö·şÿÿÿÿ8ìÿ…ß•2J$cf4a8d94-f596-4202-820d-586334fbabad
+java:S1874;"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8è¿›ø•2J$88d323ed-652c-43e1-98d4-ed44c6a3b6d3
+•
+java:S3776a"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8ê¿›ø•2J$d390302e-af8b-4ef5-8212-5dfba71bce7c
 j
-java:S1168Ú"&Return an empty array instead of null.(¥¹ï8ïÿ…ß•2J$f6d3b3da-d3c6-46da-ba05-e71de12fa51f
+java:S1168æ"&Return an empty array instead of null.(¥¹ï8ó¿›ø•2J$9fd6bbbd-c854-46a3-926f-bccd1fba99c0
 j
-java:S1168è"&Return an empty array instead of null.(¥¹ï8ğÿ…ß•2J$dc5a263f-5f8c-48c5-87dc-9c691c4b3e75
-f
-java:S1128"Remove this duplicated import.(¡’ï»úÿÿÿÿ8Ğ·èŞ•2J$18cda859-aa18-4516-bb74-12d073e5ca81
-a
-java:S1128"Remove this duplicated import.(ò¹ôÖ8Ğ·èŞ•2J$e7d91861-9ccc-45b6-bef5-e8900d912314
+java:S1168ô"&Return an empty array instead of null.(¥¹ï8ó¿›ø•2J$d7313ad5-31e1-4103-9868-b04e6070c636

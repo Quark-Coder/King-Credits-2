@@ -43,3 +43,11 @@ Msrc/main/java/com/kingleaks/king_credits/domain/entity/PaymentCheckPhoto.java,
 Tsrc/main/java/com/kingleaks/king_credits/repository/PaymentCheckPhotoRepository.java,2/5/259336ea74f893ed00ee7458f5bf9fef8204facb
 ~
 Nsrc/main/java/com/kingleaks/king_credits/service/PaymentCheckPhotoService.java,b/a/ba50c3fa0ddb5f1b81a62c4dc536e9e275d5a329
+y
+Isrc/main/java/com/kingleaks/king_credits/domain/entity/TelegramUsers.java,c/7/c7c67a7349bac205ca8f724864c2eeb779d58675
+u
+Esrc/main/java/com/kingleaks/king_credits/domain/enums/UserStatus.java,4/e/4e344849571a8c4221eabf38859231d6d74eebdc
+‚
+Rsrc/main/java/com/kingleaks/king_credits/domain/enums/PaymentCheckPhotoStatus.java,3/b/3b7d67be8824b8667a0f2a21c8e596bb080f8aae
+}
+Msrc/main/java/com/kingleaks/king_credits/bot/callback/ReturnMenuCallback.java,d/0/d081c5c61f8c275b4ff89930ee5ce33ef935a532
