@@ -51,3 +51,13 @@ Esrc/main/java/com/kingleaks/king_credits/domain/enums/UserStatus.java,4/e/4e34
 Rsrc/main/java/com/kingleaks/king_credits/domain/enums/PaymentCheckPhotoStatus.java,3/b/3b7d67be8824b8667a0f2a21c8e596bb080f8aae
 }
 Msrc/main/java/com/kingleaks/king_credits/bot/callback/ReturnMenuCallback.java,d/0/d081c5c61f8c275b4ff89930ee5ce33ef935a532
+Ä
+Psrc/main/java/com/kingleaks/king_credits/repository/TelegramUsersRepository.java,a/7/a78ab923897e5352fb28575417d54022e865c4fe
+z
+Jsrc/main/java/com/kingleaks/king_credits/service/TelegramUsersService.java,3/7/37b3ea60aba82c102e3eb86dd53c27e0b15605f2
+Å
+Qsrc/main/java/com/kingleaks/king_credits/bot/callback/ChangeNicknameCallback.java,3/b/3bac157a68489d8c3e855cc7dd410cd2fd717446
+Ñ
+Tsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForAmount.java,7/d/7d0fe47ebe9ebb123379c09cb872cc70eb0ee66c
+å
+\src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForChangeNickname.java,0/7/07dd6a5cbd51dbb8d9b7e027b94a4208ef88ad89

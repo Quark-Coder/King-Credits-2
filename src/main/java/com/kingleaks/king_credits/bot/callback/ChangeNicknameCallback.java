@@ -11,13 +11,13 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
 @RequiredArgsConstructor
-public class TopUpBalanceCallback implements CallbackQueryHandler {
+public class ChangeNicknameCallback implements CallbackQueryHandler{
     private final BotService botService;
     private final StateManagerService stateManager;
 
     @Override
     public boolean canHandle(String callbackData) {
-        return "TOP_UP_BUTTON".equals(callbackData);
+        return "CHANGE_NICK".equals(callbackData);
     }
 
     @Override
@@ -27,15 +27,14 @@ public class TopUpBalanceCallback implements CallbackQueryHandler {
 
         StatePaymentHistory userState = new StatePaymentHistory();
         userState.setTelegramUserId(callbackQuery.getFrom().getId());
-        userState.setStatus("WAITING_FOR_AMOUNT");
+        userState.setStatus("WAITING_FOR_CHANGE_NICKNAME");
         stateManager.setUserState(callbackQuery.getFrom().getId(), userState);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Для пополнения баланса введите сумму в рублях, которую вы хотите оплатить.");
+        sendMessage.setText("Хорошо, введите ваш новый никнейм.");
         botService.sendMessage(sendMessage);
     }
-
 
     private void deleteMessage(CallbackQuery callbackQuery) {
         DeleteMessage deleteMessage = new DeleteMessage();

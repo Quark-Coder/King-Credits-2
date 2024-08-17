@@ -1,4 +1,4 @@
-package com.kingleaks.king_credits.bot;
+package com.kingleaks.king_credits.bot.callback;
 
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 

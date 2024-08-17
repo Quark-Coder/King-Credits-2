@@ -1,11 +1,15 @@
 package com.kingleaks.king_credits.bot;
 
+import com.kingleaks.king_credits.bot.callback.CallbackQueryHandler;
 import com.kingleaks.king_credits.bot.command.CommandRegistry;
+import com.kingleaks.king_credits.bot.waitingState.StateWaitingForAmount;
+import com.kingleaks.king_credits.bot.waitingState.StateWaitingForChangeNickname;
 import com.kingleaks.king_credits.config.BotConfig;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import com.kingleaks.king_credits.service.SubscriptionVerificationService;
+import com.kingleaks.king_credits.service.TelegramUsersService;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.*;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.api.objects.File;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -37,17 +44,23 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final StateManagerService stateManager;
     private final SubscriptionVerificationService subscriptionVerificationService;
     private final PaymentCheckPhotoService paymentCheckPhotoService;
+    private final TelegramUsersService telegramUsersService;
+    private final StateWaitingForAmount stateWaitingForAmount;
+    private final StateWaitingForChangeNickname stateWaitingForChangeNickname;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
                           @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
-                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService) {
+                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService, StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
         this.stateManager = stateManager;
         this.subscriptionVerificationService = subscriptionVerificationService;
         this.paymentCheckPhotoService = paymentCheckPhotoService;
+        this.telegramUsersService = telegramUsersService;
+        this.stateWaitingForAmount = stateWaitingForAmount;
+        this.stateWaitingForChangeNickname = stateWaitingForChangeNickname;
     }
 
     @Override
@@ -62,6 +75,17 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     @Override
     public void onUpdateReceived(@NotNull Update update) {
+        if (update.hasMessage() && update.getMessage().hasText()){
+            if (update.getMessage().getText().equals("/start")) {
+                Long telegramUserId = update.getMessage().getFrom().getId();
+                String firstName = update.getMessage().getFrom().getFirstName();
+                String lastName = update.getMessage().getFrom().getLastName();
+                String nickname = update.getMessage().getFrom().getUserName();
+
+                telegramUsersService.registerUser(telegramUserId, firstName, lastName, nickname);
+            }
+        }
+
         checkStateManager(update);
         checkCommand(update);
         checkCallback(update);
@@ -103,6 +127,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 message.setText("Пожалуста подпишитесь на этот канал прежде чем пользоваться ботом" +
                         "\n<a href=\"https://t.me/xrayduru/15\">Подписаться на канал</a>");
                 message.setParseMode("HTML");
+                message.setReplyMarkup(ReplyKeyboardMarkup.builder()
+                        .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Подписался")))).build());
+
                 sendMessage(message);
             } else {
                 String message = update.getMessage().getText();
@@ -124,6 +151,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         }
                         break;
                     case "Меню":
+                    case "Подписался":
                         commandRegistry.getCommand("homecommand").execute(update);
                         break;
                     case "Помощь":
@@ -149,8 +177,17 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             Long telegramUserId = update.getMessage().getFrom().getId();
             StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
 
-            if (update.getMessage().hasText()){
-                stateWaitingForAmount(paymentHistory, chatId, messageText, telegramUserId);
+            if (update.getMessage().hasText() && paymentHistory != null){
+                switch (paymentHistory.getStatus()){
+                    case "WAITING_FOR_AMOUNT":
+                        sendMessage(stateWaitingForAmount
+                                .waitingForAmount(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
+                    case "WAITING_FOR_CHANGE_NICKNAME":
+                        sendMessage(stateWaitingForChangeNickname
+                                .waitingForChangeNickname(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
+                }
             } else if (update.getMessage().hasPhoto()){
                 List<PhotoSize> photos = update.getMessage().getPhoto();
                 PhotoSize photo = photos.get(photos.size() - 1);
@@ -170,29 +207,6 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     handler.handle(callbackQuery);
                     break;
                 }
-            }
-        }
-    }
-
-    private void stateWaitingForAmount(StatePaymentHistory paymentHistory,
-                                       Long chatId, String messageText, Long telegramUserID){
-        if (paymentHistory != null && "WAITING_FOR_AMOUNT".equals(paymentHistory.getStatus()) ){
-            try {
-                double amount = Double.parseDouble(messageText);
-                paymentCheckPhotoService.createPaymentCheckPhoto(telegramUserID, amount);
-
-                SendMessage message = new SendMessage();
-                message.setChatId(chatId);
-                message.setText("Хорошо, завершите оплату, любым из способов ниже в течение 10 минут. После оплаты пришлите чек!");
-                sendMessage(message);
-
-                paymentHistory.setStatus("WAITING_FOR_PAYMENT_CHECK");
-                stateManager.setUserState(telegramUserID, paymentHistory);
-            } catch (NumberFormatException e) {
-                SendMessage message = new SendMessage();
-                message.setChatId(chatId);
-                message.setText("Ошибка: введите корректную сумму.");
-                sendMessage(message);
             }
         }
     }
