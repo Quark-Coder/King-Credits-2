@@ -150,18 +150,34 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                             commandRegistry.getCommand("homecommand").execute(update);
                         }
                         break;
+                    case "Назад":
                     case "Меню":
                     case "Подписался":
                         commandRegistry.getCommand("homecommand").execute(update);
                         break;
-                    case "Помощь":
-                        commandRegistry.getCommand("helpstate").execute(update);
+                    case "Пополнить баланс":
+                        commandRegistry.getCommand("topupbalancestate").execute(update);
                         break;
                     case "Профиль":
                         commandRegistry.getCommand("profilestate").execute(update);
                         break;
-                    case "Пополнить баланс":
-                        commandRegistry.getCommand("topupbalancestate").execute(update);
+                    case "Вывод кредитов":
+                        commandRegistry.getCommand("withdrawalofcreditsstate").execute(update);
+                        break;
+                    case "Актуальный курс":
+                        commandRegistry.getCommand("currentratestate").execute(update);
+                        break;
+                    case "Посчитать":
+                        commandRegistry.getCommand("calculatestate").execute(update);
+                        break;
+                    case "Помощь":
+                        commandRegistry.getCommand("helpstate").execute(update);
+                        break;
+                    case "Продать кредиты":
+                        commandRegistry.getCommand("sellcreditsstate").execute(update);
+                        break;
+                    case "Отзывы":
+                        commandRegistry.getCommand("reviewsstate").execute(update);
                         break;
                     default:
                         log.info("Unexpected message");

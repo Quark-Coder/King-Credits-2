@@ -1,18 +1,18 @@
 
 r
-java:S1066O"/Merge this if statement with the enclosing one.(Ë´Ì8µŒÓû•2J$81bc1c00-6ec5-4f79-ac14-fb2811b6f78a
+java:S1066O"/Merge this if statement with the enclosing one.(Ë´Ì8€¤Üÿ•2J$d407bfcb-3a95-4dda-a4a3-e614afcb9c50
 Œ
-java:S6208‹"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8ºŒÓû•2J$35caf2e6-ca2e-4701-9521-5e2cfc617754
+java:S6208‹"CMerge the previous cases into this one using comma-separated label.(ŞÒÁÊşÿÿÿÿ8ƒ¤Üÿ•2J$34ca9fa8-9c5c-42eb-bc1a-53877b46d9c2
 Œ
-java:S6208š"CMerge the previous cases into this one using comma-separated label.(ÓÈ—ÿúÿÿÿÿ8ºŒÓû•2J$74391a91-6922-4267-8dfe-117578f70d99
+java:S6208›"CMerge the previous cases into this one using comma-separated label.(ÓÈ—ÿúÿÿÿÿ8ÏÚ…€–2J$0a7affc7-2550-4c2e-a5ff-051b5034030f
 
-java:S1874H"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ÈŒÓû•2J$06125f5c-fc4a-4879-892d-afac775a12f5
+java:S1874H"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8‰¤Üÿ•2J$16348052-d8cf-4304-b6c6-23383d2463df
 •
-java:S3776y"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8ÎŒÓû•2J$8866a6a8-4f32-4b7c-9320-fad13d8a4dfe
+java:S3776y"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8Œ¤Üÿ•2J$b441ed4d-8ed6-4436-9262-86ddeacd4c96
 ”
-java:S1301µ"KReplace this "switch" statement by "if" statements to increase readability.(§ñğãşÿÿÿÿ8ÙŒÓû•2J$6ab74e7e-e60c-44e2-b281-5263adb86ee0
-j	java:S131µ""Add a default case to this switch.(§ñğãşÿÿÿÿ8ÙŒÓû•2J$a0442468-645d-4463-a389-560b34f3cdd0
-D
-java:S1168ô"&Return an empty array instead of null.(¥¹ï8ë»Óû•2
-D
-java:S1168‚"&Return an empty array instead of null.(¥¹ï8ì»Óû•2
+java:S1301Å"KReplace this "switch" statement by "if" statements to increase readability.(§ñğãşÿÿÿÿ8’¤Üÿ•2J$7ff53cc5-f7ba-417c-8aba-2c29a05f9816
+j	java:S131Å""Add a default case to this switch.(§ñğãşÿÿÿÿ8’¤Üÿ•2J$18b9de0e-ab5b-4213-8d85-4c5108cd4e26
+j
+java:S1168„"&Return an empty array instead of null.(¥¹ï8•¤Üÿ•2J$d856481c-32c3-47ce-a616-9b30790da2a9
+j
+java:S1168’"&Return an empty array instead of null.(¥¹ï8•¤Üÿ•2J$ac1340d1-5ff4-44c5-80b4-9cc505fdc2ff

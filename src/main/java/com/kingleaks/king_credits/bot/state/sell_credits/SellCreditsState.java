@@ -1,4 +1,4 @@
-package com.kingleaks.king_credits.bot.state.help;
+package com.kingleaks.king_credits.bot.state.sell_credits;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
@@ -14,15 +14,15 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class HelpState implements Command {
+public class SellCreditsState implements Command {
     private final BotService botService;
 
     @Override
     public void execute(Update update) {
         SendMessage message = SendMessage.builder()
                 .chatId(update.getMessage().getChatId())
-                .text("Если вам понадобилась помощь по боту, либо появились" +
-                        " какие-то проблемы, обращайтесь сюда - @KingLeaksAdmin")
+                .text("Если вы хотите продать кредиты, мы можем помочь с этим." +
+                        " Для этого обратитесь в нашу поддержку: @DreamCredits")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
