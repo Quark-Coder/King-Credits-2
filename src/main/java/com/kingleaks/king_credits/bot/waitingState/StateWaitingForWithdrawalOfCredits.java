@@ -30,8 +30,7 @@ public class StateWaitingForWithdrawalOfCredits {
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
                 message.setText("Хорошо, деньги списаны с вашего баланса." +
-                        " Выставьте любой скин за " + amount + " (формула для подсчета, с учетом коммисии рынка " +
-                        "- сумма разделить на 0.8). Пришлите скрин скина с рынка. ");
+                        " Выставьте любой скин за " + amount/0.8 + " Пришлите скрин скина с рынка. ");
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                         .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
 
