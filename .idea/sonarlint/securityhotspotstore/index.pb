@@ -27,8 +27,6 @@ Fsrc/main/java/com/kingleaks/king_credits/bot/state/help/HelpState.java,c/5/c52
 Lsrc/main/java/com/kingleaks/king_credits/bot/state/profile/ProfileState.java,8/b/8b311558617b89590ca4e5e2d97f805fa6bbad58
 
 Osrc/main/java/com/kingleaks/king_credits/bot/callback/TopUpBalanceCallback.java,e/b/eb7b2b1433367afaceeace33934a159842801459
-v
-Fsrc/main/java/com/kingleaks/king_credits/bot/CallbackQueryHandler.java,d/6/d60c67045b00b9a2b75b35de06a4393513ba8746
 ˆ
 Xsrc/main/java/com/kingleaks/king_credits/bot/state/top_up_balance/TopUpBalanceState.java,c/1/c1697003ab6f046ddc224557f49959c7c4cef4e3
 
@@ -49,8 +47,6 @@ u
 Esrc/main/java/com/kingleaks/king_credits/domain/enums/UserStatus.java,4/e/4e344849571a8c4221eabf38859231d6d74eebdc
 ‚
 Rsrc/main/java/com/kingleaks/king_credits/domain/enums/PaymentCheckPhotoStatus.java,3/b/3b7d67be8824b8667a0f2a21c8e596bb080f8aae
-}
-Msrc/main/java/com/kingleaks/king_credits/bot/callback/ReturnMenuCallback.java,d/0/d081c5c61f8c275b4ff89930ee5ce33ef935a532
 €
 Psrc/main/java/com/kingleaks/king_credits/repository/TelegramUsersRepository.java,a/7/a78ab923897e5352fb28575417d54022e865c4fe
 z
@@ -87,3 +83,17 @@ Fsrc/main/java/com/kingleaks/king_credits/service/CalculateService.java,6/1/61e
 Zsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForCreditsInRub.java,3/7/37a292df263546cd8190cfbd24c622402bf8d72d
 Š
 Zsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForRubInCredits.java,5/a/5a46e2ef87705c956c42852bd5ef3b788c479f77
+†
+Vsrc/main/java/com/kingleaks/king_credits/bot/callback/WithDrawalOfCreditsCallback.java,9/8/98ac33c58de028003db65097ecd40dd037b973f2
+‘
+asrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForWithdrawalOfCredits.java,5/5/5598fca89798947713d04bc7f55b164a36b80f84
+Œ
+\src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForWithdrawalNick.java,7/8/7869a85fb3d684ec3cf9d8ab9684ef3d6076edd7
+
+Osrc/main/java/com/kingleaks/king_credits/domain/entity/WithdrawalOfCredits.java,1/f/1f45c0d61265ee78b385f86d8da5c2cc419c11a1
+„
+Tsrc/main/java/com/kingleaks/king_credits/domain/enums/WithdrawalOfCreditsStatus.java,5/6/5625e551ca56210676160ee64d6ed718268e8dc5
+†
+Vsrc/main/java/com/kingleaks/king_credits/repository/WithdrawalOfCreditsRepository.java,6/a/6a69b227733e14df24668da82e4e3243c56108aa
+€
+Psrc/main/java/com/kingleaks/king_credits/service/WithdrawalOfCreditsService.java,e/b/ebc2423520d86140a9efbe28b8708a6c8118ff5f

@@ -24,7 +24,7 @@ public class PaymentCheckPhotoService {
         paymentCheckPhotoRepository.save(paymentCheckPhoto);
     }
 
-    public byte[] savePhoto(byte[] photoData, Long telegramUserId) {
+    public PaymentCheckPhoto savePhoto(byte[] photoData, Long telegramUserId) {
         Optional<PaymentCheckPhoto> paymentCheckPhoto = paymentCheckPhotoRepository
                 .findByTelegramUserIdAndStatus(telegramUserId, PaymentCheckPhotoStatus.CREATED);
 
@@ -33,11 +33,10 @@ public class PaymentCheckPhotoService {
             photoEntity.setPhotoData(photoData);
             photoEntity.setStatus(PaymentCheckPhotoStatus.PRICED);
 
-            PaymentCheckPhoto returnPhoto = paymentCheckPhotoRepository.save(photoEntity);
-            return getPhotoById(returnPhoto.getId());
+            return paymentCheckPhotoRepository.save(photoEntity);
         }
 
-        return new byte[0];
+        return null;
     }
 
     public byte[] getPhotoById(Long id) {

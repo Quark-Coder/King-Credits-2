@@ -19,7 +19,7 @@ public class TopUpBalanceState implements Command {
     private final BotService botService;
 
     public String getDescription() {
-        return "Здесь вы можете пополнить баланс";
+        return "Пополнить баланс";
     }
 
     @Autowired
@@ -39,10 +39,10 @@ public class TopUpBalanceState implements Command {
 
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText("Выберите опцию");
+        message.setText("Для пополнения баланса введите сумму в рублях, которую вы хотите оплатить.");
 
         InlineKeyboardButton button = new InlineKeyboardButton();
-        button.setText("Пополнить баланс");
+        button.setText("Ввести сумму");
         button.setCallbackData("TOP_UP_BUTTON");
 
         List<InlineKeyboardButton> buttons = List.of(button);

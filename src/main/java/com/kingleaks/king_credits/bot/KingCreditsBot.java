@@ -2,16 +2,11 @@ package com.kingleaks.king_credits.bot;
 
 import com.kingleaks.king_credits.bot.callback.CallbackQueryHandler;
 import com.kingleaks.king_credits.bot.command.CommandRegistry;
-import com.kingleaks.king_credits.bot.waitingState.StateWaitingForAmount;
-import com.kingleaks.king_credits.bot.waitingState.StateWaitingForChangeNickname;
-import com.kingleaks.king_credits.bot.waitingState.StateWaitingForCreditsInRub;
-import com.kingleaks.king_credits.bot.waitingState.StateWaitingForRubInCredits;
+import com.kingleaks.king_credits.bot.waitingState.*;
 import com.kingleaks.king_credits.config.BotConfig;
+import com.kingleaks.king_credits.domain.entity.PaymentCheckPhoto;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
-import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
-import com.kingleaks.king_credits.service.StateManagerService;
-import com.kingleaks.king_credits.service.SubscriptionVerificationService;
-import com.kingleaks.king_credits.service.TelegramUsersService;
+import com.kingleaks.king_credits.service.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +45,19 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final StateWaitingForChangeNickname stateWaitingForChangeNickname;
     private final StateWaitingForCreditsInRub stateWaitingForCreditsInRub;
     private final StateWaitingForRubInCredits stateWaitingForRubInCredits;
+    private final StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits;
+    private final WithdrawalOfCreditsService withdrawalOfCreditsService;
+    private final StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
                           @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
-                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService, PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService, StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname, StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits) {
+                          StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService,
+                          PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService,
+                          StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname,
+                          StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits,
+                          StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits,
+                          WithdrawalOfCreditsService withdrawalOfCreditsService, StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -66,6 +69,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.stateWaitingForChangeNickname = stateWaitingForChangeNickname;
         this.stateWaitingForCreditsInRub = stateWaitingForCreditsInRub;
         this.stateWaitingForRubInCredits = stateWaitingForRubInCredits;
+        this.stateWaitingForWithdrawalOfCredits = stateWaitingForWithdrawalOfCredits;
+        this.withdrawalOfCreditsService = withdrawalOfCreditsService;
+        this.stateWaitingForWithdrawalNick = stateWaitingForWithdrawalNick;
     }
 
     @Override
@@ -216,6 +222,14 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         sendMessage(stateWaitingForRubInCredits
                                 .waitingForRubInCredits(paymentHistory, chatId, messageText, telegramUserId));
                         break;
+                    case "WAITING_FOR_AMOUNT_FOR_WITHDRAWAL":
+                        sendMessage(stateWaitingForWithdrawalOfCredits
+                                .waitingForWithdrawalOfCredits(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
+                    case "WAITING_FOR_WITHDRAWAL_NICK":
+                        sendMessage(stateWaitingForWithdrawalNick
+                                .waitingForWithdrawalNick(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
                 }
             } else if (update.getMessage().hasPhoto()){
                 List<PhotoSize> photos = update.getMessage().getPhoto();
@@ -244,33 +258,54 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                                              Long chatId, PhotoSize photo, Long telegramUserId){
         if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
 
-                String fileId = photo.getFileId();
-                byte[] photoData = savePhotoToDatabase(fileId, telegramUserId);
+            String fileId = photo.getFileId();
+            PaymentCheckPhoto paymentCheckPhoto = savePhotoCheckToDatabase(fileId, telegramUserId);
+            byte[] photoData = paymentCheckPhoto.getPhotoData();
 
-                ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
-                InputFile inputFile = new InputFile(inputStream, "photo.jpg");
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
+            InputFile inputFile = new InputFile(inputStream, "photo.jpg");
 
-                stateManager.deleteUserState(telegramUserId);
-                // Создаем объект SendPhoto
-                SendPhoto returnPhoto = new SendPhoto();
-                returnPhoto.setChatId(chatId.toString());
-                returnPhoto.setPhoto(inputFile);
+            stateManager.deleteUserState(telegramUserId);
+            // Создаем объект SendPhoto
+            SendPhoto returnPhoto = new SendPhoto();
+            returnPhoto.setChatId(chatId.toString());
+            returnPhoto.setPhoto(inputFile);
 
-                SendMessage message = new SendMessage();
-                message.setChatId(chatId);
-                message.setText("Хорошо, когда мы проверим оплату, деньги будут засчитаны на ваш баланс! Номер вашего чека:");
+            SendMessage message = new SendMessage();
+            message.setChatId(chatId);
+            message.setText("Хорошо, когда мы проверим оплату," +
+                    " деньги будут засчитаны на ваш баланс! Номер вашего чека: " + paymentCheckPhoto.getId());
 
-                sendPhoto(returnPhoto);
-                sendMessage(message);
+            sendPhoto(returnPhoto);
+            sendMessage(message);
+        } else if (paymentHistory != null && "WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO".equals(paymentHistory.getStatus())) {
+            String fileId = photo.getFileId();
+            savePhotoWithdrawalToDatabase(fileId, telegramUserId);
+
+            paymentHistory.setStatus("WAITING_FOR_WITHDRAWAL_NICK");
+            stateManager.setUserState(telegramUserId, paymentHistory);
+
+            SendMessage message = new SendMessage();
+            message.setChatId(chatId);
+            message.setText("Хорошо, теперь отправьте нам свой никнейм из игры");
+
+            sendMessage(message);
         }
     }
 
-    public byte[] savePhotoToDatabase(String fileId, Long telegramUserId) {
+    public PaymentCheckPhoto savePhotoCheckToDatabase(String fileId, Long telegramUserId) {
         byte[] photoData = downloadPhoto(fileId);
         if (photoData != null) {
             return paymentCheckPhotoService.savePhoto(photoData, telegramUserId);
         } else {
             return null;
+        }
+    }
+
+    public void savePhotoWithdrawalToDatabase(String fileId, Long telegramUserId) {
+        byte[] photoData = downloadPhoto(fileId);
+        if (photoData != null) {
+            withdrawalOfCreditsService.initPhotoWithdrawalOfCredits(telegramUserId, photoData);
         }
     }
 

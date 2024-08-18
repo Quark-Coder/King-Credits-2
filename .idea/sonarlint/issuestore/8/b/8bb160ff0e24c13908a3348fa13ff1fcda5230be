@@ -1,14 +1,12 @@
 
 r
-java:S1066T"/Merge this if statement with the enclosing one.(Ë´Ì8åè£„–2J$638e20e4-1456-4d49-89d7-e0754a46d52a
+java:S1066Z"/Merge this if statement with the enclosing one.(Ë´Ì8šÛ«–2J$48753260-b40f-44bb-8d41-1a8f01e3c925
 ‡
-java:S6208’"CMerge the previous cases into this one using comma-separated label.(ş†Œ8èè£„–2J$722b9a4c-3e12-42e3-aabe-410cd8edc8bf
+java:S6208˜"CMerge the previous cases into this one using comma-separated label.(ş†Œ8“šÛ«–2J$9b010993-a7c5-4ab6-95f4-fa78da84f2f0
 
-java:S1874M"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ëè£„–2J$789f97f5-a29b-44b7-a716-b0b53a12cb74
-•
-java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8íè£„–2J$ced8734b-f1d4-4304-a0a2-8b9299401c1e
-j	java:S131Ê""Add a default case to this switch.(§ñğãşÿÿÿÿ8òè£„–2J$7c53ba81-166b-4803-b71e-ce87174dcea8
+java:S1874S"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8—šÛ«–2J$60b947bd-c66e-4ae2-afcb-789001cfea1b
+–
+java:S3776„"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8›šÛ«–2J$374d0f58-0fe3-402f-9101-c478e71f2138
+j	java:S131Ğ""Add a default case to this switch.(§ñğãşÿÿÿÿ8¢šÛ«–2J$b9836711-6120-4aa2-bfec-72446fdb4e10
 j
-java:S1168‘"&Return an empty array instead of null.(¥¹ï8õè£„–2J$076e95e6-3914-435b-a8dd-788dc30b48d2
-j
-java:S1168Ÿ"&Return an empty array instead of null.(¥¹ï8öè£„–2J$ad85ef46-0f0b-457f-b0ae-c0a98ce94829
+java:S1168Â"&Return an empty array instead of null.(¥¹ï8©šÛ«–2J$f1d3c974-2679-4111-9b74-b5422618e03a

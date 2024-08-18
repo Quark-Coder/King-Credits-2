@@ -33,7 +33,6 @@ public class CalculateState implements Command {
         calculate.setChatId(update.getMessage().getChatId());
         calculate.setText("Что вы хотите посчитать?");
 
-
         InlineKeyboardButton selectCreditsRub = new InlineKeyboardButton();
         selectCreditsRub.setText("Кредиты в рублях");
         selectCreditsRub.setCallbackData("CREDITS_IN_RUB");

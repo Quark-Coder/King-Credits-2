@@ -41,11 +41,8 @@ public class ProfileState implements Command {
         InlineKeyboardButton changeNick = new InlineKeyboardButton();
         changeNick.setText("Изменить ник");
         changeNick.setCallbackData("CHANGE_NICK");
-        InlineKeyboardButton back = new InlineKeyboardButton();
-        back.setText("Назад");
-        back.setCallbackData("BACK");
 
-        List<InlineKeyboardButton> buttons = List.of(changeNick, back);
+        List<InlineKeyboardButton> buttons = List.of(changeNick);
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         markup.setKeyboard(List.of(buttons));
 
