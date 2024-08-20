@@ -98,14 +98,14 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             }
         }
         checkStateManager(update);
-
-        UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
-        if (userStatus.name().equals("ADMIN")){
-            checkCommandForAdmin(update);
-        } else {
-            checkCommand(update);
+        if (update.hasMessage() && update.getMessage().hasText()){
+            UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
+            if (userStatus.name().equals("ADMIN")){
+                checkCommandForAdmin(update);
+            } else {
+                checkCommand(update);
+            }
         }
-
         checkCallback(update);
     }
 

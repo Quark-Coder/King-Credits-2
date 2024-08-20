@@ -2,6 +2,7 @@ package com.kingleaks.king_credits.bot.state.admin.replenishment_requests;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
+import com.kingleaks.king_credits.service.ReplenishmentRequestsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReplenishmentRequestsState implements Command {
     private final BotService botService;
+    private final ReplenishmentRequestsService replenishmentRequestsService;
 
     @Override
     public void execute(Update update) {
@@ -26,5 +28,17 @@ public class ReplenishmentRequestsState implements Command {
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
         botService.sendMessage(message);
+
+        SendMessage result = new SendMessage();
+        result.setChatId(update.getMessage().getChatId());
+
+        String list = replenishmentRequestsService.getAllListReplenishmentRequests();
+        if (list != null) {
+            result.setText("Заявки ждущие подтверждения\n\n" + list);
+            botService.sendMessage(result);
+        } else {
+            result.setText("Нету ничего");
+            botService.sendMessage(result);
+        }
     }
 }

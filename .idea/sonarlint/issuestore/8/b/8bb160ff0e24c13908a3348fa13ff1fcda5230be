@@ -1,18 +1,18 @@
 
 r
-java:S1066["/Merge this if statement with the enclosing one.(Ë´Ì8‹å»ø–2J$d8bba86f-3e1b-4a7b-ac89-d4889f8f3d2b
+java:S1066["/Merge this if statement with the enclosing one.(Ë´Ì8‹å»ø–2J$6c36375b-94af-4dd8-80d1-c248e809cb3e
 •
-java:S1192”"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8‡ø½ø–2J$8720f69a-8acd-43fa-972a-4abcf7876004
+java:S1192”"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8‡ø½ø–2J$45e911e9-c9e8-4d98-938a-6c048e582677
 Š
-java:S1192["GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8å»ø–2J$e5e449af-9f25-4ebb-af9e-99b2a6a19235
+java:S1192["GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8å»ø–2J$ea8ad3ac-c231-4c29-a316-73f16f1f701b
 ‡
-java:S6208“"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ä¾ø–2J$48ba870f-3d5c-4c5e-aead-e819449f1f83
+java:S6208“"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ä¾ø–2J$cba71dfd-4e68-400c-b040-1fd904cdc4c8
 ‡
-java:S6208Ã"CMerge the previous cases into this one using comma-separated label.(ş†Œ8å»ø–2J$2c578cfc-5a7d-476a-a643-e0e5ce907b84
+java:S6208Ã"CMerge the previous cases into this one using comma-separated label.(ş†Œ8å»ø–2J$70929247-2712-4dd5-bc18-a30950d4a58e
 
-java:S1874T"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8•å»ø–2J$bc28b997-6653-4474-8efa-57e01656ba87
+java:S1874T"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8•å»ø–2J$1fbde973-2cac-4aa9-a52e-c462b6c6c14a
 –
-java:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8­å»ø–2J$c217c57d-2ee0-4117-84ac-97e29c0f063d
-j	java:S131û""Add a default case to this switch.(§ñğãşÿÿÿÿ8´å»ø–2J$c0caad13-b34b-4e70-a240-f00927e40a7f
+java:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8­å»ø–2J$e6def6ea-ad91-41f7-bde9-ef8456ba01d8
+j	java:S131û""Add a default case to this switch.(§ñğãşÿÿÿÿ8´å»ø–2J$fb5a4eac-1e83-435d-885a-4c248c41868c
 j
-java:S1168í"&Return an empty array instead of null.(¥¹ï8»å»ø–2J$bf0698ae-f84a-4352-9b40-eec69be21859
+java:S1168í"&Return an empty array instead of null.(¥¹ï8»å»ø–2J$86ba6ec2-c934-4b7c-a658-634d9036bc5d
