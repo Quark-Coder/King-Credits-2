@@ -6,6 +6,7 @@ import com.kingleaks.king_credits.bot.waitingState.*;
 import com.kingleaks.king_credits.config.BotConfig;
 import com.kingleaks.king_credits.domain.entity.PaymentCheckPhoto;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
+import com.kingleaks.king_credits.domain.enums.UserStatus;
 import com.kingleaks.king_credits.service.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -96,9 +97,15 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 telegramUsersService.registerUser(telegramUserId, firstName, lastName, nickname);
             }
         }
-
         checkStateManager(update);
-        checkCommand(update);
+
+        UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
+        if (userStatus.name().equals("ADMIN")){
+            checkCommandForAdmin(update);
+        } else {
+            checkCommand(update);
+        }
+
         checkCallback(update);
     }
 
@@ -126,6 +133,42 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             execute(message);
         } catch (TelegramApiException e) {
             log.error(e.getMessage());
+        }
+    }
+
+    public void checkCommandForAdmin(Update update) {
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            String message = update.getMessage().getText();
+
+            switch (message) {
+                case "/start":
+                case "/home":
+                case "Назад":
+                case "Меню":
+                    commandRegistry.getCommand("homecommand").execute(update);
+                    break;
+                case "Запросы на пополнение":
+                    commandRegistry.getCommand("replenishmentrequestsstate").execute(update);
+                    break;
+                case "Запросы на вывод":
+                    commandRegistry.getCommand("withdrawalrequestsstate").execute(update);
+                    break;
+                case "Все пользователи":
+                    commandRegistry.getCommand("allusersstate").execute(update);
+                    break;
+                case "Создать промокод":
+                    commandRegistry.getCommand("createpromotionalstate").execute(update);
+                    break;
+                case "Черный список":
+                    commandRegistry.getCommand("blackliststate").execute(update);
+                    break;
+                case "Статистика":
+                    commandRegistry.getCommand("statisticsstate").execute(update);
+                    break;
+                default:
+                    log.info("Unexpected message");
+                }
+
         }
     }
 

@@ -2,36 +2,72 @@ package com.kingleaks.king_credits.bot.state;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
+import com.kingleaks.king_credits.domain.enums.UserStatus;
+import com.kingleaks.king_credits.service.TelegramUsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class HomeCommand implements Command {
     private final BotService botService;
-
-    @Autowired
-    public HomeCommand(BotService botService) {
-        this.botService = botService;
-    }
+    private final TelegramUsersService telegramUsersService;
 
     @Override
     public void execute(Update update) {
+        Long chatId = update.getMessage().getChatId();
+        UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId()); // Получаем пользователя из базы данных
+
         SendMessage message = SendMessage
                 .builder()
-                .chatId(update.getMessage().getChatId())
+                .chatId(chatId.toString())
                 .text("Это главная страница")
                 .build();
+
+        if (userStatus.name().equals("ADMIN")) {
+            message.setReplyMarkup(getAdminKeyboard());
+        } else {
+            message.setReplyMarkup(getUserKeyboard());
+        }
+
+        botService.sendMessage(message);
+    }
+
+    private ReplyKeyboardMarkup getAdminKeyboard() {
+        List<KeyboardRow> keyboard = new ArrayList<>();
+
+        List<KeyboardButton> btn1 = List.of(
+                new KeyboardButton("Запросы на пополнение"),
+                new KeyboardButton("Запросы на вывод")
+        );
+        List<KeyboardButton> btn2 = List.of(
+                new KeyboardButton("Все пользователи"),
+                new KeyboardButton("Создать промокод")
+        );
+        List<KeyboardButton> btn3 = List.of(
+                new KeyboardButton("Черный список"),
+                new KeyboardButton("Статистика")
+        );
+
+        keyboard.add(new KeyboardRow(btn1));
+        keyboard.add(new KeyboardRow(btn2));
+        keyboard.add(new KeyboardRow(btn3));
+
+        return createReplyKeyboardMarkup(keyboard);
+    }
+
+    private ReplyKeyboardMarkup getUserKeyboard() {
+        List<KeyboardRow> keyboard = new ArrayList<>();
 
         List<KeyboardButton> btn1 = List.of(
                 new KeyboardButton("Пополнить баланс"),
@@ -50,14 +86,20 @@ public class HomeCommand implements Command {
                 new KeyboardButton("Отзывы")
         );
 
-        message.setReplyMarkup(ReplyKeyboardMarkup
-                .builder()
-                .keyboardRow(new KeyboardRow(btn1))
-                .keyboardRow(new KeyboardRow(btn2))
-                .keyboardRow(new KeyboardRow(btn3))
-                .keyboardRow(new KeyboardRow(btn4))
-                .build());
+        keyboard.add(new KeyboardRow(btn1));
+        keyboard.add(new KeyboardRow(btn2));
+        keyboard.add(new KeyboardRow(btn3));
+        keyboard.add(new KeyboardRow(btn4));
 
-        botService.sendMessage(message);
+        return createReplyKeyboardMarkup(keyboard);
+    }
+
+    private ReplyKeyboardMarkup createReplyKeyboardMarkup(List<KeyboardRow> keyboard) {
+        return ReplyKeyboardMarkup
+                .builder()
+                .keyboard(keyboard)
+                .resizeKeyboard(true)
+                .oneTimeKeyboard(false)
+                .build();
     }
 }

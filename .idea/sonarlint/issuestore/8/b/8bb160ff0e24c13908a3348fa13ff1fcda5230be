@@ -1,12 +1,18 @@
 
 r
-java:S1066Z"/Merge this if statement with the enclosing one.(Ë´Ì8šÛ«–2J$48753260-b40f-44bb-8d41-1a8f01e3c925
+java:S1066["/Merge this if statement with the enclosing one.(Ë´Ì8‹å»ø–2J$d8bba86f-3e1b-4a7b-ac89-d4889f8f3d2b
+•
+java:S1192”"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8‡ø½ø–2J$8720f69a-8acd-43fa-972a-4abcf7876004
+Š
+java:S1192["GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8å»ø–2J$e5e449af-9f25-4ebb-af9e-99b2a6a19235
 ‡
-java:S6208˜"CMerge the previous cases into this one using comma-separated label.(ş†Œ8“šÛ«–2J$9b010993-a7c5-4ab6-95f4-fa78da84f2f0
+java:S6208“"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ä¾ø–2J$48ba870f-3d5c-4c5e-aead-e819449f1f83
+‡
+java:S6208Ã"CMerge the previous cases into this one using comma-separated label.(ş†Œ8å»ø–2J$2c578cfc-5a7d-476a-a643-e0e5ce907b84
 
-java:S1874S"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8—šÛ«–2J$60b947bd-c66e-4ae2-afcb-789001cfea1b
+java:S1874T"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8•å»ø–2J$bc28b997-6653-4474-8efa-57e01656ba87
 –
-java:S3776„"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8›šÛ«–2J$374d0f58-0fe3-402f-9101-c478e71f2138
-j	java:S131Ğ""Add a default case to this switch.(§ñğãşÿÿÿÿ8¢šÛ«–2J$b9836711-6120-4aa2-bfec-72446fdb4e10
+java:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8­å»ø–2J$c217c57d-2ee0-4117-84ac-97e29c0f063d
+j	java:S131û""Add a default case to this switch.(§ñğãşÿÿÿÿ8´å»ø–2J$c0caad13-b34b-4e70-a240-f00927e40a7f
 j
-java:S1168Â"&Return an empty array instead of null.(¥¹ï8©šÛ«–2J$f1d3c974-2679-4111-9b74-b5422618e03a
+java:S1168í"&Return an empty array instead of null.(¥¹ï8»å»ø–2J$bf0698ae-f84a-4352-9b40-eec69be21859

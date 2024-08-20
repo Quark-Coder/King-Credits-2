@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS account
+(
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    telegram_user_id BIGINT,
+    balance DECIMAL(10, 2)
+)

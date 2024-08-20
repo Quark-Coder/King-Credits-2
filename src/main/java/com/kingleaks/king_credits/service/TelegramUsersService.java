@@ -6,6 +6,7 @@ import com.kingleaks.king_credits.repository.TelegramUsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TelegramUsersService {
     private final TelegramUsersRepository telegramUsersRepository;
+    private final AccountService accountService;
 
     public void registerUser(Long userId, String firstName, String lastName, String nickname) {
         if (telegramUsersRepository.findByUserId(userId).isEmpty()) {
@@ -24,6 +26,7 @@ public class TelegramUsersService {
             newUser.setCreatedAt(LocalDateTime.now());
             newUser.setStatus(UserStatus.USER);
             telegramUsersRepository.save(newUser);
+            accountService.createAccount(userId);
         }
     }
 
@@ -33,13 +36,13 @@ public class TelegramUsersService {
             TelegramUsers telegramUser = telegramUsers.get();
             Long id = telegramUser.getId();
             String nickname = telegramUser.getNickname();
-            int amount = 0;
+            BigDecimal balance = telegramUsersRepository.getBalanceByUserId(telegramUserId);
             int replenish = 0;
             int withdrew = 0;
 
             return "Ваш никнейм - " + nickname +
                     "\nАйди - "  + id +
-                    "\nБаланс - " + amount +
+                    "\nБаланс - " + balance +
                     "\nВсего пополнено - " + replenish +
                     "\nВсего выведено - " + withdrew;
         }
@@ -54,5 +57,9 @@ public class TelegramUsersService {
             telegramUser.setNickname(newNickname);
             telegramUsersRepository.save(telegramUser);
         }
+    }
+
+    public UserStatus getStatus(Long telegramUserId) {
+        return telegramUsersRepository.getUserStatusByUserId(telegramUserId);
     }
 }
