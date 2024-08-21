@@ -4,9 +4,11 @@ import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.domain.entity.PaymentCheckPhoto;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.domain.entity.TelegramUsers;
+import com.kingleaks.king_credits.domain.entity.WithdrawalOfCredits;
 import com.kingleaks.king_credits.service.ReplenishmentRequestsService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import com.kingleaks.king_credits.service.TelegramUsersService;
+import com.kingleaks.king_credits.service.WithdrawalOfCreditsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -21,27 +23,26 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForSelectRequest {
+public class StateWaitingForSelectWithdrawalRequest {
     private final BotService botService;
-    private final ReplenishmentRequestsService replenishmentRequestsService;
+    private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final TelegramUsersService telegramUsersService;
     private final StateManagerService stateManager;
 
-    public SendMessage waitingForSelectRequest(StatePaymentHistory paymentHistory,
-                                        Long chatId, String messageText, Long telegramUserID){
+    public SendMessage waitingForSelectWithdrawalRequest(StatePaymentHistory paymentHistory,
+                                                         Long chatId, String messageText, Long telegramUserID) {
         if (paymentHistory != null){
             try {
                 Long selectId = Long.parseLong(messageText);
-                PaymentCheckPhoto paymentCheckPhoto = replenishmentRequestsService.selectPaymentCheckPhotoById(selectId);
-                if (paymentCheckPhoto != null){
-                    Double amount = paymentCheckPhoto.getPrice();
-                    LocalDateTime dateTime = paymentCheckPhoto.getCreatedAt();
-                    TelegramUsers users = telegramUsersService.findById(paymentCheckPhoto.getTelegramUserId());
+                WithdrawalOfCredits withdrawalOfCredits = withdrawalOfCreditsService.selectWithdrawalOfCreditsById(selectId);
+                if (withdrawalOfCredits != null){
+                    Double amount = withdrawalOfCredits.getPrice();
+                    LocalDateTime dateTime = withdrawalOfCredits.getCreatedAt();
+                    TelegramUsers users = telegramUsersService.findById(withdrawalOfCredits.getTelegramUserId());
                     String firstName = users.getFirstName();
                     String lastName = users.getLastName();
-                    String nickname = users.getNickname();
 
-                    byte[] photoData = paymentCheckPhoto.getPhotoData();
+                    byte[] photoData = withdrawalOfCredits.getPhoto();
 
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
                     InputFile inputFile = new InputFile(inputStream, "photo.jpg");
@@ -55,16 +56,16 @@ public class StateWaitingForSelectRequest {
 
                     String result = firstName + " " + lastName +
                             "\nНомер чека - " + selectId +
-                            "\nНик - " + nickname +
                             "\nДата заявки - " + dateTime +
-                            "\nСумма - " + amount;
+                            "\nСумма - " + amount +
+                            "\nНик из игры - " + withdrawalOfCredits.getNickInGame();
 
                     InlineKeyboardButton confirm = new InlineKeyboardButton();
-                    confirm.setText("Подтвердить");
-                    confirm.setCallbackData("CONFIRMREQUEST_" + selectId);
+                    confirm.setText("Принять");
+                    confirm.setCallbackData("CONFIRMWITHDRAWAL_" + selectId);
                     InlineKeyboardButton reject = new InlineKeyboardButton();
                     reject.setText("Отклонить");
-                    reject.setCallbackData("REJECTREQUEST_" + selectId);
+                    reject.setCallbackData("REJECTWITHDRAWAL_" + selectId);
 
                     List<InlineKeyboardButton> buttons = List.of(confirm, reject);
                     InlineKeyboardMarkup markup = new InlineKeyboardMarkup();

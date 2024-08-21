@@ -19,4 +19,13 @@ public class AccountService {
         account.setBalance(BigDecimal.valueOf(0.0));
         accountRepository.save(account);
     }
+
+    public void withdraw(Long telegramUserId, BigDecimal amount) {
+        Optional<Account> account = accountRepository.findByTelegramUserId(telegramUserId);
+        if (account.isPresent()) {
+            Account ac = account.get();
+            ac.setBalance(ac.getBalance().subtract(amount));
+            accountRepository.save(ac);
+        }
+    }
 }

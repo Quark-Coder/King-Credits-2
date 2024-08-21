@@ -1,13 +1,0 @@
-
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(¥éü‡úÿÿÿÿ8ÊËœ—2J$9463ec37-9af6-435a-b781-7598e383416a
-ƒ	java:S125-"<This block of commented-out lines of code should be removed.(Ìƒ›Ñıÿÿÿÿ8Ö­Ëœ—2J$5b108ab2-a48b-4c00-a0ce-249cbcfbcd6c
-©
-java:S1128	"fRemove this unused import 'org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage'.(»¸8’ÊËœ—2J$881553b0-b457-4944-ba06-808f39510fe9
-¬
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup'.(Ù•«ğ8’ÊËœ—2J$24fe9492-3fd5-4002-a27b-c4a9b2f5861b
-¯
-java:S1128"lRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton'.(ĞíÁî8’ÊËœ—2J$60fe9658-bcf9-435b-998b-6346abea6db4
-±
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow'.(Ğ§‰šùÿÿÿÿ8’ÊËœ—2J$8aedb4d4-b24c-4420-9d86-1789dc3df929
-s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8’ÊËœ—2J$3daa5cf1-2e18-4d03-bced-173e5dd1702b

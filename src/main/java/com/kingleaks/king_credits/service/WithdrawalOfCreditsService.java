@@ -8,7 +8,9 @@ import com.kingleaks.king_credits.repository.WithdrawalOfCreditsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class WithdrawalOfCreditsService {
     private final WithdrawalOfCreditsRepository repository;
     private final TelegramUsersRepository telegramUsersRepository;
+    private final AccountService accountService;
 
     public void createWithdrawalOfCredits(Long telegramUserId, double amount) {
         TelegramUsers telegramUser = telegramUsersRepository.findByUserId(telegramUserId).orElse(null);
@@ -28,6 +31,7 @@ public class WithdrawalOfCreditsService {
         withdrawalOfCredits.setPrice(amount);
         withdrawalOfCredits.setCreatedAt(LocalDateTime.now());
         withdrawalOfCredits.setStatus(WithdrawalOfCreditsStatus.SENT_PHOTO);
+        accountService.withdraw(telegramUserId, BigDecimal.valueOf(amount));
         repository.save(withdrawalOfCredits);
     }
 
@@ -54,5 +58,49 @@ public class WithdrawalOfCreditsService {
             withdrawalOfCredits.setStatus(WithdrawalOfCreditsStatus.WAITING);
             repository.save(withdrawalOfCredits);
         }
+    }
+
+    public String getAllListWithdrawalRequest() {
+        List<WithdrawalOfCredits> checkPhotoList = repository.getAllWithdrawalOFCreditsByStatusWaiting();
+        if (checkPhotoList.isEmpty()) {
+            return null;
+        }
+        StringBuilder result = new StringBuilder();
+
+        for (WithdrawalOfCredits checkPhoto : checkPhotoList) {
+            Long id = checkPhoto.getId();
+            Double price = checkPhoto.getPrice();
+            result.append("чек - ").append(id).append(" сумма кредита - ").append(price).append("\n");
+        }
+
+        return result.toString().trim();
+    }
+
+    public WithdrawalOfCredits selectWithdrawalOfCreditsById(Long id) {
+        Optional<WithdrawalOfCredits> withdrawalOfCredits = repository.findByIdWithStatusPriced(id);
+        return withdrawalOfCredits.orElse(null);
+    }
+
+    public TelegramUsers confirmRequest(Long id){
+        Optional<WithdrawalOfCredits> optionalWithdrawalOfCredits = repository.findById(id);
+        if (optionalWithdrawalOfCredits.isPresent()) {
+            WithdrawalOfCredits withdrawalOfCredits = optionalWithdrawalOfCredits.get();
+            withdrawalOfCredits.setStatus(WithdrawalOfCreditsStatus.PAID);
+            repository.save(withdrawalOfCredits);
+
+            return telegramUsersRepository.findByUserId(withdrawalOfCredits.getTelegramUserId()).orElse(null);
+        }
+        return null;
+    }
+
+    public TelegramUsers rejectRequest(Long id){
+        Optional<WithdrawalOfCredits> withdrawalOfCredits = repository.findById(id);
+        if (withdrawalOfCredits.isPresent()) {
+            WithdrawalOfCredits withdrawal = withdrawalOfCredits.get();
+            withdrawal.setStatus(WithdrawalOfCreditsStatus.REJECT);
+            repository.save(withdrawal);
+            return telegramUsersRepository.findByUserId(withdrawal.getTelegramUserId()).orElse(null);
+        }
+        return null;
     }
 }

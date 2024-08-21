@@ -11,13 +11,13 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
 @RequiredArgsConstructor
-public class SelectRequestCallback implements CallbackQueryHandler{
+public class SelectWithdrawalRequestCallback implements CallbackQueryHandler {
     private final BotService botService;
     private final StateManagerService stateManager;
 
     @Override
     public boolean canHandle(String callbackData) {
-        return "SELECT_REQUEST".equals(callbackData);
+        return "SELECT_WITHDRAWAL_REQUEST".equals(callbackData);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class SelectRequestCallback implements CallbackQueryHandler{
 
         StatePaymentHistory userState = new StatePaymentHistory();
         userState.setTelegramUserId(telegramUserId);
-        userState.setStatus("WAITING_FOR_SELECT_REQUEST");
+        userState.setStatus("WAITING_FOR_SELECT_WITHDRAWAL_REQUEST");
         stateManager.setUserState(telegramUserId, userState);
 
         SendMessage sendMessage = new SendMessage();

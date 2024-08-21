@@ -1,8 +1,8 @@
 package com.kingleaks.king_credits.bot.callback;
 
 import com.kingleaks.king_credits.bot.BotService;
-import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
-import com.kingleaks.king_credits.service.StateManagerService;
+import com.kingleaks.king_credits.domain.entity.TelegramUsers;
+import com.kingleaks.king_credits.service.WithdrawalOfCreditsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,30 +11,37 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
 @RequiredArgsConstructor
-public class SelectRequestCallback implements CallbackQueryHandler{
+public class RejectWithdrawalCallback implements CallbackQueryHandler {
     private final BotService botService;
-    private final StateManagerService stateManager;
+    private final WithdrawalOfCreditsService withdrawalOfCreditsService;
 
     @Override
     public boolean canHandle(String callbackData) {
-        return "SELECT_REQUEST".equals(callbackData);
+        String[] parts = callbackData.split("_");
+        if (parts[0].equals("REJECTWITHDRAWAL")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void handle(CallbackQuery callbackQuery) {
         deleteMessage(callbackQuery);
         Long chatId = callbackQuery.getMessage().getChatId();
-        Long telegramUserId = callbackQuery.getFrom().getId();
-
-        StatePaymentHistory userState = new StatePaymentHistory();
-        userState.setTelegramUserId(telegramUserId);
-        userState.setStatus("WAITING_FOR_SELECT_REQUEST");
-        stateManager.setUserState(telegramUserId, userState);
+        String[] parts = callbackQuery.getData().split("_");
+        Long id = Long.parseLong(parts[1]);
+        TelegramUsers telegramUsers = withdrawalOfCreditsService.rejectRequest(id);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Укажите номер чека для выбора заявки");
+        sendMessage.setText("Вы отклонили заказ");
         botService.sendMessage(sendMessage);
+
+        SendMessage sendMessageForUser = new SendMessage();
+        sendMessageForUser.setChatId(telegramUsers.getChatId());
+        sendMessageForUser.setText("Вашу заявку отклонили");
+        botService.sendMessage(sendMessageForUser);
     }
 
     private void deleteMessage(CallbackQuery callbackQuery) {

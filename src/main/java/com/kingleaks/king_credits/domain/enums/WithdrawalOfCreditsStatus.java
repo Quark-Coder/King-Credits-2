@@ -6,5 +6,6 @@ public enum WithdrawalOfCreditsStatus {
     SENT_PHOTO,
     SENT_NICK,
     WAITING,
-    PAID
+    PAID,
+    REJECT
 }
