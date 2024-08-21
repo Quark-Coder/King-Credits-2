@@ -1,0 +1,13 @@
+
+]	java:S125"<This block of commented-out lines of code should be removed.(¥éü‡úÿÿÿÿ8ÊËœ—2
+ƒ	java:S125-"<This block of commented-out lines of code should be removed.(Ìƒ›Ñıÿÿÿÿ8Ö­Ëœ—2J$7c349d9c-ec4d-45c3-ba46-c6ffba375635
+ƒ
+java:S1128	"fRemove this unused import 'org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage'.(»¸8’ÊËœ—2
+†
+java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup'.(Ù•«ğ8’ÊËœ—2
+‰
+java:S1128"lRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton'.(ĞíÁî8’ÊËœ—2
+‹
+java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow'.(Ğ§‰šùÿÿÿÿ8’ÊËœ—2
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8’ÊËœ—2

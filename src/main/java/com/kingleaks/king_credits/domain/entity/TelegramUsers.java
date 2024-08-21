@@ -19,6 +19,9 @@ public class TelegramUsers {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "chat_id")
+    private Long chatId;
+
     @Column(name = "first_name")
     private String firstName;
 

@@ -49,6 +49,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits;
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick;
+    private final StateWaitingForSelectRequest stateWaitingForSelectRequest;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
@@ -58,7 +59,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                           StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname,
                           StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits,
                           StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits,
-                          WithdrawalOfCreditsService withdrawalOfCreditsService, StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick) {
+                          WithdrawalOfCreditsService withdrawalOfCreditsService, StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick,
+                          @Lazy StateWaitingForSelectRequest stateWaitingForSelectRequest) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -73,6 +75,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.stateWaitingForWithdrawalOfCredits = stateWaitingForWithdrawalOfCredits;
         this.withdrawalOfCreditsService = withdrawalOfCreditsService;
         this.stateWaitingForWithdrawalNick = stateWaitingForWithdrawalNick;
+        this.stateWaitingForSelectRequest = stateWaitingForSelectRequest;
     }
 
     @Override
@@ -90,11 +93,12 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         if (update.hasMessage() && update.getMessage().hasText()){
             if (update.getMessage().getText().equals("/start")) {
                 Long telegramUserId = update.getMessage().getFrom().getId();
+                Long chatId = update.getMessage().getChatId();
                 String firstName = update.getMessage().getFrom().getFirstName();
                 String lastName = update.getMessage().getFrom().getLastName();
                 String nickname = update.getMessage().getFrom().getUserName();
 
-                telegramUsersService.registerUser(telegramUserId, firstName, lastName, nickname);
+                telegramUsersService.registerUser(telegramUserId, chatId , firstName, lastName, nickname);
             }
         }
         checkStateManager(update);
@@ -273,12 +277,16 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         sendMessage(stateWaitingForWithdrawalNick
                                 .waitingForWithdrawalNick(paymentHistory, chatId, messageText, telegramUserId));
                         break;
+                    case "WAITING_FOR_SELECT_REQUEST":
+                        sendMessage(stateWaitingForSelectRequest
+                                .waitingForSelectRequest(paymentHistory, chatId, messageText, telegramUserId));
+                        break;
                 }
             } else if (update.getMessage().hasPhoto()){
                 List<PhotoSize> photos = update.getMessage().getPhoto();
                 PhotoSize photo = photos.get(photos.size() - 1);
 
-                stateWaitingForPaymentCheck(paymentHistory, chatId, photo, telegramUserId);
+                stateWaitingForPhoto(paymentHistory, chatId, photo, telegramUserId);
             }
         }
     }
@@ -297,8 +305,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         }
     }
 
-    private void stateWaitingForPaymentCheck(StatePaymentHistory paymentHistory,
-                                             Long chatId, PhotoSize photo, Long telegramUserId){
+    private void stateWaitingForPhoto(StatePaymentHistory paymentHistory,
+                                      Long chatId, PhotoSize photo, Long telegramUserId){
         if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
 
             String fileId = photo.getFileId();

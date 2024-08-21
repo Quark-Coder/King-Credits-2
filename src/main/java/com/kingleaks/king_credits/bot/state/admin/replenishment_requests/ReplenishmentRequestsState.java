@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -34,7 +36,16 @@ public class ReplenishmentRequestsState implements Command {
 
         String list = replenishmentRequestsService.getAllListReplenishmentRequests();
         if (list != null) {
+            InlineKeyboardButton selectCreditsRub = new InlineKeyboardButton();
+            selectCreditsRub.setText("Выбрать заявку");
+            selectCreditsRub.setCallbackData("SELECT_REQUEST");
+
+            List<InlineKeyboardButton> buttons = List.of(selectCreditsRub);
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+            markup.setKeyboard(List.of(buttons));
+
             result.setText("Заявки ждущие подтверждения\n\n" + list);
+            result.setReplyMarkup(markup);
             botService.sendMessage(result);
         } else {
             result.setText("Нету ничего");

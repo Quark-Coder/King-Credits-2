@@ -16,10 +16,11 @@ public class TelegramUsersService {
     private final TelegramUsersRepository telegramUsersRepository;
     private final AccountService accountService;
 
-    public void registerUser(Long userId, String firstName, String lastName, String nickname) {
+    public void registerUser(Long userId, Long chatId, String firstName, String lastName, String nickname) {
         if (telegramUsersRepository.findByUserId(userId).isEmpty()) {
             TelegramUsers newUser = new TelegramUsers();
             newUser.setUserId(userId);
+            newUser.setChatId(chatId);
             newUser.setFirstName(firstName);
             newUser.setLastName(lastName);
             newUser.setNickname(nickname);
@@ -61,5 +62,10 @@ public class TelegramUsersService {
 
     public UserStatus getStatus(Long telegramUserId) {
         return telegramUsersRepository.getUserStatusByUserId(telegramUserId);
+    }
+
+    public TelegramUsers findById(Long telegramUserId) {
+        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findByUserId(telegramUserId);
+        return telegramUsers.orElse(null);
     }
 }
