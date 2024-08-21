@@ -23,7 +23,7 @@ public class StateWaitingForAmount {
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText("Хорошо, завершите оплату, любым из способов ниже в течение 10 минут. После оплаты пришлите чек!");
+                message.setText("Хорошо, завершите оплату, любым из способов ниже в течение 10 минут. После оплаты пришлите скриншот чека!");
 
                 paymentHistory.setStatus("WAITING_FOR_PAYMENT_CHECK");
                 stateManager.setUserState(telegramUserID, paymentHistory);

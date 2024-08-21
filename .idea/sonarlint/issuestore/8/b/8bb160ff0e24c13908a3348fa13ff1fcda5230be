@@ -1,18 +1,18 @@
 
-L
-java:S1066^"/Merge this if statement with the enclosing one.(Ë´Ì8©õà—2
-d
-java:S1192^"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8­õà—2
-o
-java:S1192˜"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8­õà—2
-a
-java:S6208—"CMerge the previous cases into this one using comma-separated label.(ş†Œ8­õà—2
-a
-java:S6208Ç"CMerge the previous cases into this one using comma-separated label.(ş†Œ8­õà—2
-g
-java:S1874W"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8³õà—2
-p
-java:S3776³"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8¹õà—2
-D	java:S131ÿ""Add a default case to this switch.(§ñğãşÿÿÿÿ8Æõà—2
-D
-java:S1168õ"&Return an empty array instead of null.(¥¹ï8Íõà—2
+r
+java:S1066^"/Merge this if statement with the enclosing one.(Ë´Ì8©õà—2J$6053c593-a7a6-4ba6-8249-8a738242e746
+Š
+java:S1192^"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8­õà—2J$ab1a8576-1c95-4887-9d3c-d0d655e4e89c
+•
+java:S1192˜"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8­õà—2J$0980bc72-ad23-47fc-88a0-478673c0de2f
+‡
+java:S6208—"CMerge the previous cases into this one using comma-separated label.(ş†Œ8­õà—2J$ef28df3d-0a1e-435b-8d20-65b3054ee83e
+‡
+java:S6208Ç"CMerge the previous cases into this one using comma-separated label.(ş†Œ8­õà—2J$25cf3967-a88f-46ab-85e6-1aa63200ea19
+
+java:S1874W"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8³õà—2J$b809ea9d-1fa6-4d33-8753-7eab6fd7ffdc
+–
+java:S3776³"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8¹õà—2J$6990d611-5de1-4c6c-ad70-005d36a66f05
+j	java:S131ÿ""Add a default case to this switch.(§ñğãşÿÿÿÿ8Æõà—2J$4ee4ed67-412c-4db7-854b-0b4a8564f5ff
+j
+java:S1168õ"&Return an empty array instead of null.(¥¹ï8Íõà—2J$ef1ab11d-dbe7-490c-8174-a8b20c6d7480

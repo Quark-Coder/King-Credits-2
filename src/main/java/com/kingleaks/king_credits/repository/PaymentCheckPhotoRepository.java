@@ -12,6 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface PaymentCheckPhotoRepository extends JpaRepository<PaymentCheckPhoto, Long> {
+    @Query(value = "SELECT * FROM payment_check_photo p " +
+            "where p.status = 'PRICED' and p.id = :id", nativeQuery = true)
+    Optional<PaymentCheckPhoto> findByIdWithStatusPriced(@Param("id") Long id);
+
     Optional<PaymentCheckPhoto> findByTelegramUserIdAndStatus(Long id, PaymentCheckPhotoStatus status);
 
     @Query(value = "SELECT * FROM payment_check_photo p " +

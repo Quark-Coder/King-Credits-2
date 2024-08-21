@@ -38,7 +38,7 @@ public class ReplenishmentRequestsService {
     }
 
     public PaymentCheckPhoto selectPaymentCheckPhotoById(Long id) {
-        Optional<PaymentCheckPhoto> paymentCheckPhoto = paymentCheckPhotoRepository.findById(id);
+        Optional<PaymentCheckPhoto> paymentCheckPhoto = paymentCheckPhotoRepository.findByIdWithStatusPriced(id);
         return paymentCheckPhoto.orElse(null);
     }
 
@@ -51,7 +51,10 @@ public class ReplenishmentRequestsService {
             Optional<Account> account = accountRepository.findByTelegramUserId(checkPhoto.getTelegramUserId());
             if (account.isPresent()) {
                 Account resultAccount = account.get();
-                resultAccount.setBalance(BigDecimal.valueOf(checkPhoto.getPrice()));
+                BigDecimal balance = resultAccount.getBalance();
+                BigDecimal price = BigDecimal.valueOf(checkPhoto.getPrice());
+                BigDecimal result = balance.add(price);
+                resultAccount.setBalance(result);
                 accountRepository.save(resultAccount);
                 paymentCheckPhotoRepository.save(checkPhoto);
 
@@ -62,12 +65,14 @@ public class ReplenishmentRequestsService {
         return null;
     }
 
-    public void rejectRequest(Long id){
+    public TelegramUsers rejectRequest(Long id){
         Optional<PaymentCheckPhoto> paymentCheckPhoto = paymentCheckPhotoRepository.findById(id);
         if (paymentCheckPhoto.isPresent()) {
             PaymentCheckPhoto checkPhoto = paymentCheckPhoto.get();
             checkPhoto.setStatus(PaymentCheckPhotoStatus.ARCHIVED);
             paymentCheckPhotoRepository.save(checkPhoto);
+            return telegramUsersRepository.findByUserId(checkPhoto.getTelegramUserId()).orElse(null);
         }
+        return null;
     }
 }
