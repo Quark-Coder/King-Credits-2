@@ -42,7 +42,7 @@ public class TelegramUsersService {
             int withdrew = 0;
 
             return "Ваш никнейм - " + nickname +
-                    "\nАйди - "  + id +
+                    "\nАйди - "  + String.format("%05d", id) +
                     "\nБаланс - " + balance +
                     "\nВсего пополнено - " + replenish +
                     "\nВсего выведено - " + withdrew;

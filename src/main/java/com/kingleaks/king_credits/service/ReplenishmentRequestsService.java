@@ -31,7 +31,7 @@ public class ReplenishmentRequestsService {
         for (PaymentCheckPhoto checkPhoto : checkPhotoList) {
             Long id = checkPhoto.getId();
             Double price = checkPhoto.getPrice();
-            result.append("чек - ").append(id).append(" сумма - ").append(price).append("\n");
+            result.append("чек - ").append(String.format("%05d", id)).append(" сумма - ").append(price).append("\n");
         }
 
         return result.toString().trim();

@@ -54,7 +54,7 @@ public class StateWaitingForSelectRequest {
                     message.setChatId(chatId);
 
                     String result = firstName + " " + lastName +
-                            "\nНомер чека - " + selectId +
+                            "\nНомер чека - " + String.format("%05d", selectId) +
                             "\nНик - " + nickname +
                             "\nДата заявки - " + dateTime +
                             "\nСумма - " + amount;

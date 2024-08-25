@@ -39,7 +39,6 @@ public class WithdrawalOfCreditsService {
         Optional<WithdrawalOfCredits> OptionalWithdrawalOfCredits =
                 repository.findByTelegramUserIdAndStatus(telegramUserId, WithdrawalOfCreditsStatus.SENT_PHOTO);
 
-        System.out.println(photo.length);
         if (OptionalWithdrawalOfCredits.isPresent()) {
             WithdrawalOfCredits withdrawalOfCredits = OptionalWithdrawalOfCredits.get();
             withdrawalOfCredits.setPhoto(photo);
@@ -70,7 +69,7 @@ public class WithdrawalOfCreditsService {
         for (WithdrawalOfCredits checkPhoto : checkPhotoList) {
             Long id = checkPhoto.getId();
             Double price = checkPhoto.getPrice();
-            result.append("чек - ").append(id).append(" сумма кредита - ").append(price).append("\n");
+            result.append("чек - ").append(String.format("%05d", id)).append(" сумма кредита - ").append(price).append("\n");
         }
 
         return result.toString().trim();

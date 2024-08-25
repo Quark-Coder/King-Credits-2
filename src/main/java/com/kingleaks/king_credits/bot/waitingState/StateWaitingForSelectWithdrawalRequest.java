@@ -55,7 +55,7 @@ public class StateWaitingForSelectWithdrawalRequest {
                     message.setChatId(chatId);
 
                     String result = firstName + " " + lastName +
-                            "\nНомер чека - " + selectId +
+                            "\nНомер чека - " + String.format("%05d", selectId) +
                             "\nДата заявки - " + dateTime +
                             "\nСумма - " + amount +
                             "\nНик из игры - " + withdrawalOfCredits.getNickInGame();

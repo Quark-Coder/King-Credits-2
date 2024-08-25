@@ -314,26 +314,17 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private void stateWaitingForPhoto(StatePaymentHistory paymentHistory,
                                       Long chatId, PhotoSize photo, Long telegramUserId){
         if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
-
             String fileId = photo.getFileId();
             PaymentCheckPhoto paymentCheckPhoto = savePhotoCheckToDatabase(fileId, telegramUserId);
-            byte[] photoData = paymentCheckPhoto.getPhotoData();
-
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
-            InputFile inputFile = new InputFile(inputStream, "photo.jpg");
 
             stateManager.deleteUserState(telegramUserId);
-            // Создаем объект SendPhoto
-            SendPhoto returnPhoto = new SendPhoto();
-            returnPhoto.setChatId(chatId.toString());
-            returnPhoto.setPhoto(inputFile);
 
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
             message.setText("Хорошо, когда мы проверим оплату," +
-                    " деньги будут засчитаны на ваш баланс! Номер вашего чека: " + paymentCheckPhoto.getId());
+                    " деньги будут засчитаны на ваш баланс! Номер вашего чека: "
+                    + String.format("%05d", paymentCheckPhoto.getId()));
 
-            sendPhoto(returnPhoto);
             sendMessage(message);
         } else if (paymentHistory != null && "WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO".equals(paymentHistory.getStatus())) {
             String fileId = photo.getFileId();
