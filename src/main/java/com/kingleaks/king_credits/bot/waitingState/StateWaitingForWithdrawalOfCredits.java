@@ -24,18 +24,15 @@ public class StateWaitingForWithdrawalOfCredits {
         if (paymentHistory != null){
             try {
                 double amount = Double.parseDouble(messageText);
-                withdrawalOfCreditsService.createWithdrawalOfCredits(telegramUserID, amount);
+                String result = withdrawalOfCreditsService
+                        .createWithdrawalOfCredits(telegramUserID, amount, paymentHistory);
 
                 //логика списывания денег
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText("Хорошо, деньги списаны с вашего баланса." +
-                        " Выставьте любой скин за " + amount/0.8 + " Пришлите скрин скина с рынка. ");
+                message.setText(result);
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                         .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
-
-                paymentHistory.setStatus("WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO");
-                stateManager.setUserState(telegramUserID, paymentHistory);
 
                 return message;
             } catch (NumberFormatException e) {

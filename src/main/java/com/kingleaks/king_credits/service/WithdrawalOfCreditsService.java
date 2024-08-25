@@ -1,8 +1,11 @@
 package com.kingleaks.king_credits.service;
 
+import com.kingleaks.king_credits.domain.entity.Account;
+import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.domain.entity.TelegramUsers;
 import com.kingleaks.king_credits.domain.entity.WithdrawalOfCredits;
 import com.kingleaks.king_credits.domain.enums.WithdrawalOfCreditsStatus;
+import com.kingleaks.king_credits.repository.AccountRepository;
 import com.kingleaks.king_credits.repository.TelegramUsersRepository;
 import com.kingleaks.king_credits.repository.WithdrawalOfCreditsRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,23 +19,39 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class WithdrawalOfCreditsService {
+    private final CalculateService calculateService;
     private final WithdrawalOfCreditsRepository repository;
     private final TelegramUsersRepository telegramUsersRepository;
     private final AccountService accountService;
+    private final AccountRepository accountRepository;
+    private final StateManagerService stateManager;
 
-    public void createWithdrawalOfCredits(Long telegramUserId, double amount) {
+    public String createWithdrawalOfCredits(Long telegramUserId, double amount, StatePaymentHistory paymentHistory) {
         TelegramUsers telegramUser = telegramUsersRepository.findByUserId(telegramUserId).orElse(null);
+        Account account = accountRepository.findByTelegramUserId(telegramUserId).orElse(null);
+
+        double rubAmount = calculateService.calculateCreditsInRub(amount);
+        if (account.getBalance().compareTo(BigDecimal.valueOf(rubAmount)) < 0){
+            stateManager.deleteUserState(telegramUserId);
+            return "У вас на балансе не достаточно средств";
+        }
+
 
         WithdrawalOfCredits withdrawalOfCredits = new WithdrawalOfCredits();
         withdrawalOfCredits.setTelegramUserId(telegramUserId);
         withdrawalOfCredits.setFirstName(telegramUser.getFirstName());
         withdrawalOfCredits.setLastName(telegramUser.getLastName());
         withdrawalOfCredits.setNickname(telegramUser.getNickname());
-        withdrawalOfCredits.setPrice(amount);
+        withdrawalOfCredits.setPrice(rubAmount);
         withdrawalOfCredits.setCreatedAt(LocalDateTime.now());
         withdrawalOfCredits.setStatus(WithdrawalOfCreditsStatus.SENT_PHOTO);
-        accountService.withdraw(telegramUserId, BigDecimal.valueOf(amount));
+        accountService.withdraw(telegramUserId, BigDecimal.valueOf(rubAmount));
         repository.save(withdrawalOfCredits);
+
+        paymentHistory.setStatus("WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO");
+        stateManager.setUserState(telegramUserId, paymentHistory);
+        return "Хорошо, деньги списаны с вашего баланса." +
+                " Выставьте любой скин за " + amount/0.8 + " Пришлите скрин скина с рынка.";
     }
 
     public void initPhotoWithdrawalOfCredits(Long telegramUserId, byte[] photo) {
