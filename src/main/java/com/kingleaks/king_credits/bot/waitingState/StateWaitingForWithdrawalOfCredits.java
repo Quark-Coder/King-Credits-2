@@ -24,17 +24,26 @@ public class StateWaitingForWithdrawalOfCredits {
         if (paymentHistory != null){
             try {
                 double amount = Double.parseDouble(messageText);
-                String result = withdrawalOfCreditsService
-                        .createWithdrawalOfCredits(telegramUserID, amount, paymentHistory);
+                if (amount < 100){
+                    SendMessage message = new SendMessage();
+                    message.setChatId(chatId);
+                    message.setText("Сумма кредитов должна быть выше 100");
+                    message.setReplyMarkup(ReplyKeyboardMarkup.builder()
+                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    return message;
+                } else {
+                    String result = withdrawalOfCreditsService
+                            .createWithdrawalOfCredits(telegramUserID, amount, paymentHistory);
 
-                //логика списывания денег
-                SendMessage message = new SendMessage();
-                message.setChatId(chatId);
-                message.setText(result);
-                message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                        .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    //логика списывания денег
+                    SendMessage message = new SendMessage();
+                    message.setChatId(chatId);
+                    message.setText(result);
+                    message.setReplyMarkup(ReplyKeyboardMarkup.builder()
+                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
 
-                return message;
+                    return message;
+                }
             } catch (NumberFormatException e) {
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
