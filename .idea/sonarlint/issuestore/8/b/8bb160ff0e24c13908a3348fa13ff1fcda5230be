@@ -1,18 +1,22 @@
 
 r
-java:S1066`"/Merge this if statement with the enclosing one.(Ë´Ì8Õã¼Ç˜2J$86521537-b6a5-4dd8-864f-cac5c055b2cb
+java:S1066`"/Merge this if statement with the enclosing one.(Ë´Ì8çÑğÒ˜2J$9bdb590a-666e-41fb-a90a-a9e89ac1a2fd
 Š
-java:S1192`"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8Øã¼Ç˜2J$8213a576-2969-4173-a3d2-75a5051f5adc
+java:S1192`"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8ëÑğÒ˜2J$d5a74efd-df0e-44af-95c8-d51ef714683f
 •
-java:S1192š"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8Øã¼Ç˜2J$62d6c2fe-068c-4e8a-ac98-60fb12e2e7ef
+java:S1192š"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8ìÑğÒ˜2J$a932b5c7-79d3-44cc-8330-55f520510f4a
+ 
+java:S1192Ù"\Define a constant instead of duplicating this literal "WAITING_FOR_WITHDRAWAL_NICK" 3 times.(ì’ã‚8øÒ˜2J$84fd804e-7f80-4a23-a9f4-a57ea6977acc
 ‡
-java:S6208™"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Øã¼Ç˜2J$a79a354f-ce68-461a-9849-6c2c0f2613e0
+java:S6208™"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$f7fc9532-5266-42d7-bcf3-3b32a8efbef7
 ‡
-java:S6208É"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Øã¼Ç˜2J$49ce96ad-49b6-470a-b76b-53074282e915
+java:S6208É"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$03e1c766-6b3f-41a2-947c-54d6013eaa76
 
-java:S1874Y"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8áã¼Ç˜2J$07d58f6a-e48e-43f5-a683-24ae42024a4c
+java:S1874Y"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8öÑğÒ˜2J$24188b32-4c6a-4b78-8b92-7f68befd5916
 –
-java:S3776µ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Š±ªœ8êã¼Ç˜2J$e5cda8e7-b519-4d0a-b2c7-4b1100edc046
-j	java:S131""Add a default case to this switch.(§ñğãşÿÿÿÿ8óã¼Ç˜2J$0d97d38b-8a84-432a-806e-5e5888beff9a
+java:S3776µ"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8„ÒğÒ˜2J$fc6dc626-395f-4c90-b58d-611e420b0895
+p
+java:S1871â"MThis branch's code block is the same as the block for the branch on line 223.(Ç½èéûÿÿÿÿ8™™øò˜2
+j	java:S131“""Add a default case to this switch.(§ñğãşÿÿÿÿ8–ÒğÒ˜2J$d414f8d2-68b1-4c71-90c3-ddf606857788
 j
-java:S1168ò"&Return an empty array instead of null.(¥¹ï8üã¼Ç˜2J$ccfebd38-be57-423a-ac5d-fc72d53349d8
+java:S1168„"&Return an empty array instead of null.(¥¹ï8§ÒğÒ˜2J$2b681377-bdea-485c-8e69-10ed9325cf21

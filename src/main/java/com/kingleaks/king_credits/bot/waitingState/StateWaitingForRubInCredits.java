@@ -27,7 +27,7 @@ public class StateWaitingForRubInCredits {
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText(String.valueOf(result));
+                message.setText(String.format("%.2f", result));
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                         .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
 
