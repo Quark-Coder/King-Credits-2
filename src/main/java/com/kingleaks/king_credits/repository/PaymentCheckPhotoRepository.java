@@ -21,4 +21,8 @@ public interface PaymentCheckPhotoRepository extends JpaRepository<PaymentCheckP
     @Query(value = "SELECT * FROM payment_check_photo p " +
             "where p.status = 'PRICED' ORDER BY p.created_at DESC", nativeQuery = true)
     List<PaymentCheckPhoto> getAllPaymentCheckPhotoByStatusPriced();
+
+    @Query(value = "SELECT COALESCE(SUM(p.price), 0) FROM payment_check_photo p " +
+            "WHERE p.status = 'CONFIRMED' AND p.telegram_user_id = :telegramUserId ", nativeQuery = true)
+    int countAmountPaymentCheckPhotoByCONFIRMED(@Param("telegramUserId") Long telegramUserId);
 }

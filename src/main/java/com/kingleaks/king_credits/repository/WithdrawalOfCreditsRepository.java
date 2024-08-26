@@ -22,4 +22,8 @@ public interface WithdrawalOfCreditsRepository extends JpaRepository<WithdrawalO
     @Query(value = "SELECT * FROM withdrawal_of_credits w " +
             "where w.status = 'WAITING' and w.id = :id", nativeQuery = true)
     Optional<WithdrawalOfCredits> findByIdWithStatusPriced(@Param("id") Long id);
+
+    @Query(value = "SELECT COALESCE(SUM(w.price), 0) FROM withdrawal_of_credits w " +
+            "WHERE w.status = 'PAID' AND w.telegram_user_id = :telegramUserId ", nativeQuery = true)
+    int countAmountWithdrawalOfCreditsByPAID(@Param("telegramUserId") Long telegramUserId);
 }

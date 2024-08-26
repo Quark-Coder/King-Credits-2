@@ -2,7 +2,9 @@ package com.kingleaks.king_credits.service;
 
 import com.kingleaks.king_credits.domain.entity.TelegramUsers;
 import com.kingleaks.king_credits.domain.enums.UserStatus;
+import com.kingleaks.king_credits.repository.PaymentCheckPhotoRepository;
 import com.kingleaks.king_credits.repository.TelegramUsersRepository;
+import com.kingleaks.king_credits.repository.WithdrawalOfCreditsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class TelegramUsersService {
     private final TelegramUsersRepository telegramUsersRepository;
     private final AccountService accountService;
+    private final PaymentCheckPhotoRepository paymentCheckPhotoRepository;
+    private final WithdrawalOfCreditsRepository withdrawalOfCreditsRepository;
 
     public void registerUser(Long userId, Long chatId, String firstName, String lastName, String nickname) {
         if (telegramUsersRepository.findByUserId(userId).isEmpty()) {
@@ -38,8 +42,8 @@ public class TelegramUsersService {
             Long id = telegramUser.getId();
             String nickname = telegramUser.getNickname();
             BigDecimal balance = telegramUsersRepository.getBalanceByUserId(telegramUserId);
-            int replenish = 0;
-            int withdrew = 0;
+            int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMED(telegramUserId);
+            int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAID(telegramUserId);
 
             return "Ваш никнейм - " + nickname +
                     "\nАйди - "  + String.format("%05d", id) +

@@ -1,22 +1,22 @@
 
 r
-java:S1066`"/Merge this if statement with the enclosing one.(Ë´Ì8çÑğÒ˜2J$9bdb590a-666e-41fb-a90a-a9e89ac1a2fd
+java:S1066_"/Merge this if statement with the enclosing one.(Ë´Ì8çÑğÒ˜2J$93c386ed-27ff-4389-aa0a-9f83c7ec95ab
 Š
-java:S1192`"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8ëÑğÒ˜2J$d5a74efd-df0e-44af-95c8-d51ef714683f
+java:S1192_"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8ëÑğÒ˜2J$b3e78d67-f269-469d-9023-d1790a7c0e05
 •
-java:S1192š"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8ìÑğÒ˜2J$a932b5c7-79d3-44cc-8330-55f520510f4a
+java:S1192™"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8ìÑğÒ˜2J$1b00b83b-9837-40c3-a8a7-1c01265942ce
  
-java:S1192Ù"\Define a constant instead of duplicating this literal "WAITING_FOR_WITHDRAWAL_NICK" 3 times.(ì’ã‚8øÒ˜2J$84fd804e-7f80-4a23-a9f4-a57ea6977acc
+java:S1192Ø"\Define a constant instead of duplicating this literal "WAITING_FOR_WITHDRAWAL_NICK" 3 times.(ì’ã‚8øÒ˜2J$0829d739-7c49-492b-a7fb-1bad0628c3b8
 ‡
-java:S6208™"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$f7fc9532-5266-42d7-bcf3-3b32a8efbef7
+java:S6208˜"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$3a842e21-b7d7-4a4c-b998-4f3acd8f2ead
 ‡
-java:S6208É"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$03e1c766-6b3f-41a2-947c-54d6013eaa76
+java:S6208È"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$5aba834c-2b28-471c-9f37-429ec64d97de
 
-java:S1874Y"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8öÑğÒ˜2J$24188b32-4c6a-4b78-8b92-7f68befd5916
+java:S1874X"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8öÑğÒ˜2J$f5153314-934b-49bd-ab21-5477df52bd6f
 –
-java:S3776µ"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8„ÒğÒ˜2J$fc6dc626-395f-4c90-b58d-611e420b0895
-p
-java:S1871â"MThis branch's code block is the same as the block for the branch on line 223.(Ç½èéûÿÿÿÿ8™™øò˜2
-j	java:S131“""Add a default case to this switch.(§ñğãşÿÿÿÿ8–ÒğÒ˜2J$d414f8d2-68b1-4c71-90c3-ddf606857788
+java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8„ÒğÒ˜2J$5eecf354-54d9-4d85-bd9a-c2120c215682
+–
+java:S1871á"MThis branch's code block is the same as the block for the branch on line 222.(Ç½èéûÿÿÿÿ8™™øò˜2J$6571e0b1-da0b-49fd-ae98-72988030ef43
+j	java:S131’""Add a default case to this switch.(§ñğãşÿÿÿÿ8–ÒğÒ˜2J$754f3403-268f-4a6c-bfdf-096fa04fd2a1
 j
-java:S1168„"&Return an empty array instead of null.(¥¹ï8§ÒğÒ˜2J$2b681377-bdea-485c-8e69-10ed9325cf21
+java:S1168ƒ"&Return an empty array instead of null.(¥¹ï8§ÒğÒ˜2J$c0e2a2c5-f021-4953-a5de-55eda85e09c8
