@@ -4,5 +4,6 @@ public enum PaymentCheckPhotoStatus {
     CREATED,
     PRICED,
     CONFIRMED,
-    ARCHIVED
+    ARCHIVED,
+    ERROR
 }

@@ -121,4 +121,15 @@ public class WithdrawalOfCreditsService {
         }
         return null;
     }
+
+    public TelegramUsers errorRequest(Long id){
+        Optional<WithdrawalOfCredits> withdrawalOfCredits = repository.findById(id);
+        if (withdrawalOfCredits.isPresent()) {
+            WithdrawalOfCredits withdrawal = withdrawalOfCredits.get();
+            withdrawal.setStatus(WithdrawalOfCreditsStatus.ERROR);
+            repository.save(withdrawal);
+            return telegramUsersRepository.findByUserId(withdrawal.getTelegramUserId()).orElse(null);
+        }
+        return null;
+    }
 }

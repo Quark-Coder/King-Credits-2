@@ -125,3 +125,7 @@ Ssrc/main/java/com/kingleaks/king_credits/bot/callback/RejectWithdrawalCallback.
 Zsrc/main/java/com/kingleaks/king_credits/bot/state/user/current_rate/CurrentRateState.java,9/a/9aee40fc7e7e373de0971b542cdc0a4df5aead6f
 Å
 Qsrc/main/java/com/kingleaks/king_credits/bot/state/user/profile/ProfileState.java,7/9/7971a6503d068622ca787dcdb578517ad93a2fde
+
+Osrc/main/java/com/kingleaks/king_credits/bot/callback/ErrorRequestCallback.java,5/0/5048d1481c7332dd04a6e7dd0d88da283cba38d9
+Ç
+Rsrc/main/java/com/kingleaks/king_credits/bot/callback/ErrorWithdrawalCallback.java,b/1/b100147f91a680e9834177fa557d8d19f7f6f570

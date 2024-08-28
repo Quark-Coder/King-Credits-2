@@ -68,10 +68,14 @@ public class StateWaitingForSelectWithdrawalRequest {
                     InlineKeyboardButton reject = new InlineKeyboardButton();
                     reject.setText("Отклонить");
                     reject.setCallbackData("REJECTWITHDRAWAL_" + selectId);
+                    InlineKeyboardButton error = new InlineKeyboardButton();
+                    error.setText("Ошибка");
+                    error.setCallbackData("ERRORWITHDRAWAL_" + selectId);
 
                     List<InlineKeyboardButton> buttons = List.of(confirm, reject);
+                    List<InlineKeyboardButton> buttons2 = List.of(error);
                     InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-                    markup.setKeyboard(List.of(buttons));
+                    markup.setKeyboard(List.of(buttons, buttons2));
 
                     message.setText(result);
                     message.setParseMode("HTML");

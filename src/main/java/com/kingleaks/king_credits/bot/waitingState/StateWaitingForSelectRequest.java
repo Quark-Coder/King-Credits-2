@@ -65,8 +65,11 @@ public class StateWaitingForSelectRequest {
                     InlineKeyboardButton reject = new InlineKeyboardButton();
                     reject.setText("Отклонить");
                     reject.setCallbackData("REJECTREQUEST_" + selectId);
+                    InlineKeyboardButton error = new InlineKeyboardButton();
+                    error.setText("Ошибка");
+                    error.setCallbackData("ERRORREQUEST_" + selectId);
 
-                    List<InlineKeyboardButton> buttons = List.of(confirm, reject);
+                    List<InlineKeyboardButton> buttons = List.of(confirm, reject, error);
                     InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
                     markup.setKeyboard(List.of(buttons));
 

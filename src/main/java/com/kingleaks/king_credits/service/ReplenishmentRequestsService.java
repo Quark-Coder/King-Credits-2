@@ -75,4 +75,15 @@ public class ReplenishmentRequestsService {
         }
         return null;
     }
+
+    public TelegramUsers errorRequest(Long id){
+        Optional<PaymentCheckPhoto> paymentCheckPhoto = paymentCheckPhotoRepository.findById(id);
+        if (paymentCheckPhoto.isPresent()) {
+            PaymentCheckPhoto checkPhoto = paymentCheckPhoto.get();
+            checkPhoto.setStatus(PaymentCheckPhotoStatus.ERROR);
+            paymentCheckPhotoRepository.save(checkPhoto);
+            return telegramUsersRepository.findByUserId(checkPhoto.getTelegramUserId()).orElse(null);
+        }
+        return null;
+    }
 }

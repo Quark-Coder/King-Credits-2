@@ -170,10 +170,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "Статистика":
                     commandRegistry.getCommand("statisticsstate").execute(update);
                     break;
-                default:
-                    log.info("Unexpected message");
                 }
-
         }
     }
 
