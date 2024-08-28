@@ -41,6 +41,7 @@ public class StateWaitingForSelectWithdrawalRequest {
                     TelegramUsers users = telegramUsersService.findById(withdrawalOfCredits.getTelegramUserId());
                     String firstName = users.getFirstName();
                     String lastName = users.getLastName();
+                    String nickname = users.getNickname() == null ? "Нету ника" : "<a href=\"https://t.me/" + users.getNickname() + "\">" + users.getNickname() + "</a>";
 
                     byte[] photoData = withdrawalOfCredits.getPhoto();
 
@@ -55,6 +56,7 @@ public class StateWaitingForSelectWithdrawalRequest {
                     message.setChatId(chatId);
 
                     String result = firstName + " " + lastName +
+                            "\nНик в телеграмм - " + nickname +
                             "\nНомер чека - " + String.format("%05d", selectId) +
                             "\nДата заявки - " + dateTime +
                             "\nСумма - " + amount +
@@ -72,6 +74,7 @@ public class StateWaitingForSelectWithdrawalRequest {
                     markup.setKeyboard(List.of(buttons));
 
                     message.setText(result);
+                    message.setParseMode("HTML");
                     message.setReplyMarkup(markup);
 
                     stateManager.deleteUserState(telegramUserID);

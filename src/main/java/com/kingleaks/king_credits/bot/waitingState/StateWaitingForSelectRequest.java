@@ -39,7 +39,7 @@ public class StateWaitingForSelectRequest {
                     TelegramUsers users = telegramUsersService.findById(paymentCheckPhoto.getTelegramUserId());
                     String firstName = users.getFirstName();
                     String lastName = users.getLastName();
-                    String nickname = users.getNickname();
+                    String nickname = users.getNickname() == null ? "Нету ника" : "<a href=\"https://t.me/" + users.getNickname() + "\">" + users.getNickname() + "</a>";
 
                     byte[] photoData = paymentCheckPhoto.getPhotoData();
 
@@ -55,7 +55,7 @@ public class StateWaitingForSelectRequest {
 
                     String result = firstName + " " + lastName +
                             "\nНомер чека - " + String.format("%05d", selectId) +
-                            "\nНик - " + nickname +
+                            "\nНик из телеграмм - " + nickname +
                             "\nДата заявки - " + dateTime +
                             "\nСумма - " + amount;
 
@@ -70,6 +70,7 @@ public class StateWaitingForSelectRequest {
                     InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
                     markup.setKeyboard(List.of(buttons));
 
+                    message.setParseMode("HTML");
                     message.setText(result);
                     message.setReplyMarkup(markup);
 
