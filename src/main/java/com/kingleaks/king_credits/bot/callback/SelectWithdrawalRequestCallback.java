@@ -6,7 +6,6 @@ import com.kingleaks.king_credits.service.StateManagerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
@@ -22,7 +21,6 @@ public class SelectWithdrawalRequestCallback implements CallbackQueryHandler {
 
     @Override
     public void handle(CallbackQuery callbackQuery) {
-        deleteMessage(callbackQuery);
         Long chatId = callbackQuery.getMessage().getChatId();
         Long telegramUserId = callbackQuery.getFrom().getId();
 
@@ -35,12 +33,5 @@ public class SelectWithdrawalRequestCallback implements CallbackQueryHandler {
         sendMessage.setChatId(chatId);
         sendMessage.setText("Укажите номер чека для выбора заявки");
         botService.sendMessage(sendMessage);
-    }
-
-    private void deleteMessage(CallbackQuery callbackQuery) {
-        DeleteMessage deleteMessage = new DeleteMessage();
-        deleteMessage.setChatId(callbackQuery.getMessage().getChatId());
-        deleteMessage.setMessageId(callbackQuery.getMessage().getMessageId());
-        botService.deleteMessage(deleteMessage);
     }
 }
