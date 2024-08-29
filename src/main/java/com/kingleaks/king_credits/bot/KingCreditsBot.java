@@ -50,6 +50,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick;
     private final StateWaitingForSelectRequest stateWaitingForSelectRequest;
     private final StateWaitingForSelectWithdrawalRequest stateWaitingForSelectWithdrawalRequest;
+    private final StateWaitingForReviews stateWaitingForReviews;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
@@ -60,7 +61,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                           StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits,
                           StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits,
                           WithdrawalOfCreditsService withdrawalOfCreditsService, StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick,
-                          @Lazy StateWaitingForSelectRequest stateWaitingForSelectRequest, @Lazy StateWaitingForSelectWithdrawalRequest stateWaitingForSelectWithdrawalRequest) {
+                          @Lazy StateWaitingForSelectRequest stateWaitingForSelectRequest,
+                          @Lazy StateWaitingForSelectWithdrawalRequest stateWaitingForSelectWithdrawalRequest,
+                          StateWaitingForReviews stateWaitingForReviews) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -77,6 +80,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.stateWaitingForWithdrawalNick = stateWaitingForWithdrawalNick;
         this.stateWaitingForSelectRequest = stateWaitingForSelectRequest;
         this.stateWaitingForSelectWithdrawalRequest = stateWaitingForSelectWithdrawalRequest;
+        this.stateWaitingForReviews = stateWaitingForReviews;
     }
 
     @Override
@@ -268,6 +272,12 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
 
             if (update.getMessage().hasText() && paymentHistory != null){
+                String[] parts = paymentHistory.getStatus().split("__");
+                if (parts[0].equals("WAITING_FOR_REVIEWS")) {
+                    Long photoId = Long.parseLong(parts[1]);
+                    sendMessage(stateWaitingForReviews
+                            .waitingForReviews(paymentHistory, chatId, messageText, telegramUserId, photoId));
+                }
                 switch (paymentHistory.getStatus()){
                     case "WAITING_FOR_AMOUNT":
                         sendMessage(stateWaitingForAmount

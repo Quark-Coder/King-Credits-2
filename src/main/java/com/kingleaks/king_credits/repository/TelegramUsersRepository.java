@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -22,4 +23,8 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
     @Query(value = "SELECT t.status FROM telegram_users t " +
             "where t.user_id = :userId", nativeQuery = true)
     UserStatus getUserStatusByUserId(@Param("userId") Long userId);
+
+    @Query(value = "SELECT t.* FROM telegram_users t " +
+            "WHERE t.status = 'ADMIN' ", nativeQuery = true)
+    List<TelegramUsers> findAllAdmins();
 }

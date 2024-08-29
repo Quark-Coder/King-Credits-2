@@ -1,23 +1,23 @@
 
 r
-java:S1066_"/Merge this if statement with the enclosing one.(Ë´Ì8çÑğÒ˜2J$f1346e18-7354-4a83-89e0-f261e5210619
+java:S1066c"/Merge this if statement with the enclosing one.(Ë´Ì8€°é™2J$f87c05c2-a23f-47be-a4a5-2912d983ca97
 Š
-java:S1192_"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8ëÑğÒ˜2J$e726ae92-d38c-4a05-894e-02890ee58ecf
+java:S1192c"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8‡°é™2J$141d2125-d71d-41f1-b3cd-d2d6c9e77951
 •
-java:S1192™"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8ìÑğÒ˜2J$b59c6750-140a-4c18-9de6-855b5904b6f9
+java:S1192"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8‡°é™2J$aa6a07f7-1ed3-4ee8-a25c-2954ef321fe0
  
-java:S1192Õ"\Define a constant instead of duplicating this literal "WAITING_FOR_WITHDRAWAL_NICK" 3 times.(ì’ã‚8øÒ˜2J$317fcedf-cf11-474d-9ea3-d366a3740df9
+java:S1192Ù"\Define a constant instead of duplicating this literal "WAITING_FOR_WITHDRAWAL_NICK" 3 times.(ì’ã‚8‡°é™2J$987f249b-1a8d-4cbd-8633-6f066e8e6b91
 ‡
-java:S6208˜"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$36888d16-bfc4-456d-bc41-98edf0a9e23c
+java:S6208œ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8‡°é™2J$cb1d56da-2152-4841-bb8e-649150d59692
 ‡
-java:S6208Å"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ìÑğÒ˜2J$f5f073fd-cd80-46d3-ad1e-dd4cd5443620
+java:S6208É"CMerge the previous cases into this one using comma-separated label.(ş†Œ8‡°é™2J$3ac4f5e4-674e-4551-9611-28c23e36b5f1
 
-java:S1874X"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8öÑğÒ˜2J$329588c1-ab10-4fbb-8413-bf6a2e059572
-j	java:S131”""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8–ÒğÒ˜2J$e694fdb8-d05d-4669-87fc-da8041337df0
+java:S1874\"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8Œ°é™2J$46063e4a-ce4e-48d2-9a17-687766f2cd99
+j	java:S131˜""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8’°é™2J$f3ffe31c-e17f-4ea2-9d24-c24ce54eb865
 –
-java:S3776±"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8„ÒğÒ˜2J$7bca4e8f-a5a6-4548-9932-dd5b244fac79
+java:S3776µ"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8”°é™2J$6b6e5610-d529-4a18-972d-19d9cda04608
 –
-java:S1871Ş"MThis branch's code block is the same as the block for the branch on line 219.(Ç½èéûÿÿÿÿ8™™øò˜2J$1ab29b79-3107-4f35-b89c-5d70b8f737e4
-j	java:S131""Add a default case to this switch.(§ñğãşÿÿÿÿ8¨ÁŞ¾™2J$ebc62d3c-d0a0-4dcd-bb31-248fed604e8f
+java:S1871â"MThis branch's code block is the same as the block for the branch on line 223.(Ç½èéûÿÿÿÿ8˜°é™2J$28a06278-fed8-44d4-aad0-e1468cd8af01
+j	java:S131™""Add a default case to this switch.(§ñğãşÿÿÿÿ8°é™2J$65db725e-1f93-4a01-ac44-a2eb693cd73d
 j
-java:S1168€"&Return an empty array instead of null.(¥¹ï8§ÒğÒ˜2J$62d4b4d6-0a51-4657-90bf-4969a38f03b9
+java:S1168Š"&Return an empty array instead of null.(¥¹ï8£°é™2J$a40663f9-af9c-4f8d-a777-74580ef9c862

@@ -7,9 +7,12 @@ import com.kingleaks.king_credits.repository.TelegramUsersRepository;
 import com.kingleaks.king_credits.repository.WithdrawalOfCreditsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -71,5 +74,9 @@ public class TelegramUsersService {
     public TelegramUsers findById(Long telegramUserId) {
         Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findByUserId(telegramUserId);
         return telegramUsers.orElse(null);
+    }
+
+    public List<TelegramUsers> findAllAdmins(){
+        return telegramUsersRepository.findAllAdmins();
     }
 }
