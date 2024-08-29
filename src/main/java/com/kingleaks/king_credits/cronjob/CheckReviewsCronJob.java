@@ -46,10 +46,11 @@ public class CheckReviewsCronJob {
 
             String nickname = telegramUsers.getNickname() == null ? "Нету ника" : "<a href=\"https://t.me/"
                     + telegramUsers.getNickname() + "\">" + telegramUsers.getNickname() + "</a>";
+            String comment = review.getComment() == null ? "Не комментировал" : review.getComment();
 
             String reviewMessage = "\uD83D\uDC64 Заказ №" + String.format("%05d", review.getPaymentCheckPhotoId()) + ": "
                     + telegramUsers.getFirstName() +
-                    "\n\nКомментарий: " + review.getComment() +
+                    "\n\nКомментарий: " + comment +
                     "\n\n" + LocalDate.now() + " Купил: " + nickname;
 
             SendMessage sendMessage = SendMessage.builder()

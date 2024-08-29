@@ -51,7 +51,7 @@ public class ConfirmWithdrawalCallback implements CallbackQueryHandler {
         reviewsService.createReview(telegramUsers.getUserId(), id);
 
         InlineKeyboardButton reviews = new InlineKeyboardButton();
-        reviews.setText("Оставить заявку");
+        reviews.setText("Оставить отзыв");
         reviews.setCallbackData("REVIEWSCALLBACK_" + id);
 
         List<InlineKeyboardButton> buttons = List.of(reviews);
