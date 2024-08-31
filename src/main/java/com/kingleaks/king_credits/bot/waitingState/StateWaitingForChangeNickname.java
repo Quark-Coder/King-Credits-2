@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForChangeNickname {
+public class StateWaitingForChangeNickname implements StateWaitingQueryHandler {
     private final TelegramUsersService telegramUsersService;
     private final StateManagerService stateManager;
 
@@ -31,4 +31,13 @@ public class StateWaitingForChangeNickname {
         return null;
     }
 
+    @Override
+    public boolean canHandle(String stateStatus) {
+        return "WAITING_FOR_CHANGE_NICKNAME".equals(stateStatus);
+    }
+
+    @Override
+    public SendMessage handle(StatePaymentHistory paymentHistory, Long chatId, String messageText, Long telegramUserID) {
+        return waitingForChangeNickname(paymentHistory, chatId, messageText, telegramUserID);
+    }
 }

@@ -23,7 +23,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForSelectWithdrawalRequest {
+public class StateWaitingForSelectWithdrawalRequest implements StateWaitingQueryHandler{
     private final BotService botService;
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final TelegramUsersService telegramUsersService;
@@ -98,5 +98,15 @@ public class StateWaitingForSelectWithdrawalRequest {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean canHandle(String stateStatus) {
+        return "WAITING_FOR_SELECT_WITHDRAWAL_REQUEST".equals(stateStatus);
+    }
+
+    @Override
+    public SendMessage handle(StatePaymentHistory paymentHistory, Long chatId, String messageText, Long telegramUserID) {
+        return waitingForSelectWithdrawalRequest(paymentHistory, chatId, messageText, telegramUserID);
     }
 }

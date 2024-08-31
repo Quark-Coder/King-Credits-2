@@ -1,6 +1,5 @@
 package com.kingleaks.king_credits.bot.waitingState;
 
-import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
 import com.kingleaks.king_credits.service.StateManagerService;
@@ -10,7 +9,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForAmount {
+public class StateWaitingForAmount implements StateWaitingQueryHandler {
     private final PaymentCheckPhotoService paymentCheckPhotoService;
     private final StateManagerService stateManager;
 
@@ -38,5 +37,15 @@ public class StateWaitingForAmount {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean canHandle(String stateStatus) {
+        return "WAITING_FOR_AMOUNT".equals(stateStatus);
+    }
+
+    @Override
+    public SendMessage handle(StatePaymentHistory paymentHistory, Long chatId, String messageText, Long telegramUserID) {
+        return waitingForAmount(paymentHistory, chatId, messageText, telegramUserID);
     }
 }

@@ -41,15 +41,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final SubscriptionVerificationService subscriptionVerificationService;
     private final PaymentCheckPhotoService paymentCheckPhotoService;
     private final TelegramUsersService telegramUsersService;
-    private final StateWaitingForAmount stateWaitingForAmount;
-    private final StateWaitingForChangeNickname stateWaitingForChangeNickname;
-    private final StateWaitingForCreditsInRub stateWaitingForCreditsInRub;
-    private final StateWaitingForRubInCredits stateWaitingForRubInCredits;
-    private final StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits;
+    private final List<StateWaitingQueryHandler> stateWaitingQueryHandlers;
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
-    private final StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick;
-    private final StateWaitingForSelectRequest stateWaitingForSelectRequest;
-    private final StateWaitingForSelectWithdrawalRequest stateWaitingForSelectWithdrawalRequest;
     private final StateWaitingForReviews stateWaitingForReviews;
 
     @Autowired
@@ -57,12 +50,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                           @Lazy List<CallbackQueryHandler> callbackQueryHandlers,
                           StateManagerService stateManager, @Lazy SubscriptionVerificationService subscriptionVerificationService,
                           PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService,
-                          StateWaitingForAmount stateWaitingForAmount, StateWaitingForChangeNickname stateWaitingForChangeNickname,
-                          StateWaitingForCreditsInRub stateWaitingForCreditsInRub, StateWaitingForRubInCredits stateWaitingForRubInCredits,
-                          StateWaitingForWithdrawalOfCredits stateWaitingForWithdrawalOfCredits,
-                          WithdrawalOfCreditsService withdrawalOfCreditsService, StateWaitingForWithdrawalNick stateWaitingForWithdrawalNick,
-                          @Lazy StateWaitingForSelectRequest stateWaitingForSelectRequest,
-                          @Lazy StateWaitingForSelectWithdrawalRequest stateWaitingForSelectWithdrawalRequest,
+                          @Lazy List<StateWaitingQueryHandler> stateWaitingQueryHandlers,
+                          WithdrawalOfCreditsService withdrawalOfCreditsService,
                           StateWaitingForReviews stateWaitingForReviews) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
@@ -71,15 +60,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.subscriptionVerificationService = subscriptionVerificationService;
         this.paymentCheckPhotoService = paymentCheckPhotoService;
         this.telegramUsersService = telegramUsersService;
-        this.stateWaitingForAmount = stateWaitingForAmount;
-        this.stateWaitingForChangeNickname = stateWaitingForChangeNickname;
-        this.stateWaitingForCreditsInRub = stateWaitingForCreditsInRub;
-        this.stateWaitingForRubInCredits = stateWaitingForRubInCredits;
-        this.stateWaitingForWithdrawalOfCredits = stateWaitingForWithdrawalOfCredits;
+        this.stateWaitingQueryHandlers = stateWaitingQueryHandlers;
         this.withdrawalOfCreditsService = withdrawalOfCreditsService;
-        this.stateWaitingForWithdrawalNick = stateWaitingForWithdrawalNick;
-        this.stateWaitingForSelectRequest = stateWaitingForSelectRequest;
-        this.stateWaitingForSelectWithdrawalRequest = stateWaitingForSelectWithdrawalRequest;
         this.stateWaitingForReviews = stateWaitingForReviews;
     }
 
@@ -278,39 +260,11 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     sendMessage(stateWaitingForReviews
                             .waitingForReviews(paymentHistory, chatId, messageText, telegramUserId, photoId));
                 }
-                switch (paymentHistory.getStatus()){
-                    case "WAITING_FOR_AMOUNT":
-                        sendMessage(stateWaitingForAmount
-                                .waitingForAmount(paymentHistory, chatId, messageText, telegramUserId));
+                for (StateWaitingQueryHandler handler : stateWaitingQueryHandlers){
+                    if(handler.canHandle(paymentHistory.getStatus())){
+                        sendMessage(handler.handle(paymentHistory, chatId, messageText, telegramUserId));
                         break;
-                    case "WAITING_FOR_CHANGE_NICKNAME":
-                        sendMessage(stateWaitingForChangeNickname
-                                .waitingForChangeNickname(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_CALCULATION_CREDITSRUB":
-                        sendMessage(stateWaitingForCreditsInRub
-                                .waitingForCreditsInRub(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_CALCULATION_RUBCREDITS":
-                        sendMessage(stateWaitingForRubInCredits
-                                .waitingForRubInCredits(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_AMOUNT_FOR_WITHDRAWAL":
-                        sendMessage(stateWaitingForWithdrawalOfCredits
-                                .waitingForWithdrawalOfCredits(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_WITHDRAWAL_NICK":
-                        sendMessage(stateWaitingForWithdrawalNick
-                                .waitingForWithdrawalNick(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_SELECT_REQUEST":
-                        sendMessage(stateWaitingForSelectRequest
-                                .waitingForSelectRequest(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
-                    case "WAITING_FOR_SELECT_WITHDRAWAL_REQUEST":
-                        sendMessage(stateWaitingForSelectWithdrawalRequest
-                                .waitingForSelectWithdrawalRequest(paymentHistory, chatId, messageText, telegramUserId));
-                        break;
+                    }
                 }
             } else if (update.getMessage().hasPhoto()){
                 List<PhotoSize> photos = update.getMessage().getPhoto();

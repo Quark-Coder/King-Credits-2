@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForWithdrawalOfCredits {
+public class StateWaitingForWithdrawalOfCredits implements StateWaitingQueryHandler {
     private final StateManagerService stateManager;
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
 
@@ -53,5 +53,15 @@ public class StateWaitingForWithdrawalOfCredits {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean canHandle(String stateStatus) {
+        return "WAITING_FOR_AMOUNT_FOR_WITHDRAWAL".equals(stateStatus);
+    }
+
+    @Override
+    public SendMessage handle(StatePaymentHistory paymentHistory, Long chatId, String messageText, Long telegramUserID) {
+        return waitingForWithdrawalOfCredits(paymentHistory, chatId, messageText, telegramUserID);
     }
 }

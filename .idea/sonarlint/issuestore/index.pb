@@ -145,3 +145,5 @@ Usrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForReview
 Ksrc/main/java/com/kingleaks/king_credits/bot/state/user/help/HelpState.java,7/1/71d234dfdc68d27c04bb404cee1b3f9592d57e32
 y
 Isrc/main/java/com/kingleaks/king_credits/cronjob/CheckReviewsCronJob.java,d/3/d34b3c37ed14eb6a29fed817176c1e2657864d38
+‡
+Wsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingQueryHandler.java,e/6/e64f6ad470f0055504b7d77f9f082982053a3cc8

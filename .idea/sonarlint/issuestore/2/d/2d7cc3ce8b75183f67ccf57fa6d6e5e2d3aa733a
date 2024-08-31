@@ -1,6 +1,2 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8ŸÃ¼½™2J$7804708d-f09c-49da-87cd-0e6bf7f4dd7f
-š
-java:S1128"WRemove this unused import 'com.kingleaks.king_credits.domain.entity.PaymentCheckPhoto'.(æ±êî8£¤“¾™2J$c31998da-c3f3-43a3-bdbb-0eb9a6c41123
-
-java:S1128"\Remove this unused import 'com.kingleaks.king_credits.service.ReplenishmentRequestsService'.(á˜øv8£¤“¾™2J$a2a06683-e854-475b-842d-c05d913e8749
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8ŸÃ¼½™2J$768680d6-cfc3-4cde-8580-2e1288880a91

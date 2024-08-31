@@ -14,7 +14,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class StateWaitingForRubInCredits {
+public class StateWaitingForRubInCredits implements StateWaitingQueryHandler{
     private final StateManagerService stateManager;
     private final CalculateService calculateService;
 
@@ -43,5 +43,15 @@ public class StateWaitingForRubInCredits {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean canHandle(String stateStatus) {
+        return "WAITING_FOR_CALCULATION_RUBCREDITS".equals(stateStatus);
+    }
+
+    @Override
+    public SendMessage handle(StatePaymentHistory paymentHistory, Long chatId, String messageText, Long telegramUserID) {
+        return waitingForRubInCredits(paymentHistory, chatId, messageText, telegramUserID);
     }
 }
