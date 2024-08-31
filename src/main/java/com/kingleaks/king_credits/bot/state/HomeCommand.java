@@ -75,13 +75,21 @@ public class HomeCommand implements Command {
         );
         List<KeyboardButton> btn2 = List.of(
                 new KeyboardButton("Вывод кредитов"),
-                new KeyboardButton("Актуальный курс")
+                new KeyboardButton("Купить скины")
         );
         List<KeyboardButton> btn3 = List.of(
+                new KeyboardButton("Кейсы и игры"),
+                new KeyboardButton("Актуальный курс")
+        );
+        List<KeyboardButton> btn4 = List.of(
+                new KeyboardButton("Промокод"),
+                new KeyboardButton("Таблица лидеров")
+        );
+        List<KeyboardButton> btn5 = List.of(
                 new KeyboardButton("Посчитать"),
                 new KeyboardButton("Помощь")
         );
-        List<KeyboardButton> btn4 = List.of(
+        List<KeyboardButton> btn6 = List.of(
                 new KeyboardButton("Продать кредиты"),
                 new KeyboardButton("Отзывы")
         );
@@ -90,6 +98,8 @@ public class HomeCommand implements Command {
         keyboard.add(new KeyboardRow(btn2));
         keyboard.add(new KeyboardRow(btn3));
         keyboard.add(new KeyboardRow(btn4));
+        keyboard.add(new KeyboardRow(btn5));
+        keyboard.add(new KeyboardRow(btn6));
 
         return createReplyKeyboardMarkup(keyboard);
     }

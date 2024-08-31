@@ -1,20 +1,21 @@
 
 r
-java:S1066Q"/Merge this if statement with the enclosing one.(Ë´Ì8»÷«Èš2J$b215ac2a-97cf-44fb-aec8-42ea3f3d6fb7
+java:S1066Q"/Merge this if statement with the enclosing one.(Ë´Ì8»÷«Èš2J$90640eab-4b1b-454c-948f-4bf8cfee45f9
 Š
-java:S1192Q"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8Á÷«Èš2J$27281226-9a83-435e-8601-3499d73d329f
+java:S1192Q"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8Á÷«Èš2J$9994b35a-650c-41b1-a190-cae2a3d7f154
 •
-java:S1192‹"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8Á÷«Èš2J$a40329d4-eb66-4086-a2bc-1952b47589cf
+java:S1192‹"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8Á÷«Èš2J$f7f61b7a-a75f-47b0-aeb0-460ff5a7a4b2
 ‡
-java:S6208Š"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Á÷«Èš2J$902388a8-4cf0-4323-9cc9-9cfa9111893b
+java:S6208Š"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Á÷«Èš2J$9c83151e-b31e-4690-8a80-8b364b52cd2a
 ‡
-java:S6208·"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Á÷«Èš2J$52b763e1-dc32-4907-bb51-8303fd961d96
+java:S6208·"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Á÷«Èš2J$e1f9592c-320f-4763-a610-5b62dd0c34bc
 
-java:S1874J"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8Ç÷«Èš2J$5f8c276e-c57c-4471-9c3d-084561353665
-j	java:S131†""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8Ë÷«Èš2J$c759f0e3-3539-4751-ac18-60eee14fc656
+java:S1874J"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8Ç÷«Èš2J$aaca2fcc-5b95-478b-80ca-2b892cdc1a46
+j	java:S131†""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8Ë÷«Èš2J$d4593c5a-4d9e-447c-b493-158d65d7b030
 –
-java:S3776£"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8Ì÷«Èš2J$0f67452a-81ab-40bc-b0cc-acd697534b76
+java:S3776£"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8Ì÷«Èš2J$369f489e-f839-40f0-830c-c8088979cb20
+D	java:S131³""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8Å¨šÉš2
 –
-java:S1871Ğ"MThis branch's code block is the same as the block for the branch on line 205.(Ç½èéûÿÿÿÿ8Ñ÷«Èš2J$6663d523-2804-4d52-919c-65cbafda9817
+java:S1871Ğ"MThis branch's code block is the same as the block for the branch on line 205.(Ç½èéûÿÿÿÿ8Ñ÷«Èš2J$e7ddb128-c109-4f6d-baed-31ee80180506
 j
-java:S1168Ü"&Return an empty array instead of null.(¥¹ï8Û÷«Èš2J$f39087c1-08d0-4fd4-b8ce-2772f9782437
+java:S1168æ"&Return an empty array instead of null.(¥¹ï8Û÷«Èš2J$5ba61292-e602-4a04-b9c2-dae2925c80d0

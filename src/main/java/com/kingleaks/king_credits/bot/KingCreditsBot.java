@@ -239,8 +239,18 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     case "Отзывы":
                         commandRegistry.getCommand("reviewsstate").execute(update);
                         break;
-                    default:
-                        log.info("Unexpected message");
+                    case "Купить скины":
+                        commandRegistry.getCommand("buyskinsState").execute(update);
+                        break;
+                    case "Кейсы и игры":
+                        commandRegistry.getCommand("casesandgamesstate").execute(update);
+                        break;
+                    case "Промокод":
+                        commandRegistry.getCommand("promocodestate").execute(update);
+                        break;
+                    case "Таблица лидеров":
+                        commandRegistry.getCommand("leaderboardstate").execute(update);
+                        break;
                 }
             }
         }
