@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS cases_item
+(
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    price DOUBLE PRECISION,
+    coefficient DOUBLE PRECISION,
+    cases_name VARCHAR
+)

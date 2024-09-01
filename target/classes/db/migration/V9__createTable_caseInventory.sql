@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS case_inventory
+(
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    case_id BIGINT,
+    telegram_user_id BIGINT
+)
