@@ -46,6 +46,6 @@ public class CasesService {
             return result;
         }
 
-        return "Нету кейса с таким номером";
+        return null;
     }
 }

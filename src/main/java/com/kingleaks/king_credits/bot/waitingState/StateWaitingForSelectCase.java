@@ -23,23 +23,28 @@ public class StateWaitingForSelectCase implements StateWaitingQueryHandler{
             try {
                 Long selectId = Long.parseLong(messageText);
                 String result = casesService.getCasesById(selectId);
-
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText(result);
 
-                InlineKeyboardButton buyThisCase = new InlineKeyboardButton();
-                buyThisCase.setText("Купить кейс");
-                buyThisCase.setCallbackData("BUY_CASE_FOR_INVENTORY__"+selectId);
+                if (result != null){
+                    message.setText(result);
 
-                List<InlineKeyboardButton> buttons = List.of(buyThisCase);
-                InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-                markup.setKeyboard(List.of(buttons));
-                message.setReplyMarkup(markup);
+                    InlineKeyboardButton buyThisCase = new InlineKeyboardButton();
+                    buyThisCase.setText("Купить кейс");
+                    buyThisCase.setCallbackData("BUY_CASE_FOR_INVENTORY__"+selectId);
 
-                stateManager.deleteUserState(telegramUserID);
+                    List<InlineKeyboardButton> buttons = List.of(buyThisCase);
+                    InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+                    markup.setKeyboard(List.of(buttons));
+                    message.setReplyMarkup(markup);
 
-                return message;
+                    stateManager.deleteUserState(telegramUserID);
+
+                    return message;
+                } else {
+                    message.setText("Вы не правильно указали номер кейса, отправьте корректный номер кейса например 1");
+                    return message;
+                }
             } catch (NumberFormatException e) {
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);

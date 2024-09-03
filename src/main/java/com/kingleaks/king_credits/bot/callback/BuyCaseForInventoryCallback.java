@@ -32,10 +32,10 @@ public class BuyCaseForInventoryCallback implements CallbackQueryHandler{
         Long telegramUserId = callbackQuery.getFrom().getId();
         Long id = Long.parseLong(parts[1]);
 
-        caseInventoryService.saveInventory(id, telegramUserId);
+        String result = caseInventoryService.saveInventory(id, telegramUserId);
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText("Cпасибо за покупку! Открыть кейс вы можете зайдя во вкладку \"Мои кейсы\"");
+        message.setText(result);
         botService.sendMessage(message);
     }
 

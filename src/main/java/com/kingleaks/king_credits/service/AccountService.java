@@ -13,6 +13,10 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
 
+    public void save(Account account) {
+        accountRepository.save(account);
+    }
+
     public void createAccount(Long telegramUserId) {
         Account account = new Account();
         account.setTelegramUserId(telegramUserId);
