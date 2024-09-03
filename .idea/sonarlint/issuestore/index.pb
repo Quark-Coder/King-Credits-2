@@ -189,3 +189,11 @@ Isrc/main/java/com/kingleaks/king_credits/domain/entity/CaseInventory.java,5/3/
 Psrc/main/java/com/kingleaks/king_credits/repository/CaseInventoryRepository.java,a/d/ada27dc8e1e7756a1365dc785553af4ff4b53b7c
 z
 Jsrc/main/java/com/kingleaks/king_credits/service/CaseInventoryService.java,9/e/9e2b51fe75fbbd4c901fc8b50ffa5143f438602a
+~
+Nsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectCaseInventory.java,9/1/91df1eebea1ad5b4627666da44687639b4873a1c
+†
+Vsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectCaseInventoryCallback.java,8/6/86048c29bc4580595232789b23da31ef98d737fc
+‘
+asrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectCaseInventory.java,7/4/74189366227456b5b4611af8df8f5a38dc693fd9
+„
+Tsrc/main/java/com/kingleaks/king_credits/bot/callback/OpenCaseInventoryCallback.java,a/9/a9cae5466aa9b1d1cbd2d488bc0f217820c77366

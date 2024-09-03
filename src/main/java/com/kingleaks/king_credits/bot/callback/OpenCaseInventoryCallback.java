@@ -1,15 +1,12 @@
 package com.kingleaks.king_credits.bot.callback;
 
 import com.kingleaks.king_credits.bot.BotService;
-import com.kingleaks.king_credits.service.CasesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -17,43 +14,37 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class MyCasesCallback implements CallbackQueryHandler {
+public class OpenCaseInventoryCallback implements CallbackQueryHandler{
     private final BotService botService;
-    private final CasesService casesService;
 
     @Override
     public boolean canHandle(String callbackData) {
-        return "MY_CASES".equals(callbackData);
+        String[] parts = callbackData.split("__");
+        if (parts[0].equals("OPEN_CASE_INVENTORY")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void handle(CallbackQuery callbackQuery) {
         deleteMessage(callbackQuery);
+
+        Long chatId = callbackQuery.getMessage().getChatId();
+        String[] parts = callbackQuery.getData().split("__");
         Long telegramUserId = callbackQuery.getFrom().getId();
+        Long id = Long.parseLong(parts[1]);
+
 
         SendMessage message = SendMessage.builder()
-                .chatId(callbackQuery.getMessage().getChatId())
-                .text("Мои кейсы")
+                .chatId(chatId)
+                .text("Вот твой дроп! Поздравляем с выигрышем.")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+
         botService.sendMessage(message);
-
-        String result = casesService.getAllCasesUser(telegramUserId);
-
-        InlineKeyboardButton selectCaseInventory = new InlineKeyboardButton();
-        selectCaseInventory.setText("Выбрать кейс");
-        selectCaseInventory.setCallbackData("SELECT_CASE_INVENTORY");
-
-        List<InlineKeyboardButton> buttons = List.of(selectCaseInventory);
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        markup.setKeyboard(List.of(buttons));
-
-        SendMessage inventory = new SendMessage();
-        inventory.setChatId(callbackQuery.getMessage().getChatId());
-        inventory.setText(result);
-        inventory.setReplyMarkup(markup);
-        botService.sendMessage(inventory);
     }
 
     private void deleteMessage(CallbackQuery callbackQuery) {

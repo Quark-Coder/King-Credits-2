@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +38,9 @@ public class CaseInventoryService {
         } else {
             return "Вы не правильно указали номер кейса";
         }
+    }
+
+    public List<CaseInventory> getInventoryUser(Long telegramUserId) {
+        return caseInventoryRepository.findAllByTelegramUserId(telegramUserId);
     }
 }

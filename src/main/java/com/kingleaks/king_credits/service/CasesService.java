@@ -1,7 +1,9 @@
 package com.kingleaks.king_credits.service;
 
+import com.kingleaks.king_credits.domain.entity.CaseInventory;
 import com.kingleaks.king_credits.domain.entity.Cases;
 import com.kingleaks.king_credits.domain.entity.CasesItem;
+import com.kingleaks.king_credits.repository.CaseInventoryRepository;
 import com.kingleaks.king_credits.repository.CasesItemRepository;
 import com.kingleaks.king_credits.repository.CasesRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CasesService {
+    private final CaseInventoryService caseInventoryService;
+    private final CaseInventoryRepository caseInventoryRepository;
     private final CasesItemRepository casesItemRepository;
     private final CasesRepository casesRepository;
 
@@ -37,13 +41,36 @@ public class CasesService {
             String result = "";
             Cases cases = optionalCases.get();
             List<CasesItem> casesItemList = casesItemRepository.findAllCasesItemByCaseName(cases.getName().name());
-            result = result + "№" + cases.getId() + " " + cases.getName() + " " + cases.getPrice() + " Руб. Хороший выбор! Вот его содержимое:";
+            result = result + cases.getName() + " " + cases.getPrice() + " Руб. Хороший выбор! Вот его содержимое:";
 
             for (CasesItem casesItem : casesItemList){
                 result = result + "\n" + " " + casesItem.getName() + " - " + casesItem.getPrice() + "Кредитов (Шанс " + casesItem.getCoefficient() + "%)";
             }
 
             return result;
+        }
+
+        return null;
+    }
+
+    public String getAllCasesUser(Long telegramUserId){
+        List<CaseInventory> caseInventories = caseInventoryService.getInventoryUser(telegramUserId);
+
+        String result = "";
+        for (CaseInventory caseInventory : caseInventories){
+            Cases cases = casesRepository.findById(caseInventory.getCaseId()).orElse(null);
+            result = result + "\n№" + caseInventory.getId() + " " + cases.getName();
+        }
+
+        return result;
+    }
+
+    public String selectCaseForOpen(Long inventoryId) {
+        Optional<CaseInventory> optionalCasesInventory = caseInventoryRepository.findById(inventoryId);
+
+        if (optionalCasesInventory.isPresent()){
+            CaseInventory caseInventory = optionalCasesInventory.get();
+            return getCasesById(caseInventory.getCaseId());
         }
 
         return null;

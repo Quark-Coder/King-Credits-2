@@ -1,0 +1,11 @@
+
+„
+java:S1126"AReplace this if-then-else statement by a single return statement.(Ÿ°Ú÷8‚Ë•µ›2J$9c49d242-14f2-4c0f-ab9d-04b887add5d2
+y
+java:S1854%"6Remove this useless assignment to local variable "id".(ã¾µ«8Ï…Ÿµ›2J$75fef062-24fb-4b2d-ac10-97e3579c90b9
+Š
+java:S1854$"BRemove this useless assignment to local variable "telegramUserId".(·ùìÌøÿÿÿÿ8Ï…Ÿµ›2J$298f3a22-e594-4abe-9919-e491b83eefa8
+{
+java:S1481$"3Remove this unused "telegramUserId" local variable.(·ùìÌøÿÿÿÿ8Ð…Ÿµ›2J$74f88adf-f4c5-4ff9-a6d5-1b3c5393061c
+j
+java:S1481%"'Remove this unused "id" local variable.(ã¾µ«8Ð…Ÿµ›2J$09437667-c6ee-4fae-872e-08480bd267dd
