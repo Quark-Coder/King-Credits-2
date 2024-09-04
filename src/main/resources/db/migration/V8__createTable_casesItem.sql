@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS cases_item
     name VARCHAR,
     price DOUBLE PRECISION,
     coefficient DOUBLE PRECISION,
+    photo_data BYTEA,
     cases_name VARCHAR
 )

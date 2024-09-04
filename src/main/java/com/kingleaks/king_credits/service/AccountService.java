@@ -32,4 +32,13 @@ public class AccountService {
             accountRepository.save(ac);
         }
     }
+
+    public void replenish(Long telegramUserId, BigDecimal amount) {
+        Optional<Account> account = accountRepository.findByTelegramUserId(telegramUserId);
+        if (account.isPresent()) {
+            Account ac = account.get();
+            ac.setBalance(ac.getBalance().add(amount));
+            accountRepository.save(ac);
+        }
+    }
 }

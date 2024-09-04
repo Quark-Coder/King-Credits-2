@@ -23,6 +23,9 @@ public class CasesItem {
     @Column(name = "coefficient")
     private Double coefficient;
 
+    @Column(name = "photo_data", columnDefinition="bytea")
+    private byte[] photoData;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "cases_name")
     private CaseName caseName;

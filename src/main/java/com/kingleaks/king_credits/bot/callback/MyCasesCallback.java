@@ -41,19 +41,26 @@ public class MyCasesCallback implements CallbackQueryHandler {
 
         String result = casesService.getAllCasesUser(telegramUserId);
 
-        InlineKeyboardButton selectCaseInventory = new InlineKeyboardButton();
-        selectCaseInventory.setText("Выбрать кейс");
-        selectCaseInventory.setCallbackData("SELECT_CASE_INVENTORY");
-
-        List<InlineKeyboardButton> buttons = List.of(selectCaseInventory);
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        markup.setKeyboard(List.of(buttons));
-
         SendMessage inventory = new SendMessage();
         inventory.setChatId(callbackQuery.getMessage().getChatId());
-        inventory.setText(result);
-        inventory.setReplyMarkup(markup);
+
+        if (!result.isEmpty()) {
+            InlineKeyboardButton selectCaseInventory = new InlineKeyboardButton();
+            selectCaseInventory.setText("Выбрать кейс");
+            selectCaseInventory.setCallbackData("SELECT_CASE_INVENTORY");
+
+            List<InlineKeyboardButton> buttons = List.of(selectCaseInventory);
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+            markup.setKeyboard(List.of(buttons));
+
+            inventory.setText(result);
+            inventory.setReplyMarkup(markup);
+        } else {
+            inventory.setText("Список пуст");
+        }
+
         botService.sendMessage(inventory);
+
     }
 
     private void deleteMessage(CallbackQuery callbackQuery) {
