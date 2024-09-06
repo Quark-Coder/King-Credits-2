@@ -55,19 +55,11 @@ public class OpenCaseInventoryCallback implements CallbackQueryHandler{
         SendPhoto returnPhoto = new SendPhoto();
         returnPhoto.setChatId(chatId.toString());
         returnPhoto.setPhoto(inputFile);
-        botService.sendPhoto(returnPhoto);
-
-        SendMessage message = SendMessage.builder()
-                .chatId(chatId)
-                .text("Вот твой дроп! Поздравляем с выигрышем.\n" +
-                        item.getName() + " Стоимость - " + item.getPrice())
-                .build();
-
-
-        message.setReplyMarkup(ReplyKeyboardMarkup.builder()
+        returnPhoto.setCaption("Вот твой дроп! Поздравляем с выигрышем.\n" +
+                item.getName() + " Стоимость - " + item.getPrice());
+        returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
-
-        botService.sendMessage(message);
+        botService.sendPhoto(returnPhoto);
     }
 
     private void deleteMessage(CallbackQuery callbackQuery) {
