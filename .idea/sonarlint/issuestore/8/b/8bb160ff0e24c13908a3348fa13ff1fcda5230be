@@ -1,27 +1,21 @@
 
-€
-java:S2589·"7Remove this expression which always evaluates to "true"(Òòèøûÿÿÿÿ8äˆ€œ2J$c6a63410-3f41-444c-bffb-c189efe740c9
-z
-java:S2589Ä"7Remove this expression which always evaluates to "true"(ÁØğh8åˆ€œ2J$4d034fb2-ef43-4c0f-aa1a-946921654fa9
-r
-java:S1066S"/Merge this if statement with the enclosing one.(Ë´Ì8ÿŞöœ2J$e9c3daac-be08-415f-8046-8049957dcd53
-
-java:S2259 "T"NullPointerException" will be thrown when invoking method "stateWaitingForPhoto()".(Áá«üÿÿÿÿ8æˆ€œ2J$8c5bfaee-44b8-4646-ab0d-a75097aca239
-Š
-java:S1192S"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8ßöœ2J$7ba948e5-3e75-42e4-878f-45b86095f6f1
-•
-java:S1192"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8ßöœ2J$74c97776-7d54-4ae4-8945-4b678d25d99b
-‡
-java:S6208Œ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ßöœ2J$d9a438a4-ec17-46d5-b7d1-b22a08ab6e11
-‡
-java:S6208¼"CMerge the previous cases into this one using comma-separated label.(ş†Œ8ßöœ2J$b961f765-03ac-4ff9-bb3c-6a8ebd4df40c
-
-java:S1874L"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8‡ßöœ2J$322aad2e-5cf3-4920-8600-17182cf52972
-j	java:S131ˆ""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8‹ßöœ2J$a9f5a8bf-0a42-46bd-839d-8e0349204e08
-–
-java:S3776¨"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8Œßöœ2J$a9820131-6983-4ee4-b797-348353f5a47d
-j	java:S131¸""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8ßöœ2J$9e06a2fc-7576-4916-86ae-09205bfe990e
-–
-java:S1871Õ"MThis branch's code block is the same as the block for the branch on line 210.(Ç½èéûÿÿÿÿ8ßöœ2J$ce68ec39-6cd8-4483-9c5f-ccec9171cc8e
-j
-java:S1168ÿ"&Return an empty array instead of null.(¥¹ï8˜ßöœ2J$362d4cfc-5903-4cbd-a878-83535332db8e
+L
+java:S1066U"/Merge this if statement with the enclosing one.(Ë´Ì8‚ÿË´œ2
+d
+java:S1192U"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8…ÿË´œ2
+o
+java:S1192"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8†ÿË´œ2
+a
+java:S6208"CMerge the previous cases into this one using comma-separated label.(ş†Œ8†ÿË´œ2
+a
+java:S6208Á"CMerge the previous cases into this one using comma-separated label.(ş†Œ8†ÿË´œ2
+g
+java:S1874N"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ŒÿË´œ2
+D	java:S131Š""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8‘ÿË´œ2
+p
+java:S3776­"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8“ÿË´œ2
+D	java:S131½""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8–ÿË´œ2
+p
+java:S1871Ú"MThis branch's code block is the same as the block for the branch on line 215.(Ç½èéûÿÿÿÿ8–ÿË´œ2
+D
+java:S1168—"&Return an empty array instead of null.(¥¹ï8¡ÿË´œ2

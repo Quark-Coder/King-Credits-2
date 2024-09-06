@@ -45,6 +45,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final StateWaitingForReviews stateWaitingForReviews;
     private final CasesItemService casesItemService;
+    private final SkinsForSaleService skinsForSaleService;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
@@ -53,7 +54,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                           PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService,
                           @Lazy List<StateWaitingQueryHandler> stateWaitingQueryHandlers,
                           WithdrawalOfCreditsService withdrawalOfCreditsService,
-                          StateWaitingForReviews stateWaitingForReviews, CasesItemService casesItemService) {
+                          StateWaitingForReviews stateWaitingForReviews, CasesItemService casesItemService, SkinsForSaleService skinsForSaleService) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -65,6 +66,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.withdrawalOfCreditsService = withdrawalOfCreditsService;
         this.stateWaitingForReviews = stateWaitingForReviews;
         this.casesItemService = casesItemService;
+        this.skinsForSaleService = skinsForSaleService;
     }
 
     @Override
@@ -158,8 +160,11 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "Статистика":
                     commandRegistry.getCommand("statisticsstate").execute(update);
                     break;
-                case "Загрузить картинку дропа":
+                case "Загрузить изображение дропа":
                     commandRegistry.getCommand("uploaditemimagestate").execute(update);
+                    break;
+                case "Загрузить изображение скинов для продаж":
+                    commandRegistry.getCommand("addphotoskinsforsalestate").execute(update);
                     break;
                 }
         }
@@ -306,7 +311,10 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     private void stateWaitingForPhoto(StatePaymentHistory paymentHistory,
                                       Long chatId, PhotoSize photo, Long telegramUserId){
-        String[] parts = paymentHistory.getStatus().split("__");
+        String[] parts = null;
+        if (paymentHistory != null){
+            parts = paymentHistory.getStatus().split("__");
+        }
 
         if(paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
             String fileId = photo.getFileId();
@@ -333,11 +341,20 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             message.setText("Хорошо, теперь отправьте нам свой никнейм из игры");
 
             sendMessage(message);
-        } else if (parts[0].equals("WAITING_FOR_ITEM_PHOTO")) {
+        } else if (paymentHistory != null && parts[0].equals("WAITING_FOR_ITEM_PHOTO")) {
             Long id = Long.parseLong(parts[1]);
             String fileId = photo.getFileId();
 
             savePictureItemToDatabase(fileId, id);
+            stateManager.deleteUserState(telegramUserId);
+
+            SendMessage message = new SendMessage();
+            message.setChatId(chatId);
+            message.setText("Сохранили картинку!");
+            sendMessage(message);
+        } else if (paymentHistory != null && "WAITING_FOR_UPLOAD_PHOTO_SKINS_FOR_SALE".equals(paymentHistory.getStatus())) {
+            String fileId = photo.getFileId();
+            savePictureSkinsForSale(fileId);
             stateManager.deleteUserState(telegramUserId);
 
             SendMessage message = new SendMessage();
@@ -367,6 +384,13 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         byte[] photoData = downloadPhoto(fileId);
         if (photoData != null){
             casesItemService.savePictureForItem(itemId, photoData);
+        }
+    }
+
+    public void savePictureSkinsForSale(String fileId){
+        byte[] photoData = downloadPhoto(fileId);
+        if (photoData != null){
+            skinsForSaleService.savePictureSkinForSale(photoData);
         }
     }
 
