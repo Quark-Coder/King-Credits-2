@@ -195,7 +195,11 @@ Vsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectCaseInventoryCallba
 asrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectCaseInventory.java,7/4/74189366227456b5b4611af8df8f5a38dc693fd9
 „
 Tsrc/main/java/com/kingleaks/king_credits/bot/callback/OpenCaseInventoryCallback.java,a/9/a9cae5466aa9b1d1cbd2d488bc0f217820c77366
-u
-Esrc/main/java/com/kingleaks/king_credits/service/CaseItemService.java,c/f/cfe5bf6e94ab93db245b530a174667ebce936f93
 v
 Fsrc/main/java/com/kingleaks/king_credits/service/CasesItemService.java,d/4/d487a1e5553471fd53be77190748c9306d229b56
+”
+dsrc/main/java/com/kingleaks/king_credits/bot/state/admin/upload_item_image/UploadItemImageState.java,4/a/4a087cbb0b2db142bbf8f9677159259836d290b4
+‰
+Ysrc/main/java/com/kingleaks/king_credits/bot/callback/SelectItemWithoutImageCallback.java,9/a/9ad8aa914c69c7d15ab72b1220d549b9b610afbf
+”
+dsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectItemWithoutImage.java,a/1/a1c5d2a952e59deb70f5defae0eb47efafd81d6f

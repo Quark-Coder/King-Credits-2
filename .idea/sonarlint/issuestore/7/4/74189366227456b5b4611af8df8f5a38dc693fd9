@@ -1,12 +1,2 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8„ï´›2J$65f230ab-78df-4ed9-876e-601240d23eb4
-‰
-java:S1128"FRemove this unused import 'com.kingleaks.king_credits.bot.BotService'.(öè™œ8òŞ­á›2J$4da2728c-e715-44d0-98df-d8521b9a29f5
-œ
-java:S1128"TRemove this unused import 'com.kingleaks.king_credits.service.CaseInventoryService'.(©”Ëøüÿÿÿÿ8óŞ­á›2J$1077cd96-4823-4a06-b9e7-205a1229f3b4
-¬
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup'.(Ù•«ğ8óŞ­á›2J$702ce375-70b7-491c-a7f5-cdd6b2f61e8e
-¯
-java:S1128"lRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton'.(ĞíÁî8óŞ­á›2J$0b7d7e22-d898-4a10-a705-a1b6151644a9
-±
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow'.(Ğ§‰šùÿÿÿÿ8ôŞ­á›2J$e797753f-ac77-4418-8f7d-cff2f9ad44d1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8„ï´›2J$0f8095f4-710f-42b0-8f17-a6e070ce1721

@@ -1,18 +1,13 @@
 package com.kingleaks.king_credits.bot.waitingState;
 
-import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
-import com.kingleaks.king_credits.service.CaseInventoryService;
 import com.kingleaks.king_credits.service.CasesService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.List;
 

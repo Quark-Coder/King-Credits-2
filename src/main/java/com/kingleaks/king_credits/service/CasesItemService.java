@@ -56,4 +56,26 @@ public class CasesItemService {
         // На случай, если не сработал ни один элемент (что маловероятно)
         return null;
     }
+
+    public String getItemListAsString() {
+        List<CasesItem> itemList = casesItemRepository.findAllItemCasesWithoutPicture();
+        if (itemList.isEmpty()){
+            return null;
+        }
+        String result = "";
+        for (CasesItem item : itemList) {
+            result = result + "№" + item.getId() + " " + item.getName() + "\n";
+        }
+        return result;
+    }
+
+    public void savePictureForItem(Long itemId, byte[] picture){
+        Optional<CasesItem> optionalCasesItem = casesItemRepository.findById(itemId);
+
+        if (optionalCasesItem.isPresent()){
+            CasesItem casesItem = optionalCasesItem.get();
+            casesItem.setPhotoData(picture);
+            casesItemRepository.save(casesItem);
+        }
+    }
 }

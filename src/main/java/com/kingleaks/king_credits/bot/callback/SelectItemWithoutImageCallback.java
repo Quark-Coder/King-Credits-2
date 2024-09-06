@@ -10,13 +10,13 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
 @RequiredArgsConstructor
-public class SelectCaseInventoryCallback implements CallbackQueryHandler{
+public class SelectItemWithoutImageCallback implements CallbackQueryHandler {
     private final BotService botService;
     private final StateManagerService stateManager;
 
     @Override
     public boolean canHandle(String callbackData) {
-        return "SELECT_CASE_INVENTORY".equals(callbackData);
+        return "SELECT_ITEM_WITHOUT_IMAGE".equals(callbackData);
     }
 
     @Override
@@ -25,12 +25,12 @@ public class SelectCaseInventoryCallback implements CallbackQueryHandler{
 
         StatePaymentHistory userState = new StatePaymentHistory();
         userState.setTelegramUserId(callbackQuery.getFrom().getId());
-        userState.setStatus("WAITING_FOR_SELECT_CASE_INVENTORY");
+        userState.setStatus("WAITING_FOR_SELECT_ITEM_WITHOUT_IMAGE");
         stateManager.setUserState(callbackQuery.getFrom().getId(), userState);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Введите номер кейса из списка");
+        sendMessage.setText("Укажите номер предмета");
         botService.sendMessage(sendMessage);
     }
 }
