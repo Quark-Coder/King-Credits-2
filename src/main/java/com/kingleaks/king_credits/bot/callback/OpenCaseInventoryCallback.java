@@ -55,8 +55,8 @@ public class OpenCaseInventoryCallback implements CallbackQueryHandler{
         SendPhoto returnPhoto = new SendPhoto();
         returnPhoto.setChatId(chatId.toString());
         returnPhoto.setPhoto(inputFile);
-        returnPhoto.setCaption("Вот твой дроп! Поздравляем с выигрышем.\n" +
-                item.getName() + " Стоимость - " + item.getPrice());
+        returnPhoto.setCaption("\uD83E\uDD73 Поздравляем с выигрышем! \n\nТвой дроп: " +
+                item.getName() + " cтоимость - " + item.getPrice() + "кредитов");
         returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
         botService.sendPhoto(returnPhoto);

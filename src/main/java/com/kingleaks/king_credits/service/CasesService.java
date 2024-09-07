@@ -44,7 +44,7 @@ public class CasesService {
             result = result + cases.getName() + " " + cases.getPrice() + " Руб. Хороший выбор! Вот его содержимое:";
 
             for (CasesItem casesItem : casesItemList){
-                result = result + "\n" + " " + casesItem.getName() + " - " + casesItem.getPrice() + "Кредитов (Шанс " + casesItem.getCoefficient() + "%)";
+                result = result + "\n" + " " + casesItem.getName() + " - " + casesItem.getPrice() + " Кредитов (Шанс " + casesItem.getCoefficient() + "%)";
             }
 
             return result;

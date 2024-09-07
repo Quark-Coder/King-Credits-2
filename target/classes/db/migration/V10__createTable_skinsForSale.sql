@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS skins_for_sale
-(
-    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    skin_photo BYTEA
-)

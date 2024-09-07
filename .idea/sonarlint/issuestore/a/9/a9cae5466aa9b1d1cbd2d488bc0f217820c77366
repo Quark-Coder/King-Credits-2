@@ -1,5 +1,5 @@
 
 „
-java:S1126 "AReplace this if-then-else statement by a single return statement.(Ÿ°Ú÷8 ôé°œ2J$90413faf-7e4c-457c-bf4b-87baa550a2f2
-z
-java:S1128	"XRemove this unused import 'org.telegram.telegrambots.meta.api.methods.send.SendMessage'.(œ™âıÿÿÿÿ8ëÇë°œ2
+java:S1126 "AReplace this if-then-else statement by a single return statement.(Ÿ°Ú÷8 ôé°œ2J$48abc45f-0dc1-4c71-b72a-b6c79f53bb6b
+ 
+java:S1128	"XRemove this unused import 'org.telegram.telegrambots.meta.api.methods.send.SendMessage'.(œ™âıÿÿÿÿ8ëÇë°œ2J$2e469c0d-b1f9-4978-9f05-77ea9a296e1e

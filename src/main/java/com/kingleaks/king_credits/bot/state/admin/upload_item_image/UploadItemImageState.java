@@ -2,7 +2,6 @@ package com.kingleaks.king_credits.bot.state.admin.upload_item_image;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
-import com.kingleaks.king_credits.domain.entity.CasesItem;
 import com.kingleaks.king_credits.service.CasesItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
