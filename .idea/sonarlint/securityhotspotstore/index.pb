@@ -203,15 +203,5 @@ dsrc/main/java/com/kingleaks/king_credits/bot/state/admin/upload_item_image/Uplo
 Ysrc/main/java/com/kingleaks/king_credits/bot/callback/SelectItemWithoutImageCallback.java,9/a/9ad8aa914c69c7d15ab72b1220d549b9b610afbf
 ”
 dsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectItemWithoutImage.java,a/1/a1c5d2a952e59deb70f5defae0eb47efafd81d6f
-x
-Hsrc/main/java/com/kingleaks/king_credits/domain/entity/SkinsForSale.java,1/4/14d944818a53c3f2f3aa72d555b4ef82d556f1d0
-
-Osrc/main/java/com/kingleaks/king_credits/repository/SkinsForSaleRepository.java,a/f/af1755da5e8df1ad69da305eb89e3342de6f973d
-y
-Isrc/main/java/com/kingleaks/king_credits/service/SkinsForSaleService.java,f/c/fccbd6999a545572af1c9484d796cebb0735a5d2
 Š
 Zsrc/main/java/com/kingleaks/king_credits/bot/callback/UploadPhotoSkinsForSaleCallback.java,2/7/2754a66f0f6aed1fcfebabe48dedeb61afbce0ab
- 
-psrc/main/java/com/kingleaks/king_credits/bot/state/admin/add_photo_skins_for_sale/AddPhotoSkinsForSaleState.java,c/9/c9351df1c8c5a89e342a2c82a28f78319ddd3abe
-ƒ
-Ssrc/main/java/com/kingleaks/king_credits/bot/callback/SkinsListForSaleCallback.java,a/6/a60c5c1751063cae56fede224710308b0c25af80

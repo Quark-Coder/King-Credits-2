@@ -7,10 +7,8 @@ import com.kingleaks.king_credits.repository.TelegramUsersRepository;
 import com.kingleaks.king_credits.repository.WithdrawalOfCreditsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -78,5 +76,19 @@ public class TelegramUsersService {
 
     public List<TelegramUsers> findAllAdmins(){
         return telegramUsersRepository.findAllAdmins();
+    }
+
+    public String getLeaderboard() {
+        List<TelegramUsers> telegramUsers = telegramUsersRepository.findAllTelegramUsersForLeaderBoard();
+        String result = "";
+        int i = 1;
+        for (TelegramUsers telegramUser : telegramUsers){
+            result += "\n" + i + ". " + (telegramUser.getNickname() == null ? telegramUser.getFirstName() :
+                    telegramUser.getNickname()) + " - выведено: " +
+                    withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAID(telegramUser.getUserId()) + " кредитов";
+            i++;
+        }
+
+        return result;
     }
 }

@@ -1,6 +1,5 @@
 package com.kingleaks.king_credits.service;
 
-import com.kingleaks.king_credits.domain.entity.Account;
 import com.kingleaks.king_credits.domain.entity.CaseInventory;
 import com.kingleaks.king_credits.domain.entity.Cases;
 import com.kingleaks.king_credits.repository.AccountRepository;
