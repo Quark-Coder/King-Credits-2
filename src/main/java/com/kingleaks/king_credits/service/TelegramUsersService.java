@@ -91,4 +91,26 @@ public class TelegramUsersService {
 
         return result;
     }
+
+    public String getAllUsersWithPagination(int page){
+        List<TelegramUsers> telegramUsers = telegramUsersRepository.findAllUsers();
+
+        int pageSize = 1;
+        int fromIndex = (page - 1) * pageSize;
+        int toIndex = Math.min(fromIndex + pageSize, telegramUsers.size());
+
+        if (fromIndex > telegramUsers.size()) {
+            return null; // Возвращаем пустой список, если страница выходит за пределы
+        }
+
+        List<TelegramUsers> paginationList = telegramUsers.subList(fromIndex, toIndex);
+
+        String result = "";
+        for (TelegramUsers telegramUser : paginationList){
+            result += telegramUser.getId() + " - " + telegramUser.getFirstName()
+                    + " " + telegramUser.getNickname() + "\n";
+        }
+
+        return result;
+    }
 }

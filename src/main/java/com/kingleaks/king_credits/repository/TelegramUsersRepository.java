@@ -29,6 +29,10 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
     List<TelegramUsers> findAllAdmins();
 
     @Query(value = "SELECT t.* FROM telegram_users t " +
+            "WHERE t.status = 'USER' ", nativeQuery = true)
+    List<TelegramUsers> findAllUsers();
+
+    @Query(value = "SELECT t.* FROM telegram_users t " +
             "JOIN account a on t.user_id = a.telegram_user_id " +
             "ORDER BY a.balance DESC ", nativeQuery = true)
     List<TelegramUsers> findAllTelegramUsersForLeaderBoard();
