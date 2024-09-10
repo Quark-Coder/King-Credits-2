@@ -113,4 +113,24 @@ public class TelegramUsersService {
 
         return result;
     }
+
+    public String getInformationUserProfileForAdmin(Long telegramUserId){
+        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findByUserId(telegramUserId);
+        if (telegramUsers.isPresent()){
+            TelegramUsers telegramUser = telegramUsers.get();
+            Long id = telegramUser.getId();
+            String nickname = telegramUser.getNickname();
+            BigDecimal balance = telegramUsersRepository.getBalanceByUserId(telegramUserId);
+            int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMED(telegramUserId);
+            int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAID(telegramUserId);
+
+            return "Никнейм - " + nickname +
+                    "\nАйди - "  + String.format("%05d", id) +
+                    "\nБаланс - " + balance +
+                    "\nВсего пополнено - " + replenish +
+                    "\nВсего выведено - " + withdrew;
+        }
+
+        return null;
+    }
 }
