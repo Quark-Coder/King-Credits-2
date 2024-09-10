@@ -207,3 +207,5 @@ dsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelect
 Zsrc/main/java/com/kingleaks/king_credits/bot/callback/UploadPhotoSkinsForSaleCallback.java,2/7/2754a66f0f6aed1fcfebabe48dedeb61afbce0ab
 w
 Gsrc/main/java/com/kingleaks/king_credits/bot/callback/PageCallback.java,c/b/cb791aba816c79e42fbd9a002f9a73729b9c946a
+Š
+Zsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectIdUser.java,1/f/1f6304f6632fedeb9e845aee783a3410b55275b2

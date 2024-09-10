@@ -43,7 +43,7 @@ public class StateWaitingForSelectIdUser implements StateWaitingQueryHandler {
             ban.setText("БАН");
             ban.setCallbackData("BAN__" + selectId);
 
-            List<InlineKeyboardButton> button1 = List.of(withdraw, give, ban);
+            List<InlineKeyboardButton> button1 = List.of(withdraw, give);
             List<InlineKeyboardButton> button2 = List.of(ban);
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
             markup.setKeyboard(List.of(button1, button2));

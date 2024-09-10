@@ -95,7 +95,7 @@ public class TelegramUsersService {
     public String getAllUsersWithPagination(int page){
         List<TelegramUsers> telegramUsers = telegramUsersRepository.findAllUsers();
 
-        int pageSize = 1;
+        int pageSize = 10;
         int fromIndex = (page - 1) * pageSize;
         int toIndex = Math.min(fromIndex + pageSize, telegramUsers.size());
 
@@ -115,7 +115,7 @@ public class TelegramUsersService {
     }
 
     public String getInformationUserProfileForAdmin(Long telegramUserId){
-        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findByUserId(telegramUserId);
+        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findById(telegramUserId);
         if (telegramUsers.isPresent()){
             TelegramUsers telegramUser = telegramUsers.get();
             Long id = telegramUser.getId();
