@@ -80,22 +80,14 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
     @Override
     public void onUpdateReceived(@NotNull Update update) {
-        if (update.hasMessage() && update.getMessage().hasText()){
-            if (update.getMessage().getText().equals("/start")) {
-                Long telegramUserId = update.getMessage().getFrom().getId();
-                Long chatId = update.getMessage().getChatId();
-                String firstName = update.getMessage().getFrom().getFirstName();
-                String lastName = update.getMessage().getFrom().getLastName();
-                String nickname = update.getMessage().getFrom().getUserName();
-
-                telegramUsersService.registerUser(telegramUserId, chatId , firstName, lastName, nickname);
-            }
-        }
+        checkRegister(update);
         checkStateManager(update);
         if (update.hasMessage() && update.getMessage().hasText()){
             UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
             if (userStatus.name().equals("ADMIN")){
                 checkCommandForAdmin(update);
+            } else if (userStatus.name().equals("BANNED")){
+                checkCommandForBanned(update);
             } else {
                 checkCommand(update);
             }
@@ -136,6 +128,41 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             execute(messageMedia);
         } catch (TelegramApiException e) {
             log.error(e.getMessage());
+        }
+    }
+
+    public void checkRegister(Update update){
+        if (update.hasMessage() && update.getMessage().hasText()){
+            if (update.getMessage().getText().equals("/start")) {
+                Long telegramUserId = update.getMessage().getFrom().getId();
+                Long chatId = update.getMessage().getChatId();
+                String firstName = update.getMessage().getFrom().getFirstName();
+                String lastName = update.getMessage().getFrom().getLastName();
+                String nickname = update.getMessage().getFrom().getUserName();
+
+                telegramUsersService.registerUser(telegramUserId, chatId , firstName, lastName, nickname);
+            }
+        }
+    }
+
+    public void checkCommandForBanned(Update update){
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            String message = update.getMessage().getText();
+            switch (message){
+                case "/start":
+                case "/home":
+                case "Назад":
+                case "Меню":
+                    commandRegistry.getCommand("homecommand").execute(update);
+                    break;
+                case "Пойти нахуй":
+                    SendMessage sendMess = SendMessage.builder()
+                            .chatId(update.getMessage().getChatId())
+                            .text("Вы благополучно посланы нахуй")
+                            .build();
+                    sendMessage(sendMess);
+                    break;
+            }
         }
     }
 

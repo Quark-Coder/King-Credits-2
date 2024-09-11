@@ -133,4 +133,17 @@ public class TelegramUsersService {
 
         return null;
     }
+
+    public void banUser(Long userId) {
+        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findById(userId);
+        if (telegramUsers.isPresent()){
+            TelegramUsers telegramUser = telegramUsers.get();
+            telegramUser.setStatus(UserStatus.BANNED);
+            telegramUsersRepository.save(telegramUser);
+        }
+    }
+
+    public boolean isBanned(Long telegramUserId) {
+        return telegramUsersRepository.isUserBanned(telegramUserId);
+    }
 }

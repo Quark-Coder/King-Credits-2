@@ -35,13 +35,13 @@ public class StateWaitingForSelectIdUser implements StateWaitingQueryHandler {
             message.setText(result);
             InlineKeyboardButton withdraw = new InlineKeyboardButton();
             withdraw.setText("Снять рубли");
-            withdraw.setCallbackData("WITHDRAW_RUB__" + selectId);
+            withdraw.setCallbackData("WITHDRAW_RUB_ACCOUNT__" + selectId);
             InlineKeyboardButton give = new InlineKeyboardButton();
             give.setText("Выдать рубли");
-            give.setCallbackData("GIVE_RUB__" + selectId);
+            give.setCallbackData("GIVE_RUB_ACCOUNT__" + selectId);
             InlineKeyboardButton ban = new InlineKeyboardButton();
             ban.setText("БАН");
-            ban.setCallbackData("BAN__" + selectId);
+            ban.setCallbackData("BAN_" + selectId);
 
             List<InlineKeyboardButton> button1 = List.of(withdraw, give);
             List<InlineKeyboardButton> button2 = List.of(ban);

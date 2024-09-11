@@ -36,11 +36,23 @@ public class HomeCommand implements Command {
 
         if (userStatus.name().equals("ADMIN")) {
             message.setReplyMarkup(getAdminKeyboard());
+        } else if (userStatus.name().equals("BANNED")) {
+            message.setText("Вас забанили, вы можете пойти нахуй");
+            message.setReplyMarkup(getBannedKeyboard());
         } else {
             message.setReplyMarkup(getUserKeyboard());
         }
 
         botService.sendMessage(message);
+    }
+
+    private ReplyKeyboardMarkup getBannedKeyboard() {
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        List<KeyboardButton> btn1 = List.of(
+                new KeyboardButton("Пойти нахуй")
+        );
+        keyboard.add(new KeyboardRow(btn1));
+        return createReplyKeyboardMarkup(keyboard);
     }
 
     private ReplyKeyboardMarkup getAdminKeyboard() {

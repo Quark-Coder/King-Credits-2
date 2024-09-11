@@ -1,21 +1,28 @@
 
-r
-java:S1066T"/Merge this if statement with the enclosing one.(Ë´Ì8š²«»2J$0ffd0362-ddb1-49c0-9c5b-e1aa115cbec7
-Š
-java:S1192T"GDefine a constant instead of duplicating this literal "/start" 3 times.(Ë´Ì8¢²«»2J$22c002c8-66f3-4c27-98c3-c1108da7dfdb
+s
+java:S1066ˆ"/Merge this if statement with the enclosing one.(Ë´Ì8²Èƒ2J$d2b03b9b-d9ca-4e0d-bf98-67704f22cfbe
+”
+java:S1192š"KDefine a constant instead of duplicating this literal "ĞĞ°Ğ·Ğ°Ğ´" 3 times.(Şëºèûÿÿÿÿ8Âù¾ƒ2J$b7e90b1c-9cb7-4aa2-9faf-d06ded6b7e70
+‹
+java:S1192ˆ"GDefine a constant instead of duplicating this literal "/start" 4 times.(Ë´Ì8¶Èƒ2J$bb6fa810-93b6-4e1b-9f7a-6f027f704edb
+
+java:S1192™"FDefine a constant instead of duplicating this literal "/home" 3 times.(ŞÒÁÊşÿÿÿÿ8Âù¾ƒ2J$dd3e6cb8-6889-4996-978e-84704eff8b91
 •
-java:S1192—"LDefine a constant instead of duplicating this literal "homecommand" 3 times.(á©²úÿÿÿÿ8¢²«»2J$4420938e-9845-4622-a880-5cd3a8b0a188
+java:S1192œ"LDefine a constant instead of duplicating this literal "homecommand" 4 times.(á©²úÿÿÿÿ8¶Èƒ2J$8f69ff4d-7885-4aa9-a466-5ff309e2a161
 ‡
-java:S6208–"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¢²«»2J$7a0084a6-39bf-4adc-b47e-9f559c868fca
+java:S6208›"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¶Èƒ2J$3c438d25-6c71-4a84-9472-1f1306f50d8b
 ‡
-java:S6208Æ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¢²«»2J$59ae18a4-072e-431a-bf85-b98bf6f8fb7f
+java:S6208±"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¶Èƒ2J$be79482c-2c30-4868-a08f-fe0ff185e349
+‡
+java:S6208á"CMerge the previous cases into this one using comma-separated label.(ş†Œ8Ãù¾ƒ2J$f8d440b0-ded8-4d2e-8471-6a4486df565c
 
-java:S1874M"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8ª²«»2J$a25c510d-8f70-4dcd-ae43-a7cd4e8c84ff
-j	java:S131’""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8°²«»2J$be52251a-78f8-475c-bfa7-989bbf567acc
+java:S1874M"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8¾Èƒ2J$d21ba3b1-6326-4015-a8bb-251f51993ed9
+j	java:S131—""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8ÅÈƒ2J$9e2f2002-d001-4159-ab64-ad43ca2ee07c
+j	java:S131­""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8ÆÈƒ2J$50b511b0-e911-4561-b41c-ce88c7af5f29
 –
-java:S3776²"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8²²«»2J$e2e449af-2018-4b9a-9474-d98949bfd5cd
-j	java:S131Â""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8¶²«»2J$0a39eb7e-cf74-496f-9d91-bb4f68270228
+java:S3776Í"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Š±ªœ8ÈÈƒ2J$5a6a8adf-0c9e-4379-86c0-64d6fb758388
+j	java:S131İ""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8ÌÈƒ2J$e71c038e-6ab6-434a-bb78-e636a8f6fac5
 –
-java:S1871ß"MThis branch's code block is the same as the block for the branch on line 220.(Ç½èéûÿÿÿÿ8·²«»2J$a1286794-64b5-4e01-baa9-fcc2159b4ee1
+java:S1871ú"MThis branch's code block is the same as the block for the branch on line 247.(Ç½èéûÿÿÿÿ8ÌÈƒ2J$a17df35f-9a75-49a9-8587-c3df310dc1d5
 j
-java:S1168Œ"&Return an empty array instead of null.(¥¹ï8Ä²«»2J$fb7c7121-b961-4419-bc21-8e3169fdb71e
+java:S1168§"&Return an empty array instead of null.(¥¹ï8ØÈƒ2J$1abcef70-ff87-42b8-b12c-70715254dd42

@@ -36,4 +36,9 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
             "JOIN account a on t.user_id = a.telegram_user_id " +
             "ORDER BY a.balance DESC ", nativeQuery = true)
     List<TelegramUsers> findAllTelegramUsersForLeaderBoard();
+
+    @Query(value = "SELECT CASE WHEN t.status = 'BANNED' THEN true ELSE false END " +
+            "FROM telegram_users t " +
+            "WHERE t.user_id = :telegramUserId", nativeQuery = true)
+    boolean isUserBanned(@Param("telegramUserId") Long telegramUserId);
 }
