@@ -2,7 +2,6 @@ package com.kingleaks.king_credits.bot.callback;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.domain.entity.TelegramUsers;
-import com.kingleaks.king_credits.domain.entity.WithdrawalOfCredits;
 import com.kingleaks.king_credits.service.ReviewsService;
 import com.kingleaks.king_credits.service.WithdrawalOfCreditsService;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +12,6 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component

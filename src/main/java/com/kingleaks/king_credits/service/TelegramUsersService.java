@@ -120,9 +120,9 @@ public class TelegramUsersService {
             TelegramUsers telegramUser = telegramUsers.get();
             Long id = telegramUser.getId();
             String nickname = telegramUser.getNickname();
-            BigDecimal balance = telegramUsersRepository.getBalanceByUserId(telegramUserId);
-            int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMED(telegramUserId);
-            int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAID(telegramUserId);
+            BigDecimal balance = telegramUsersRepository.getBalanceByUserId(telegramUser.getUserId());
+            int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMED(telegramUser.getUserId());
+            int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAID(telegramUser.getUserId());
 
             return "Никнейм - " + nickname +
                     "\nАйди - "  + String.format("%05d", id) +

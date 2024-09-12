@@ -211,3 +211,7 @@ Gsrc/main/java/com/kingleaks/king_credits/bot/callback/PageCallback.java,c/b/cb
 Zsrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectIdUser.java,1/f/1f6304f6632fedeb9e845aee783a3410b55275b2
 v
 Fsrc/main/java/com/kingleaks/king_credits/bot/callback/BanCallback.java,2/6/26f257d759ab013fb63cce530de3b1e8603786c0
+Ö
+Usrc/main/java/com/kingleaks/king_credits/bot/callback/WithdrawRubAccountCallback.java,d/7/d7bf63bdae91034bbb79daf956f60cc9340ac287
+ê
+`src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForWithdrawRubAccount.java,7/3/736078980119a905fb92087b96a5a599de54d699

@@ -1,7 +1,6 @@
 package com.kingleaks.king_credits.bot.callback;
 
 import com.kingleaks.king_credits.bot.BotService;
-import com.kingleaks.king_credits.domain.entity.TelegramUsers;
 import com.kingleaks.king_credits.service.TelegramUsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -32,7 +31,6 @@ public class BanCallback implements CallbackQueryHandler{
         String[] parts = callbackQuery.getData().split("_");
         Long userId = Long.parseLong(parts[1]);
 
-        System.out.println("ЕБАТь");
         telegramUsersService.banUser(userId);
 
         SendMessage sendMessage = new SendMessage();

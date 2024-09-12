@@ -20,6 +20,11 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
             " where t.user_id = :userId", nativeQuery = true)
     BigDecimal getBalanceByUserId(@Param("userId") Long userId);
 
+    @Query(value = "SELECT coalesce(a.balance, 0) FROM telegram_users t " +
+            "JOIN account a on t.user_id = a.telegram_user_id" +
+            " where t.id = :userId", nativeQuery = true)
+    BigDecimal getBalanceByAccountId(@Param("userId") Long userId);
+
     @Query(value = "SELECT t.status FROM telegram_users t " +
             "where t.user_id = :userId", nativeQuery = true)
     UserStatus getUserStatusByUserId(@Param("userId") Long userId);
