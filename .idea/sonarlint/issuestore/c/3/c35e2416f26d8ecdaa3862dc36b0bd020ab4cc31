@@ -1,0 +1,12 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8¢ÚŞ2J$427a0342-e74a-443a-ab9d-599c718ccde8
+“
+java:S2259%"KA "NullPointerException" could be thrown; "telegramUsers" is nullable here.(Ä…“àüÿÿÿÿ8ôÜšŞ2J$b6156ad5-035d-4afe-9449-8e4f77afcc81
+„
+java:S11269"AReplace this if-then-else statement by a single return statement.(Ñìéû8®© Ş2J$f6d33f5d-751d-4f12-a597-f7085b55f2c0
+²
+java:S1128"jRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup'.(ªš¢³øÿÿÿÿ8ùÜšŞ2J$26923449-5e82-4776-9840-150f8845e2c4
+µ
+java:S1128"rRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton'.(›–å8ùÜšŞ2J$ac8c6e53-3306-4ae5-8ff9-8f96bec19dea
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ùÜšŞ2J$157f978e-1ac4-42ac-9fea-64f536373cd2

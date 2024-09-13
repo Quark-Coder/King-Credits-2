@@ -10,14 +10,14 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
 @RequiredArgsConstructor
-public class WithdrawRubAccountCallback implements CallbackQueryHandler {
+public class GiveRubAccountCallback implements CallbackQueryHandler {
     private final BotService botService;
     private final StateManagerService stateManager;
 
     @Override
     public boolean canHandle(String callbackData) {
         String[] parts = callbackData.split("__");
-        if (parts[0].equals("WITHDRAW_RUB_ACCOUNT")) {
+        if (parts[0].equals("GIVE_RUB_ACCOUNT")) {
             return true;
         } else {
             return false;
@@ -32,12 +32,12 @@ public class WithdrawRubAccountCallback implements CallbackQueryHandler {
 
         StatePaymentHistory userState = new StatePaymentHistory();
         userState.setTelegramUserId(callbackQuery.getFrom().getId());
-        userState.setStatus("WAITING_FOR_WITHDRAW_RUB_ACCOUNT__"+userId);
+        userState.setStatus("WAITING_FOR_GIVE_RUB_ACCOUNT__"+userId);
         stateManager.setUserState(callbackQuery.getFrom().getId(), userState);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Напишите суммы которую вы хотите снять у пользователя");
+        sendMessage.setText("Напишите суммы которую вы хотите выдать пользователю");
         botService.sendMessage(sendMessage);
     }
 }
