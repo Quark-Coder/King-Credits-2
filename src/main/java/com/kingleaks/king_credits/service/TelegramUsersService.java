@@ -114,6 +114,28 @@ public class TelegramUsersService {
         return result;
     }
 
+    public String getBlackListWithPagination(int page){
+        List<TelegramUsers> telegramUsers = telegramUsersRepository.findAllUsersInBlackList();
+
+        int pageSize = 10;
+        int fromIndex = (page - 1) * pageSize;
+        int toIndex = Math.min(fromIndex + pageSize, telegramUsers.size());
+
+        if (fromIndex > telegramUsers.size()) {
+            return null; // Возвращаем пустой список, если страница выходит за пределы
+        }
+
+        List<TelegramUsers> paginationList = telegramUsers.subList(fromIndex, toIndex);
+
+        String result = "";
+        for (TelegramUsers telegramUser : paginationList){
+            result += telegramUser.getId() + " - " + telegramUser.getFirstName()
+                    + " " + telegramUser.getNickname() + "\n";
+        }
+
+        return result;
+    }
+
     public String getInformationUserProfileForAdmin(Long telegramUserId){
         Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findById(telegramUserId);
         if (telegramUsers.isPresent()){
@@ -139,6 +161,15 @@ public class TelegramUsersService {
         if (telegramUsers.isPresent()){
             TelegramUsers telegramUser = telegramUsers.get();
             telegramUser.setStatus(UserStatus.BANNED);
+            telegramUsersRepository.save(telegramUser);
+        }
+    }
+
+    public void unBanUser(Long userId) {
+        Optional<TelegramUsers> telegramUsers = telegramUsersRepository.findById(userId);
+        if (telegramUsers.isPresent()){
+            TelegramUsers telegramUser = telegramUsers.get();
+            telegramUser.setStatus(UserStatus.USER);
             telegramUsersRepository.save(telegramUser);
         }
     }
