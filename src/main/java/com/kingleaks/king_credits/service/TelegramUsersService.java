@@ -179,7 +179,7 @@ public class TelegramUsersService {
             int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAIDForPeriod(period);
             int users = telegramUsersRepository.countUsersForPeriod(period);
 
-        return "Статистика за все время" +
+        return "Статистика за " + period + " дней" +
                 "\nПолучено рублей - " + replenish +
                 "\nВыведено кредитов - " + withdrew +
                 "\nНовых пользователей - " + users;
