@@ -174,6 +174,28 @@ public class TelegramUsersService {
         }
     }
 
+    public String getStatisticForPeriod(int period){
+            int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMEDForPeriod(period);
+            int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAIDForPeriod(period);
+            int users = telegramUsersRepository.countUsersForPeriod(period);
+
+        return "Статистика за все время" +
+                "\nПолучено рублей - " + replenish +
+                "\nВыведено кредитов - " + withdrew +
+                "\nНовых пользователей - " + users;
+    }
+
+    public String getStatisticForAllTime(){
+        int replenish = paymentCheckPhotoRepository.countAmountPaymentCheckPhotoByCONFIRMEDForAllTime();
+        int withdrew = withdrawalOfCreditsRepository.countAmountWithdrawalOfCreditsByPAIDForAllTime();
+        int users = telegramUsersRepository.countUsersForAllTime();
+
+        return "Статистика за все время" +
+                "\nПолучено рублей - " + replenish +
+                "\nВыведено кредитов - " + withdrew +
+                "\nНовых пользователей - " + users;
+    }
+
     public boolean isBanned(Long telegramUserId) {
         return telegramUsersRepository.isUserBanned(telegramUserId);
     }

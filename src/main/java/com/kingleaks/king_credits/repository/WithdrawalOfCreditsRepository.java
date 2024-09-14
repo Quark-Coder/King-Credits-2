@@ -26,4 +26,12 @@ public interface WithdrawalOfCreditsRepository extends JpaRepository<WithdrawalO
     @Query(value = "SELECT COALESCE(SUM(w.price), 0) FROM withdrawal_of_credits w " +
             "WHERE w.status = 'PAID' AND w.telegram_user_id = :telegramUserId ", nativeQuery = true)
     int countAmountWithdrawalOfCreditsByPAID(@Param("telegramUserId") Long telegramUserId);
+
+    @Query(value = "SELECT COALESCE(SUM(w.price), 0) FROM withdrawal_of_credits w " +
+            "WHERE w.status = 'PAID' AND w.created_at >= NOW() - INTERVAL '1 day' * :period ", nativeQuery = true)
+    int countAmountWithdrawalOfCreditsByPAIDForPeriod(@Param("period") int period);
+
+    @Query(value = "SELECT COALESCE(SUM(w.price), 0) FROM withdrawal_of_credits w " +
+            "WHERE w.status = 'PAID' ", nativeQuery = true)
+    int countAmountWithdrawalOfCreditsByPAIDForAllTime();
 }

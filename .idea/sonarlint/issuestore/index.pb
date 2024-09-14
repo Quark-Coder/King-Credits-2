@@ -229,3 +229,5 @@ Qsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectIdBannedCallback.ja
 \src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectIdBanned.java,9/7/9765f26e8796b04a8abd37e0722a162550a2964b
 x
 Hsrc/main/java/com/kingleaks/king_credits/bot/callback/UnBanCallback.java,a/c/ac8ebd4d137317cea18f2bbaf795b6e20a20c2da
+y
+Isrc/main/java/com/kingleaks/king_credits/bot/callback/PeriodCallback.java,9/c/9c79cc3cd107d0f7a49e4c1ad8bb1755318eb0db

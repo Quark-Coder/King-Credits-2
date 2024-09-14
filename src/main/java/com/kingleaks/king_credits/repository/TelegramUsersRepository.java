@@ -50,4 +50,11 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
             "FROM telegram_users t " +
             "WHERE t.user_id = :telegramUserId", nativeQuery = true)
     boolean isUserBanned(@Param("telegramUserId") Long telegramUserId);
+
+    @Query(value = "SELECT COALESCE(count(t), 0) FROM telegram_users t " +
+            "WHERE t.created_at >= NOW() - INTERVAL '1 day' * :period ", nativeQuery = true)
+    int countUsersForPeriod(@Param("period") int period);
+
+    @Query(value = "SELECT COALESCE(count(t), 0) FROM telegram_users t ", nativeQuery = true)
+    int countUsersForAllTime();
 }
