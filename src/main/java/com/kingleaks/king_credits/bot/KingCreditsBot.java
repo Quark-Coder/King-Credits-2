@@ -223,36 +223,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     case "/home":
                     case "Назад":
                     case "Меню":
-                        StatePaymentHistory paymentHistory = stateManager.getUserState(telegramUserId);
-                        SendMessage errorMessage = new SendMessage();
-                        errorMessage.setChatId(update.getMessage().getChatId());
-                        if (paymentHistory != null && "WAITING_FOR_AMOUNT".equals(paymentHistory.getStatus()) ){
-                            errorMessage.setText("Вы не указали сумму пополнения счета, напишите:");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_PAYMENT_CHECK".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили чек оплаты вашего заказа, отправьте:");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_AMOUNT_FOR_WITHDRAWAL".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили сумму вывода кредитов");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили фотографию из площадки");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_WITHDRAWAL_NICK".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили свой никнейм из игры");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_CHANGE_NICKNAME".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили свой новый ник");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_CALCULATION_CREDITSRUB".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили сумму которую нужно посчитать");
-                            sendMessage(errorMessage);
-                        } else if (paymentHistory != null && "WAITING_FOR_CALCULATION_RUBCREDITS".equals(paymentHistory.getStatus())){
-                            errorMessage.setText("Вы не отправили сумму которую нужно посчитать");
-                            sendMessage(errorMessage);
-                        } else {
-                            commandRegistry.getCommand("homecommand").execute(update);
-                        }
+                        commandRegistry.getCommand("homecommand").execute(update);
+                        stateManager.deleteUserState(telegramUserId);
                         break;
                     case "Подписался":
                         commandRegistry.getCommand("homecommand").execute(update);

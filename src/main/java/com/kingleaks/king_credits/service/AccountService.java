@@ -24,6 +24,7 @@ public class AccountService {
         accountRepository.save(account);
     }
 
+    //Вычитание
     public void withdraw(Long telegramUserId, BigDecimal amount) {
         Optional<Account> account = accountRepository.findByTelegramUserId(telegramUserId);
         if (account.isPresent()) {
@@ -33,6 +34,7 @@ public class AccountService {
         }
     }
 
+    //Пополнение
     public void replenish(Long telegramUserId, BigDecimal amount) {
         Optional<Account> account = accountRepository.findByTelegramUserId(telegramUserId);
         if (account.isPresent()) {

@@ -247,3 +247,5 @@ v
 Fsrc/main/java/com/kingleaks/king_credits/service/PromoCodeService.java,1/5/1597a7a1c09caf1ebdc7f7c57b6bfb48babbd9e2
 z
 Jsrc/main/java/com/kingleaks/king_credits/domain/enums/PromoCodeStatus.java,e/e/ee2fd3b6747ea4a94e065202b45589e869c10bfb
+Œ
+\src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForEnterPromoCode.java,b/6/b63d8380337b90c65995738b21fe6a4824e8f8cd
