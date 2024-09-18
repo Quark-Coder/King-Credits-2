@@ -11,10 +11,10 @@ public interface PromoCodeRepository extends JpaRepository<PromoCode, Long> {
 
     @Query(value = "SELECT CASE WHEN p.code = :code " +
             "THEN TRUE ELSE FALSE END " +
-            "FROM promo_code p WHERE p.code = 'QWERTY' ", nativeQuery = true)
+            "FROM promo_code p WHERE p.code = :code ", nativeQuery = true)
     Boolean existsByCode(@Param("code") String code);
 
-    @Query(value = "SELECT CASE WHEN p.end_date < CURRENT_DATE " +
+    @Query(value = "SELECT CASE WHEN p.status = 'EXPIRED' " +
             " THEN TRUE ELSE FALSE END " +
             " FROM promo_code p WHERE p.code = :code", nativeQuery = true)
     Boolean isExpiredDate(@Param("code") String code);

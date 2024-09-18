@@ -34,13 +34,16 @@ public class PromoCodeService {
     }
 
     public String enterPromoCode(String code, long telegramUserId){
-        if (promoCodeRepository.existsByCode(code) || promoCodeRepository.isExpiredDate(code)){
-            return "Ошибка! Промокод не найден, либо неактивен";
+        if (!promoCodeRepository.existsByCode(code)){
+            return "Ошибка! Промокод не найден";
+        }
+        if (promoCodeRepository.isExpiredDate(code)){
+            return "Промокод неактивен";
         }
         if (!usedPromoCodesRepository.existsByCountUser(code)){
             return "Количество использовании превышает";
         }
-        if (usedPromoCodesRepository.userHasPromoCode(telegramUserId, code)){
+        if (Boolean.TRUE.equals(usedPromoCodesRepository.userHasPromoCode(telegramUserId, code))){
             return "Вы уже активировали этот промокод";
         }
 
