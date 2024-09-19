@@ -251,3 +251,11 @@ Jsrc/main/java/com/kingleaks/king_credits/domain/enums/PromoCodeStatus.java,e/e
 \src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForEnterPromoCode.java,b/6/b63d8380337b90c65995738b21fe6a4824e8f8cd
 {
 Ksrc/main/java/com/kingleaks/king_credits/cronjob/CheckExpiredPromoCode.java,3/6/36b53125c920f3166838cad731beeb7e6cb252d1
+‚
+Rsrc/main/java/com/kingleaks/king_credits/bot/callback/ActivePromoCodeCallback.java,d/0/d0cc2c8123e36c0aa26a61c15aa2751c5fb9eb53
+‚
+Rsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectPromoCodeCallback.java,b/f/bfa88651e2ee7931d526318c385cd8d7188b385b
+Œ
+\src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingSelectIdPromoCode.java,6/f/6f2c637a00d94465fbcbc870f10de897f94f4847
+‚
+Rsrc/main/java/com/kingleaks/king_credits/bot/callback/DeletePromoCodeCallback.java,2/b/2bc3879f9061676691bd5c9ef840e20483f37d1b

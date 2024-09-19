@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -57,5 +59,39 @@ public class PromoCodeService {
         usedPromoCodesRepository.save(usedPromoCodes);
 
         return "Промокод успешно активирован! Деньги зачислены на ваш баланс.";
+    }
+
+    public String getAllActivePromoCodes() {
+        List<PromoCode> promoCodes = promoCodeRepository.getAllActivePromoCodes();
+
+        if (promoCodes.isEmpty()){
+            return "Список пуст";
+        }
+        String result = "";
+        for (PromoCode promoCode : promoCodes) {
+            result += "№" + promoCode.getId() + " - " + promoCode.getCode() + " " + promoCode.getPrize() + " Руб\n";
+        }
+        return result;
+    }
+
+    public String getPromoCodeById(long id) {
+        Optional<PromoCode> optionalPromoCode = promoCodeRepository.findById(id);
+        if (optionalPromoCode.isPresent()){
+            PromoCode promoCode = optionalPromoCode.get();
+            int countUsedPromoCode = usedPromoCodesRepository.countUsedPromo(promoCode.getCode());
+            return "№" + promoCode.getId() + " " + promoCode.getCode()
+                    + " дата окончания " + promoCode.getCreatedAt() + " осталось применений " + countUsedPromoCode;
+        }
+
+        return null;
+    }
+
+    public void deletePromoCodeById(long id) {
+        Optional<PromoCode> optionalPromoCode = promoCodeRepository.findById(id);
+        if (optionalPromoCode.isPresent()){
+            PromoCode promoCode = optionalPromoCode.get();
+            promoCode.setStatus(PromoCodeStatus.EXPIRED);
+            promoCodeRepository.save(promoCode);
+        }
     }
 }

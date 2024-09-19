@@ -20,4 +20,8 @@ public interface UsedPromoCodesRepository extends JpaRepository<UsedPromoCodes, 
             "FROM used_promo_codes u WHERE u.telegram_user_id = :telegramUserId AND u.code = :code", nativeQuery = true)
     Boolean userHasPromoCode(@Param("telegramUserId") Long telegramUserId, @Param("code") String code);
 
+    @Query(value = "SELECT (p.count_users - COALESCE((SELECT COUNT(*)" +
+            " FROM used_promo_codes u WHERE u.code = :code), 0)) " +
+            "FROM promo_code p WHERE p.code = :code", nativeQuery = true)
+    int countUsedPromo(@Param("code") String code);
 }

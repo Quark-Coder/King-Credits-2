@@ -31,4 +31,8 @@ public interface PromoCodeRepository extends JpaRepository<PromoCode, Long> {
     @Query(value = "SELECT p.* FROM promo_code p " +
             "WHERE p.end_date < CURRENT_DATE AND p.status = 'ACTIVE' ", nativeQuery = true )
     List<PromoCode> getAllExpiredPromoCodeWithStatusActive();
+
+    @Query(value = "SELECT p.* FROM promo_code p " +
+            "WHERE p.status = 'ACTIVE' ", nativeQuery = true )
+    List<PromoCode> getAllActivePromoCodes();
 }
