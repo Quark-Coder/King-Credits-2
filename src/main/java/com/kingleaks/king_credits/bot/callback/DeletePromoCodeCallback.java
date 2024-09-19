@@ -5,6 +5,7 @@ import com.kingleaks.king_credits.service.PromoCodeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
@@ -25,6 +26,7 @@ public class DeletePromoCodeCallback implements CallbackQueryHandler{
 
     @Override
     public void handle(CallbackQuery callbackQuery) {
+        deleteMessage(callbackQuery);
         Long chatId = callbackQuery.getMessage().getChatId();
         String[] parts = callbackQuery.getData().split("__");
         Long idPromoCode = Long.parseLong(parts[1]);
@@ -34,5 +36,12 @@ public class DeletePromoCodeCallback implements CallbackQueryHandler{
         sendMessage.setChatId(chatId);
         sendMessage.setText("Промокод удален");
         botService.sendMessage(sendMessage);
+    }
+
+    private void deleteMessage(CallbackQuery callbackQuery) {
+        DeleteMessage deleteMessage = new DeleteMessage();
+        deleteMessage.setChatId(callbackQuery.getMessage().getChatId());
+        deleteMessage.setMessageId(callbackQuery.getMessage().getMessageId());
+        botService.deleteMessage(deleteMessage);
     }
 }
