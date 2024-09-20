@@ -259,3 +259,17 @@ Rsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectPromoCodeCallback.j
 \src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingSelectIdPromoCode.java,6/f/6f2c637a00d94465fbcbc870f10de897f94f4847
 Ç
 Rsrc/main/java/com/kingleaks/king_credits/bot/callback/DeletePromoCodeCallback.java,2/b/2bc3879f9061676691bd5c9ef840e20483f37d1b
+
+Osrc/main/java/com/kingleaks/king_credits/bot/callback/EnterSumRateCallback.java,0/5/05e241fc17233ebe0abd51ad805f684e6ea27411
+ç
+]src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingEnteringSumForRate.java,9/d/9d72ac4bee9999c2ccaf342100fcfb46b27f680a
+w
+Gsrc/main/java/com/kingleaks/king_credits/domain/entity/HeadAndTail.java,f/8/f8d348120d5a7699f873e52f4d8f8b18a0aa0365
+|
+Lsrc/main/java/com/kingleaks/king_credits/domain/enums/HeadAndTailStatus.java,b/9/b996be06b3aa8ed77f72e7ca08bfa68b9c5ae183
+~
+Nsrc/main/java/com/kingleaks/king_credits/repository/HeadAndTailRepository.java,4/4/4469fc906f9c9dbd447e8089c02d194c0ee5f074
+x
+Hsrc/main/java/com/kingleaks/king_credits/service/HeadAndTailService.java,5/1/5131ca78b446f6d9c89dad6234067f46014d2e62
+w
+Gsrc/main/java/com/kingleaks/king_credits/bot/callback/HeadCallback.java,7/5/75ddbb0bee79ade1dbff553c0c2c07220ac04137
