@@ -1,8 +1,8 @@
-package com.kingleaks.king_credits.bot.state.admin.upload_item_image;
+package com.kingleaks.king_credits.bot.state.admin.upload_cases_image;
 
 import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
-import com.kingleaks.king_credits.service.CasesItemService;
+import com.kingleaks.king_credits.service.CasesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -17,39 +17,39 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class UploadItemImageState implements Command {
+public class UploadCasesImageState implements Command {
     private final BotService botService;
-    private final CasesItemService casesItemService;
+    private final CasesService casesService;
 
     @Override
     public void execute(Update update) {
         SendMessage message = SendMessage.builder()
                 .chatId(update.getMessage().getChatId())
-                .text("Загрузить картинку дропа")
+                .text("Загрузить картинку кейса")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                 .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
         botService.sendMessage(message);
 
-        String listItems = casesItemService.getItemListAsString();
+        String listCases = casesService.getCasesListWithoutPicAsString();
 
         SendMessage option = new SendMessage();
         option.setChatId(update.getMessage().getChatId());
 
-        if (listItems != null) {
+        if (listCases != null) {
             InlineKeyboardButton selectItem = new InlineKeyboardButton();
-            selectItem.setText("Выбрать предмет");
-            selectItem.setCallbackData("SELECT_ITEM_WITHOUT_IMAGE");
+            selectItem.setText("Выбрать кейс");
+            selectItem.setCallbackData("SELECT_CASES_WITHOUT_IMAGE");
 
             List<InlineKeyboardButton> buttons = List.of(selectItem);
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
             markup.setKeyboard(List.of(buttons));
 
-            option.setText("Вот лист предметов у которых отсутствует картинке\n" + listItems);
+            option.setText("Вот лист кейсов у которых отсутствует картинке\n" + listCases);
             option.setReplyMarkup(markup);
             botService.sendMessage(option);
         } else {
-            option.setText("У всех предметов есть картинка или отсутствует сами предметы");
+            option.setText("У всех кейсов есть картинка или отсутствует сами кейсы");
             botService.sendMessage(option);
         }
     }

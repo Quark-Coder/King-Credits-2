@@ -71,7 +71,8 @@ public class HomeCommand implements Command {
                 new KeyboardButton("Статистика")
         );
         List<KeyboardButton> btn4 = List.of(
-                new KeyboardButton("Загрузить картинку дропа")
+                new KeyboardButton("Загрузить картинку дропа"),
+                new KeyboardButton("Загрузить картинку кейса")
         );
 
         keyboard.add(new KeyboardRow(btn1));

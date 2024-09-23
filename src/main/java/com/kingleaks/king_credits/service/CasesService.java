@@ -75,4 +75,26 @@ public class CasesService {
 
         return null;
     }
+
+    public String getCasesListWithoutPicAsString() {
+        List<Cases> casesList = casesRepository.findAllCasesWithoutPicture();
+        if (casesList.isEmpty()){
+            return null;
+        }
+        String result = "";
+        for (Cases cases : casesList) {
+            result = result + "№" + cases.getId() + " " + cases.getName() + "\n";
+        }
+        return result;
+    }
+
+    public void savePictureForCase(Long itemId, byte[] picture){
+        Optional<Cases> optionalCases = casesRepository.findById(itemId);
+
+        if (optionalCases.isPresent()){
+            Cases cases = optionalCases.get();
+            cases.setPhotoData(picture);
+            casesRepository.save(cases);
+        }
+    }
 }

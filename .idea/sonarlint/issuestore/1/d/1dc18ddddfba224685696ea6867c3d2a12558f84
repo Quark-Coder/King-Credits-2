@@ -1,9 +1,11 @@
 
 †
-java:S2259>"CA "NullPointerException" could be thrown; "cases" is nullable here.(ÉóëÚ8¤”•´›2J$16b3c670-4009-4ab6-982b-44dee3f658c7
+java:S2259>"CA "NullPointerException" could be thrown; "cases" is nullable here.(ÉóëÚ8¤”•´›2J$3dabb581-9788-4784-93e2-f4baca3fc2fe
 ^
-java:S1643"Use a StringBuilder instead.(Ãî/8ª×ª³›2J$0d77c4b7-e5ba-48b5-96e9-739bf5e1de13
+java:S1643"Use a StringBuilder instead.(Ãî/8ª×ª³›2J$9ae38eca-ddc9-4052-bc35-c03e01510ebc
 _
-java:S1643/"Use a StringBuilder instead.(­¸Âæ8«×ª³›2J$2d166807-af29-417d-8d83-fbbc2ae5fdab
+java:S1643/"Use a StringBuilder instead.(­¸Âæ8«×ª³›2J$46deb581-ff5c-4a45-aab1-9e442dbdf540
 _
-java:S1643>"Use a StringBuilder instead.(ÉóëÚ8«×ª³›2J$6577cf9f-7de3-4c33-a69a-ec13e3709965
+java:S1643>"Use a StringBuilder instead.(ÉóëÚ8«×ª³›2J$8c3df207-1d1c-41a0-aaaa-7a7acac18ab7
+_
+java:S1643V"Use a StringBuilder instead.(’¼âÚ8©‡Åó¡2J$2e9fe051-a395-4e7f-bed2-c55f7cfa3250

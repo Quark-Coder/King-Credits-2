@@ -20,4 +20,7 @@ public class Cases {
 
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "photo_data", columnDefinition="bytea")
+    private byte[] photoData;
 }

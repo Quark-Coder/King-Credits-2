@@ -46,6 +46,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final StateWaitingForReviews stateWaitingForReviews;
     private final CasesItemService casesItemService;
+    private final CasesService casesService;
 
     @Autowired
     public KingCreditsBot(BotConfig botConfig, @Lazy CommandRegistry commandRegistry,
@@ -54,7 +55,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                           PaymentCheckPhotoService paymentCheckPhotoService, TelegramUsersService telegramUsersService,
                           @Lazy List<StateWaitingQueryHandler> stateWaitingQueryHandlers,
                           WithdrawalOfCreditsService withdrawalOfCreditsService,
-                          StateWaitingForReviews stateWaitingForReviews, CasesItemService casesItemService) {
+                          StateWaitingForReviews stateWaitingForReviews, CasesItemService casesItemService, CasesService casesService) {
         this.botConfig = botConfig;
         this.commandRegistry = commandRegistry;
         this.callbackQueryHandlers = callbackQueryHandlers;
@@ -66,6 +67,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         this.withdrawalOfCreditsService = withdrawalOfCreditsService;
         this.stateWaitingForReviews = stateWaitingForReviews;
         this.casesItemService = casesItemService;
+        this.casesService = casesService;
     }
 
     @Override
@@ -197,6 +199,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     break;
                 case "Загрузить картинку дропа":
                     commandRegistry.getCommand("uploaditemimagestate").execute(update);
+                    break;
+                case "Загрузить картинку кейса":
+                    commandRegistry.getCommand("uploadcasesimagestate").execute(update);
                     break;
                 }
         }
@@ -354,7 +359,18 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText("Сохранили картинку!");
+            message.setText("Сохранили картинку предмета!");
+            sendMessage(message);
+        } else if (paymentHistory != null && parts[0].equals("WAITING_FOR_CASES_PHOTO")) {
+            Long id = Long.parseLong(parts[1]);
+            String fileId = photo.getFileId();
+
+            savePictureCasesToDatabase(fileId, id);
+            stateManager.deleteUserState(telegramUserId);
+
+            SendMessage message = new SendMessage();
+            message.setChatId(chatId);
+            message.setText("Сохранили картинку кейса!");
             sendMessage(message);
         }
     }
@@ -379,6 +395,13 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         byte[] photoData = downloadPhoto(fileId);
         if (photoData != null){
             casesItemService.savePictureForItem(itemId, photoData);
+        }
+    }
+
+    public void savePictureCasesToDatabase(String fileId, Long itemId) {
+        byte[] photoData = downloadPhoto(fileId);
+        if (photoData != null){
+            casesService.savePictureForCase(itemId, photoData);
         }
     }
 
