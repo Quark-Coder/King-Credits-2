@@ -1,7 +1,7 @@
 
 “
-java:S2259"KA "NullPointerException" could be thrown; "caseInventory" is nullable here.(õ¯è•ÿÿÿÿÿ8òúûœ2J$1b520d0a-4f56-4379-8259-27c44ce3b2e9
+java:S2259"KA "NullPointerException" could be thrown; "caseInventory" is nullable here.(õ¯è•ÿÿÿÿÿ8òúûœ2J$2c289605-54ee-4711-a8bf-2d051803140f
 d
-java:S1643C"Use a StringBuilder instead.(ÍÔû­ıÿÿÿÿ8òúûœ2J$c17a540a-0443-4b48-9f16-7f0c97199f88
+java:S1643C"Use a StringBuilder instead.(ÍÔû­ıÿÿÿÿ8òúûœ2J$9673f982-17f2-4a6a-9020-29de4b1f2222
 `
-java:S2119)"Save and re-use this "Random".(¼İÅf8øúûœ2J$620475d0-afd2-4b56-8ef5-0e6c1737049d
+java:S2119)"Save and re-use this "Random".(¼İÅf8øúûœ2J$000cc0da-534d-43a1-98a9-6f43e3218892

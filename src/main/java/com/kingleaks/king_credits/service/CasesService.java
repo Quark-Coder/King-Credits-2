@@ -35,6 +35,15 @@ public class CasesService {
         return result;
     }
 
+    public Cases getCasesByIdForPicture(Long id){
+        Optional<Cases> result = casesRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+
+        return null;
+    }
+
     public String getCasesById(Long id){
         Optional<Cases> optionalCases = casesRepository.findById(id);
         if (optionalCases.isPresent()) {

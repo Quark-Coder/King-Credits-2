@@ -1,19 +1,25 @@
 package com.kingleaks.king_credits.bot.waitingState;
 
+import com.kingleaks.king_credits.bot.BotService;
+import com.kingleaks.king_credits.domain.entity.Cases;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.service.CasesService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class StateWaitingForSelectCase implements StateWaitingQueryHandler{
+    private final BotService botService;
     private final StateManagerService stateManager;
     private final CasesService casesService;
 
@@ -27,6 +33,18 @@ public class StateWaitingForSelectCase implements StateWaitingQueryHandler{
                 message.setChatId(chatId);
 
                 if (result != null){
+                    Cases cases = casesService.getCasesByIdForPicture(selectId);
+
+                    byte[] photoData = cases.getPhotoData();
+
+                    ByteArrayInputStream inputStream = new ByteArrayInputStream(photoData);
+                    InputFile inputFile = new InputFile(inputStream, "photo.jpg");
+                    SendPhoto returnPhoto = new SendPhoto();
+                    returnPhoto.setChatId(chatId.toString());
+                    returnPhoto.setPhoto(inputFile);
+
+                    botService.sendPhoto(returnPhoto);
+
                     message.setText(result);
 
                     InlineKeyboardButton buyThisCase = new InlineKeyboardButton();
