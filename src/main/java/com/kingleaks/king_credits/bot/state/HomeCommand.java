@@ -74,11 +74,15 @@ public class HomeCommand implements Command {
                 new KeyboardButton("Загрузить картинку дропа"),
                 new KeyboardButton("Загрузить картинку кейса")
         );
+        List<KeyboardButton> btn5 = List.of(
+                new KeyboardButton("Загрузить картинку раздела")
+        );
 
         keyboard.add(new KeyboardRow(btn1));
         keyboard.add(new KeyboardRow(btn2));
         keyboard.add(new KeyboardRow(btn3));
         keyboard.add(new KeyboardRow(btn4));
+        keyboard.add(new KeyboardRow(btn5));
 
         return createReplyKeyboardMarkup(keyboard);
     }

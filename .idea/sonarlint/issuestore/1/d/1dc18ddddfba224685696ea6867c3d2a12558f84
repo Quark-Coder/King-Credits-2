@@ -1,11 +1,11 @@
 
-`
-java:S2259G"CA "NullPointerException" could be thrown; "cases" is nullable here.(ÉóëÚ8˜…ªõ¡2
-8
-java:S1643"Use a StringBuilder instead.(Ãî/8™…ªõ¡2
-9
-java:S16438"Use a StringBuilder instead.(­¸Âæ8™…ªõ¡2
-9
-java:S1643G"Use a StringBuilder instead.(ÉóëÚ8™…ªõ¡2
-9
-java:S1643_"Use a StringBuilder instead.(’¼âÚ8™…ªõ¡2
+†
+java:S2259G"CA "NullPointerException" could be thrown; "cases" is nullable here.(ÉóëÚ8˜…ªõ¡2J$d5e17309-e8c9-4e07-a5c8-3817d5f11e9f
+^
+java:S1643"Use a StringBuilder instead.(Ãî/8™…ªõ¡2J$c602954e-57e7-4262-a468-006ae27f9940
+_
+java:S16438"Use a StringBuilder instead.(­¸Âæ8™…ªõ¡2J$e6244e7b-c18f-42f4-bf92-037e662ae149
+_
+java:S1643G"Use a StringBuilder instead.(ÉóëÚ8™…ªõ¡2J$701a795e-9c7b-49b3-8f7f-1152eb4cb696
+_
+java:S1643_"Use a StringBuilder instead.(’¼âÚ8™…ªõ¡2J$aa6d9101-94f1-485e-b1da-61864052a6b5
