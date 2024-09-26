@@ -17,4 +17,10 @@ public interface StateImageRepository extends JpaRepository<StateImage, Long> {
     @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END " +
             "FROM state_image s WHERE s.photo_data IS NULL AND s.id = :id", nativeQuery = true)
     Boolean isStateImageHasPicture(@Param("id") Long id);
+
+    @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END " +
+            "FROM state_image s WHERE s.photo_data IS NULL AND s.name_state = :name", nativeQuery = true)
+    Boolean isStateImageHasPictureByName(@Param("name") String name);
+
+    StateImage findByNameState(String name);
 }
