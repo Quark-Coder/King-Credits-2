@@ -279,16 +279,8 @@ fsrc/main/java/com/kingleaks/king_credits/bot/state/admin/upload_cases_image/Upl
 Zsrc/main/java/com/kingleaks/king_credits/bot/callback/SelectCasesWithoutImageCallback.java,5/8/583817cecc9f391527507bba66f746352d1ee0ce
 •
 esrc/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectCasesWithoutImage.java,5/7/579486486e6f6cceb5e6b10a724893f8d95f2486
-‘
-asrc/main/java/com/kingleaks/king_credits/bot/state/admin/upload_state_image/UploadStateImage.java,5/b/5b3768b6afbe367e08a876c79c32e083e939c853
 –
 fsrc/main/java/com/kingleaks/king_credits/bot/state/admin/upload_state_image/UploadStateImageState.java,b/7/b75560f7e9395ab76b3356619f0f4b473be9707c
-q
-Asrc/main/java/com/kingleaks/king_credits/domain/entity/State.java,3/8/38469d0ce825d57baf5305b25035bac18f9433e9
-x
-Hsrc/main/java/com/kingleaks/king_credits/repository/StateRepository.java,7/5/753545dbde93bef96d17d76112266f47a05bd6d8
-r
-Bsrc/main/java/com/kingleaks/king_credits/service/StateService.java,4/3/43486456dd4928b5f117a7ebb3b6cc0784a3ce6a
 v
 Fsrc/main/java/com/kingleaks/king_credits/domain/entity/StateImage.java,d/6/d6d65feb5593b1c6724881ac7f5bc3af35dc9d3a
 w
@@ -301,3 +293,5 @@ Ssrc/main/java/com/kingleaks/king_credits/bot/callback/SelectStateImageCallback.
 ^src/main/java/com/kingleaks/king_credits/bot/waitingState/StateWaitingForSelectStateImage.java,a/4/a42f5ce692aa349e99b53548e2e02a7cf9afded5
 ƒ
 Ssrc/main/java/com/kingleaks/king_credits/bot/callback/UploadStateImageCallback.java,8/a/8a0e34eb5b4ac7b87e2a8c50da43fb42aec75808
+ƒ
+Ssrc/main/java/com/kingleaks/king_credits/bot/callback/DeleteStateImageCallback.java,8/6/86edbb104996b7616859f678393c43b55428b2c1

@@ -1,11 +1,4 @@
 
-˜	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îÍßîûÿÿÿÿ8òü”Å¢2J$e19c45ae-af7b-45d1-ba74-49e53e0dbe6d
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îÍßîûÿÿÿÿ8ë¦òö¢2J$428c0240-f7ea-44cf-aceb-46db52c2d57e
 _
-java:S1643"Use a StringBuilder instead.(¶Êì8óü”Å¢2J$124bb36e-fe19-4627-bc12-3de254adca27
-h
-java:S1128"KRemove this unused import 'com.kingleaks.king_credits.domain.entity.Cases'.(ş—½8†ìáÅ¢2
-u
-java:S1128"SRemove this unused import 'com.kingleaks.king_credits.domain.entity.TelegramUsers'.(´ˆÜ×ûÿÿÿÿ8†ìáÅ¢2
-N
-java:S1128
-"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8†ìáÅ¢2
+java:S1643"Use a StringBuilder instead.(¶Êì8ì¦òö¢2J$6e3b7fa9-4766-4b7a-8f37-00038fc3ab03

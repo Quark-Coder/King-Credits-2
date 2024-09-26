@@ -1,13 +1,10 @@
 package com.kingleaks.king_credits.service;
 
-import com.kingleaks.king_credits.domain.entity.Cases;
 import com.kingleaks.king_credits.domain.entity.StateImage;
-import com.kingleaks.king_credits.domain.entity.TelegramUsers;
 import com.kingleaks.king_credits.repository.StateImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +48,16 @@ public class StateImageService {
         if (optionalStateImage.isPresent()){
             StateImage stateImage = optionalStateImage.get();
             stateImage.setPhotoData(picture);
+            stateImageRepository.save(stateImage);
+        }
+    }
+
+    public void deletePictureForState(Long stateId){
+        Optional<StateImage> optionalStateImage = stateImageRepository.findById(stateId);
+
+        if (optionalStateImage.isPresent()){
+            StateImage stateImage = optionalStateImage.get();
+            stateImage.setPhotoData(null);
             stateImageRepository.save(stateImage);
         }
     }
