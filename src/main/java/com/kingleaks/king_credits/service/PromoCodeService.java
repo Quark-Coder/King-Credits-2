@@ -36,6 +36,9 @@ public class PromoCodeService {
     }
 
     public String enterPromoCode(String code, long telegramUserId){
+        if (code.equals("/home")){
+            return "";
+        }
         if (!promoCodeRepository.existsByCode(code)){
             return "Ошибка! Промокод не найден";
         }

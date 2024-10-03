@@ -47,7 +47,8 @@ public class HomeCommand implements Command {
         SendMessage message = SendMessage
                 .builder()
                 .chatId(chatId.toString())
-                .text("Это главная страница")
+                .text("\uD83D\uDC4B Привет друг, ты попал в лучший магазин по продаже кредитов в Critical Ops!\n\n" +
+                        " Если ты хочешь приобрести кредиты, либо испытать свою удачу - ты попал в нужное место.")
                 .build();
 
         if (userStatus.name().equals("ADMIN")) {

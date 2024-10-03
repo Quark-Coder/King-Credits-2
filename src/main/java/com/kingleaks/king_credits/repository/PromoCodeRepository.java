@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public interface PromoCodeRepository extends JpaRepository<PromoCode, Long> {
 
-    @Query(value = "SELECT CASE WHEN p.code = :code " +
-            "THEN TRUE ELSE FALSE END " +
-            "FROM promo_code p WHERE p.code = :code ", nativeQuery = true)
+    @Query(value = "SELECT CASE WHEN COUNT(p.code) > 0 THEN TRUE ELSE FALSE END " +
+            "FROM promo_code p WHERE p.code = :code", nativeQuery = true)
     Boolean existsByCode(@Param("code") String code);
+
 
     @Query(value = "SELECT CASE WHEN p.status = 'EXPIRED' " +
             " THEN TRUE ELSE FALSE END " +
