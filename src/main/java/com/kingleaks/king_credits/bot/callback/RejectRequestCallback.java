@@ -40,9 +40,9 @@ public class RejectRequestCallback implements CallbackQueryHandler{
 
         SendMessage sendMessageForUser = new SendMessage();
         sendMessageForUser.setChatId(telegramUsers.getChatId());
-        sendMessageForUser.setText("Отказ, мы не получили чек оплаты от банка. Покупка отменена.\n" +
-                "Если вы с чем-то не согласны, либо считаете, что произошла ошибка, напишите в нашу поддержку," +
-                " мы обзятательно проверим вашу заявку! Поддержка - @KingCredits");
+        sendMessageForUser.setText("❌ Платеж отклонен. \n" +
+                "\n" +
+                "Если вы считаете, что произошла ошибка, свяжитесь с нами: @KingLeaksAdmin");
         botService.sendMessage(sendMessageForUser);
     }
 

@@ -36,14 +36,14 @@ public class CasesAndGamesState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption(stateName);
+            returnPhoto.setCaption("\uD83C\uDFB0 Кейсы и игры");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("Кейсы и игры")
+                    .text("\uD83C\uDFB0 Кейсы и игры")
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());

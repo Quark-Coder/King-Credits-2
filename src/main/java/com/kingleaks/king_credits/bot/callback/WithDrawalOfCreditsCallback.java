@@ -32,8 +32,9 @@ public class WithDrawalOfCreditsCallback implements CallbackQueryHandler{
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Для вывода кредитов, введите количество кредитов," +
-                " которое вы хотите получить. \n(Минимальный вывод 100 кредитов)");
+        sendMessage.setText("⌨\uFE0F Для вывода кредитов, введите нужное количество.\n" +
+                "\n" +
+                "Минимальный вывод – 100 кредитов");
         botService.sendMessage(sendMessage);
     }
 

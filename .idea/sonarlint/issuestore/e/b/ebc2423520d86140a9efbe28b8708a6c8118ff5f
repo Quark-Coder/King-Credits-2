@@ -1,7 +1,9 @@
 
-˜	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÆÉíúÿÿÿÿ8Ò÷†È˜2J$4249b40d-3fbe-48c8-8150-0023cdab4cd4
-˜	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÆÉíúÿÿÿÿ8Ò÷†È˜2J$17e5defc-e9d7-4e3e-84e8-43e35f03ae37
+˜	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÆÉíúÿÿÿÿ8Ò÷†È˜2J$4a6d1d56-69c8-496c-9741-86575d465bdd
+˜	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÆÉíúÿÿÿÿ8Ò÷†È˜2J$c4378b54-b189-4af8-937b-56be0401dc9b
 Œ
-java:S2259*"JA "NullPointerException" could be thrown; "telegramUser" is nullable here.(é©ç98îû’È˜2J$d89907a4-ac35-4843-ad45-2b5fc19d9ecf
+java:S2259+"JA "NullPointerException" could be thrown; "telegramUser" is nullable here.(é©ç98îû’È˜2J$e7acb56a-3603-44de-8a92-820425162f1d
 ˆ
-java:S2259""EA "NullPointerException" could be thrown; "account" is nullable here.(†©¯ó8îû’È˜2J$b23dd1c2-7819-40c5-b57a-7e078acff1b2
+java:S2259""EA "NullPointerException" could be thrown; "account" is nullable here.(†©¯ó8îû’È˜2J$e1ca3b1d-a40a-4d3f-94b3-2c4e0b8391be
+O
+java:S6126$"2Replace this String concatenation with Text block.(ßáíÌ8Š¯ð‰§2

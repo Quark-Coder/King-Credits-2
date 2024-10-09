@@ -37,14 +37,14 @@ public class LeaderboardState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("Вот список лидеров:\n" + result);
+            returnPhoto.setCaption("\uD83D\uDCC3 Список лидеров за все время:\n" + result);
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("Вот список лидеров:\n" + result)
+                    .text("\uD83D\uDCC3 Список лидеров за все время:\n" + result)
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());

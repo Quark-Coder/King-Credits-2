@@ -9,7 +9,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -34,19 +36,35 @@ public class ReviewsState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("Хотите убедится в безопасности проведения сделок?" +
-                    " Можете посмотреть отзывы от наших клиентов: (Ссылка)");
-            returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+            InlineKeyboardButton urlStore = new InlineKeyboardButton();
+            urlStore.setText("✅ Отзывы");
+            urlStore.setUrl("https://t.me/KingCreditsReviews");
+            List<InlineKeyboardButton> buttons = List.of(urlStore);
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+            markup.setKeyboard(List.of(buttons));
+            returnPhoto.setCaption("\uD83D\uDCC2 Отзывы\n" +
+                    "\n" +
+                    "\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
+                    "\n" +
+                    "Предлагаем ознакомиться с отзывами от наших клиентов. Для этого нажмите кнопку ниже.\n");
+            returnPhoto.setReplyMarkup(markup);
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("Хотите убедится в безопасности проведения сделок?" +
-                            " Можете посмотреть отзывы от наших клиентов: (Ссылка)")
+                    .text("\uD83D\uDCC2 Отзывы\n" +
+                            "\n" +
+                            "\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
+                            "\n" +
+                            "Предлагаем ознакомиться с отзывами от наших клиентов. Для этого нажмите кнопку ниже.\n")
                     .build();
-            message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+            InlineKeyboardButton urlStore = new InlineKeyboardButton();
+            urlStore.setText("✅ Отзывы");
+            urlStore.setUrl("https://t.me/KingCreditsReviews");
+            List<InlineKeyboardButton> buttons = List.of(urlStore);
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+            markup.setKeyboard(List.of(buttons));
+            message.setReplyMarkup(markup);
 
             botService.sendMessage(message);
         }

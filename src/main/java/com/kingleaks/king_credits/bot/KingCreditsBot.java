@@ -218,8 +218,10 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
             if (!subscriptionVerificationService.verifySubscription(telegramUserId)) {
                 SendMessage message = new SendMessage();
                 message.setChatId(update.getMessage().getChatId().toString());
-                message.setText("Пожалуста подпишитесь на этот канал прежде чем пользоваться ботом" +
-                        "\n<a href=\"https://t.me/xrayduru/15\">Подписаться на канал</a>");
+                message.setText("\uD83D\uDC4B Добрый день! \n" +
+                        "\n" +
+                        "Прежде чем начать работать с ботом, подпишитесь на канал ниже.\n" +
+                        "\n<a href=\"https://t.me/CriticalOpsLeaks\">Подписаться на канал</a>");
                 message.setParseMode("HTML");
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                         .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Подписался")))).build());
@@ -267,7 +269,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         commandRegistry.getCommand("buyskinsState").execute(update);
                         break;
                     case "Кейсы и игры":
-                        commandRegistry.getCommand("casesandgamesstate").execute(update);
+                        sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
+                        //commandRegistry.getCommand("casesandgamesstate").execute(update);
                         break;
                     case "Промокод":
                         commandRegistry.getCommand("promocodestate").execute(update);
@@ -338,8 +341,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText("Хорошо, когда мы проверим оплату," +
-                    " деньги будут засчитаны на ваш баланс! Номер вашего чека: "
+            message.setText("⏳ Платеж в обработке…\n" +
+                    "\n" +
+                    "Когда мы проверим оплату, деньги будут зачислены на ваш баланс! \n"
                     + String.format("%05d", paymentCheckPhoto.getId()));
 
             sendMessage(message);
@@ -352,7 +356,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
 
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText("Хорошо, теперь отправьте нам свой никнейм из игры");
+            message.setText("Теперь отправьте боту свой никнейм, который используется в Critical Ops.");
 
             sendMessage(message);
         } else if (paymentHistory != null && parts[0].equals("WAITING_FOR_ITEM_PHOTO")) {

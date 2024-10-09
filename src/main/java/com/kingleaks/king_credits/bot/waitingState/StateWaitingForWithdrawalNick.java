@@ -25,7 +25,9 @@ public class StateWaitingForWithdrawalNick implements StateWaitingQueryHandler {
             withdrawalOfCreditsService.initNickInGameWithdrawalOfCredits(telegramUserID, messageText);
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText("Отлично! Оплата прошла успешно. Ожидайте, мы купим ваш скин в течение дня и уведомим вас об этом!");
+            message.setText("⏳ Заказ в обработке.\n" +
+                    "\n" +
+                    "Ожидайте, мы купим ваш скин в течение дня и уведомим вас об этом!");
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
 

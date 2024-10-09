@@ -57,7 +57,9 @@ public class ConfirmWithdrawalCallback implements CallbackQueryHandler {
 
         SendMessage sendMessageForUser = new SendMessage();
         sendMessageForUser.setChatId(telegramUsers.getChatId());
-        sendMessageForUser.setText("Вашу заявку подтвердили, можете оставить отзыв ?)");
+        sendMessageForUser.setText("✅ Заказ выполнен. Спасибо за покупку!\n" +
+                "\n" +
+                "Напишите отзыв боту, и отправьте нам ваше сообщение.");
         sendMessageForUser.setReplyMarkup(markup);
         botService.sendMessage(sendMessageForUser);
     }

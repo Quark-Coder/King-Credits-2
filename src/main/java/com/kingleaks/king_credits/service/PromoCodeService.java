@@ -40,16 +40,16 @@ public class PromoCodeService {
             return "";
         }
         if (!promoCodeRepository.existsByCode(code)){
-            return "Ошибка! Промокод не найден";
+            return "❌ Ошибка! Промокод не найден";
         }
         if (promoCodeRepository.isExpiredDate(code)){
             return "Промокод неактивен";
         }
         if (!usedPromoCodesRepository.existsByCountUser(code)){
-            return "Количество использовании превышает";
+            return "Ошибка! Количество применений закончилось";
         }
         if (Boolean.TRUE.equals(usedPromoCodesRepository.userHasPromoCode(telegramUserId, code))){
-            return "Вы уже активировали этот промокод";
+            return "❌ Ошибка! Промокод уже был использован";
         }
 
         PromoCode promoCode = promoCodeRepository.findByCode(code);
@@ -61,7 +61,7 @@ public class PromoCodeService {
         usedPromoCodes.setCreatedAt(LocalDate.now());
         usedPromoCodesRepository.save(usedPromoCodes);
 
-        return "Промокод успешно активирован! Деньги зачислены на ваш баланс.";
+        return "✅ Промокод активирован.";
     }
 
     public String getAllActivePromoCodes() {

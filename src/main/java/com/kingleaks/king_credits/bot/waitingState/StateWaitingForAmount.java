@@ -22,7 +22,16 @@ public class StateWaitingForAmount implements StateWaitingQueryHandler {
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText("Хорошо, завершите оплату, любым из способов ниже в течение 10 минут. После оплаты пришлите скриншот чека!");
+                message.setText("\uD83D\uDCCD Для продолжения, оплатите товар любым удобным способом! \n" +
+                        "• Сбербанк (Иван. А)\n" +
+                        "• Карта: 2202203605740234\n" +
+                        "\n" +
+                        "• Другие способы оплаты - @DreamCredits\n" +
+                        "\n" +
+                        "\n<a href=\"https://telegra.ph/Usloviya-pered-pokupkoj--prodazhej-09-19\">" +
+                        "Продолжая, вы автоматически соглашаетесь с условиями – нажми для ознакомления</a>"+
+                        "\nПосле оплаты отправьте изображение чека");
+                message.setParseMode("HTML");
 
                 paymentHistory.setStatus("WAITING_FOR_PAYMENT_CHECK");
                 stateManager.setUserState(telegramUserID, paymentHistory);

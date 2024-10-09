@@ -20,7 +20,7 @@ public class StateWaitingForReviews {
 
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText("Спасибо за ваш отзыв!");
+            message.setText("Спасибо за отзыв!");
             stateManager.deleteUserState(telegramUserID);
             return message;
         }

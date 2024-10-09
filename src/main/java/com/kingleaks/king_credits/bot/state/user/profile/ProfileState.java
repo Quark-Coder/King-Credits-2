@@ -39,14 +39,14 @@ public class ProfileState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption(stateName);
+            returnPhoto.setCaption("\uD83D\uDD0E Информация о вас:\n");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
-            message.setText(stateName);
+            message.setText("\uD83D\uDD0E Информация о вас:\n");
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
             botService.sendMessage(message);
@@ -61,7 +61,7 @@ public class ProfileState implements Command {
         userInfo.setText(info);
 
         InlineKeyboardButton changeNick = new InlineKeyboardButton();
-        changeNick.setText("Изменить ник");
+        changeNick.setText("✏\uFE0F Изменить ник\n");
         changeNick.setCallbackData("CHANGE_NICK");
 
         List<InlineKeyboardButton> buttons = List.of(changeNick);

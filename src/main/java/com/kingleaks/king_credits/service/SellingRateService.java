@@ -18,12 +18,11 @@ public class SellingRateService {
         if (optionalSellingRate.isPresent()) {
             SellingRate sellingRate = optionalSellingRate.get();
 
-            return "Тут вы сможете приобрести кредиты по максимально выгодному курсу: \n\n" +
-                    "от 0 до 1000 / " + sellingRate.getZeroToThousands() + "₽\n" +
-                    "от 1000 до 5000 / " + sellingRate.getThousandToFiveThousand() + "₽\n" +
-                    "от 5000 до 10000 / " + sellingRate.getFiveThousandToTenThousand() + "₽\n" +
-                    "от 10000 и более / " + sellingRate.getTenThousandOrMore() +"₽\n\n" +
-                    "Комиссия на нас!";
+            return "\uD83D\uDCC8 Актуальный курс \n\n" +
+                    "▫\uFE0F Курс: " + sellingRate.getTenThousandOrMore() +"₽ за 1 кредит\n" +
+                    "(Комиссия на нас)\n" +
+                    "Перед покупкой, обязательно " +
+                    "<a href=\"https://telegra.ph/Usloviya-pered-pokupkoj--prodazhej-09-19\">ознакомьтесь с условиями – нажми для ознакомления </a>";
         }
 
         return null;

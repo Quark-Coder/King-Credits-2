@@ -36,14 +36,14 @@ public class CalculateState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption(stateName);
+            returnPhoto.setCaption("\uD83D\uDCDA Посчитать");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("Посчитать")
+                    .text("\uD83D\uDCDA Посчитать")
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());

@@ -36,14 +36,14 @@ public class WithdrawalOfCreditsState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption(stateName);
+            returnPhoto.setCaption("\uD83D\uDD04 Вывод кредитов\n");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage welcomeMessage = new SendMessage();
             welcomeMessage.setChatId(chatId);
-            welcomeMessage.setText("Вывод кредитов");
+            welcomeMessage.setText("\uD83D\uDD04 Вывод кредитов\n");
             welcomeMessage.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
             botService.sendMessage(welcomeMessage);

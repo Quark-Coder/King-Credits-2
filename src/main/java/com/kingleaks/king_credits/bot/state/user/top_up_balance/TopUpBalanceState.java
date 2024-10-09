@@ -27,7 +27,7 @@ public class TopUpBalanceState implements Command {
     private final BotService botService;
 
     public String getDescription() {
-        return "Пополнить баланс";
+        return "\uD83D\uDCB3 Пополнить баланс";
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TopUpBalanceState implements Command {
 
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText("Для пополнения баланса введите сумму в рублях, которую вы хотите оплатить.");
+        message.setText("Чтобы пополнить баланс, введите сумму в рублях.");
 
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setText("Ввести сумму");

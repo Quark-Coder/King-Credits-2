@@ -33,7 +33,8 @@ public class WithdrawalOfCreditsService {
         double rubAmount = calculateService.calculateCreditsInRub(amount);
         if (account.getBalance().compareTo(BigDecimal.valueOf(rubAmount)) < 0){
             stateManager.deleteUserState(telegramUserId);
-            return "У вас на балансе не достаточно средств";
+            return "❌ Введено некорректное число кредитов.\n" +
+                    "Проверьте, что количество больше, или равно 100 CRDT!\n";
         }
 
 
@@ -50,8 +51,11 @@ public class WithdrawalOfCreditsService {
 
         paymentHistory.setStatus("WAITING_FOR_AMOUNT_WITHDRAWAL_PHOTO");
         stateManager.setUserState(telegramUserId, paymentHistory);
-        return "Хорошо, деньги списаны с вашего баланса." +
-                " Выставьте любой скин за " + amount/0.8 + " Пришлите скрин скина с рынка.";
+        return "❕ Деньги списаны с вашего баланса. \n" +
+                "\n" +
+                "Выставьте любой скин за " + amount/0.8 + " CRDT\n" +
+                "\n" +
+                "Отправьте в бота скрин скина с рынка.";
     }
 
     public void initPhotoWithdrawalOfCredits(Long telegramUserId, byte[] photo) {

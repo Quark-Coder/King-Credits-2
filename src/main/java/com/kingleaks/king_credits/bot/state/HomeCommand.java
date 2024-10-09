@@ -47,8 +47,11 @@ public class HomeCommand implements Command {
         SendMessage message = SendMessage
                 .builder()
                 .chatId(chatId.toString())
-                .text("\uD83D\uDC4B Привет друг, ты попал в лучший магазин по продаже кредитов в Critical Ops!\n\n" +
-                        " Если ты хочешь приобрести кредиты, либо испытать свою удачу - ты попал в нужное место.")
+                .text("\uD83E\uDEE8 Привет, друг! Если ты хочешь приобрести кредиты в Critical Ops, ты попал в нужное место. \n" +
+                        "\n" +
+                        "Dream Shop - это лучший магазин по продаже игровой валюты в Critical Ops! \uD83D\uDE09\n" +
+                        "\n" +
+                        "\uD83D\uDCCA Курс – 0.2₽ = 1 CRDT \n")
                 .build();
 
         if (userStatus.name().equals("ADMIN")) {

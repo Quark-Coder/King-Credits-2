@@ -40,7 +40,9 @@ public class ConfirmRequestCallback implements CallbackQueryHandler{
 
         SendMessage sendMessageForUser = new SendMessage();
         sendMessageForUser.setChatId(telegramUsers.getChatId());
-        sendMessageForUser.setText("Готово, ваш баланс пополнен. Можете проверить, зайдя во вкладку \"Профиль\".");
+        sendMessageForUser.setText("✅ Платеж одобрен. Желаем приятных покупок!\n" +
+                "\n" +
+                "Проверить баланс можно зайдя во вкладку \"Профиль\".");
         botService.sendMessage(sendMessageForUser);
     }
 
