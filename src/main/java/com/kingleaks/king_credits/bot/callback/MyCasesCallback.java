@@ -36,7 +36,8 @@ public class MyCasesCallback implements CallbackQueryHandler {
                 .text("Мои кейсы")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(message);
 
         String result = casesService.getAllCasesUser(telegramUserId);

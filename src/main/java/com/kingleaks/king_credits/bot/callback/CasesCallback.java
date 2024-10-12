@@ -32,7 +32,8 @@ public class CasesCallback implements CallbackQueryHandler{
                 .text("Кейсы")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(message);
 
         SendMessage option = new SendMessage();

@@ -21,8 +21,6 @@ public class StateWaitingForChangeNickname implements StateWaitingQueryHandler {
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
             message.setText("Отлично! Ваш никнейм изменен в профиле.");
-
-
             stateManager.deleteUserState(telegramUserID);
 
             return message;

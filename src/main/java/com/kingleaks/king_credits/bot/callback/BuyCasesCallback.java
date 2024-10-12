@@ -34,7 +34,8 @@ public class BuyCasesCallback implements CallbackQueryHandler{
                 .text("Хочешь попытать удачу? Мы предоставляем эксклюзивные кейсы из которых ты можешь выбить дорогие скины! Выбирай свой кейс и начинай!")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(message);
 
         SendMessage option = new SendMessage();

@@ -39,7 +39,8 @@ public class CreditsInRubCallback implements CallbackQueryHandler{
         sendMessage.setChatId(chatId);
         sendMessage.setText("⌨\uFE0F Введите сумму кредитов, которые хотите перевести в рубли.");
         sendMessage.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(sendMessage);
 
 

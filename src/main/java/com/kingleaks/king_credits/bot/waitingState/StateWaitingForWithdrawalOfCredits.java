@@ -29,7 +29,8 @@ public class StateWaitingForWithdrawalOfCredits implements StateWaitingQueryHand
                     message.setChatId(chatId);
                     message.setText("Сумма кредитов должна быть выше 100");
                     message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                            .resizeKeyboard(true).build());
                     return message;
                 } else {
                     String result = withdrawalOfCreditsService
@@ -40,7 +41,8 @@ public class StateWaitingForWithdrawalOfCredits implements StateWaitingQueryHand
                     message.setChatId(chatId);
                     message.setText(result);
                     message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                            .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                            .resizeKeyboard(true).build());
 
                     return message;
                 }

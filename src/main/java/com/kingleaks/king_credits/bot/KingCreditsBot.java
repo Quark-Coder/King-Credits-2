@@ -266,8 +266,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         commandRegistry.getCommand("reviewsstate").execute(update);
                         break;
                     case "\uD83C\uDFB0 Кейсы и игры":
-                        sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
-                        //commandRegistry.getCommand("casesandgamesstate").execute(update);
+                        //sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
+                        commandRegistry.getCommand("casesandgamesstate").execute(update);
                         break;
                     case "\uD83D\uDC68\u200D\uD83D\uDCBB Промокод":
                         commandRegistry.getCommand("promocodestate").execute(update);
