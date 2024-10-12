@@ -42,11 +42,11 @@ public class PromoCodeState implements Command {
 
         SendMessage message = SendMessage.builder()
                 .chatId(chatId)
-                .text("\uD83D\uDC68\u200D\uD83D\uDCBB Промокод" +
-                        "\nОтправьте боту промокод, чтобы получить вознаграждение.\n")
+                .text("\nОтправьте боту промокод, чтобы получить вознаграждение.\n")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                .resizeKeyboard(true).build());
 
         StatePaymentHistory userState = new StatePaymentHistory();
         userState.setTelegramUserId(update.getMessage().getFrom().getId());

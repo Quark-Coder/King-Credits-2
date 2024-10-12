@@ -34,19 +34,19 @@ public class HelpState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("\uD83D\uDC68\u200D\uD83D\uDCBB Поддержка" +
-                    "\nПо всем вопросам, обращайтесь - @KingLeaksAdmin" );
+            returnPhoto.setCaption("По всем вопросам, обращайтесь - @KingLeaksAdmin" );
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("\uD83D\uDC68\u200D\uD83D\uDCBB Поддержка" +
-                            "\nПо всем вопросам, обращайтесь - @KingLeaksAdmin" )
+                    .text("По всем вопросам, обращайтесь - @KingLeaksAdmin" )
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
 
             botService.sendMessage(message);
         }

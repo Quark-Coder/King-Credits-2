@@ -111,28 +111,27 @@ public class HomeCommand implements Command {
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         List<KeyboardButton> btn1 = List.of(
-                new KeyboardButton("Пополнить баланс"),
-                new KeyboardButton("Профиль")
+                new KeyboardButton("\uD83D\uDCB3 Пополнить баланс"),
+                new KeyboardButton("\uD83D\uDC64 Профиль")
         );
         List<KeyboardButton> btn2 = List.of(
-                new KeyboardButton("Вывод кредитов"),
-                new KeyboardButton("Купить скины")
+                new KeyboardButton("\uD83D\uDD04 Вывод кредитов"),
+                new KeyboardButton("\uD83C\uDFB0 Кейсы и игры")
         );
         List<KeyboardButton> btn3 = List.of(
-                new KeyboardButton("Кейсы и игры"),
-                new KeyboardButton("Актуальный курс")
+                new KeyboardButton("\uD83D\uDCC8 Актуальный курс"),
+                new KeyboardButton("\uD83D\uDC68\u200D\uD83D\uDCBB Промокод")
         );
         List<KeyboardButton> btn4 = List.of(
-                new KeyboardButton("Промокод"),
-                new KeyboardButton("Таблица лидеров")
+                new KeyboardButton("\uD83E\uDD47 Таблица лидеров"),
+                new KeyboardButton("\uD83D\uDCDA Посчитать")
         );
         List<KeyboardButton> btn5 = List.of(
-                new KeyboardButton("Посчитать"),
-                new KeyboardButton("Помощь")
+                new KeyboardButton("\uD83D\uDC68\u200D\uD83D\uDCBB Поддержка"),
+                new KeyboardButton("\uD83D\uDCB0 Продать кредиты")
         );
         List<KeyboardButton> btn6 = List.of(
-                new KeyboardButton("Продать кредиты"),
-                new KeyboardButton("Отзывы")
+                new KeyboardButton("\uD83D\uDCC2 Отзывы")
         );
 
         keyboard.add(new KeyboardRow(btn1));

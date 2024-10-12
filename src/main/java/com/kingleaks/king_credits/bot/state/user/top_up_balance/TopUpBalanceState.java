@@ -43,14 +43,16 @@ public class TopUpBalanceState implements Command {
             returnPhoto.setPhoto(inputFile);
             returnPhoto.setCaption(getDescription());
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage welcomeMessage = new SendMessage();
             welcomeMessage.setChatId(chatId);
             welcomeMessage.setText(getDescription());
             welcomeMessage.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(welcomeMessage);
         }
 

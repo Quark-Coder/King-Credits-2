@@ -27,7 +27,8 @@ public class StatisticsState implements Command {
                 .text("Статистика")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(message);
 
         SendMessage result = new SendMessage();

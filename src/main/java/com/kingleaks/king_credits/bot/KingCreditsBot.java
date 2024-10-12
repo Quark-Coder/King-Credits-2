@@ -234,48 +234,45 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     case "/start":
                     case "/home":
                     case "Назад":
-                    case "Меню":
+                    case "\uD83D\uDCC3 Меню":
                         commandRegistry.getCommand("homecommand").execute(update);
                         stateManager.deleteUserState(telegramUserId);
                         break;
                     case "Подписался":
                         commandRegistry.getCommand("homecommand").execute(update);
                         break;
-                    case "Пополнить баланс":
+                    case "\uD83D\uDCB3 Пополнить баланс":
                         commandRegistry.getCommand("topupbalancestate").execute(update);
                         break;
-                    case "Профиль":
+                    case "\uD83D\uDC64 Профиль":
                         commandRegistry.getCommand("profilestate").execute(update);
                         break;
-                    case "Вывод кредитов":
+                    case "\uD83D\uDD04 Вывод кредитов":
                         commandRegistry.getCommand("withdrawalofcreditsstate").execute(update);
                         break;
-                    case "Актуальный курс":
+                    case "\uD83D\uDCC8 Актуальный курс":
                         commandRegistry.getCommand("currentratestate").execute(update);
                         break;
-                    case "Посчитать":
+                    case "\uD83D\uDCDA Посчитать":
                         commandRegistry.getCommand("calculatestate").execute(update);
                         break;
-                    case "Помощь":
+                    case "\uD83D\uDC68\u200D\uD83D\uDCBB Поддержка":
                         commandRegistry.getCommand("helpstate").execute(update);
                         break;
-                    case "Продать кредиты":
+                    case "\uD83D\uDCB0 Продать кредиты":
                         commandRegistry.getCommand("sellcreditsstate").execute(update);
                         break;
-                    case "Отзывы":
+                    case "\uD83D\uDCC2 Отзывы":
                         commandRegistry.getCommand("reviewsstate").execute(update);
                         break;
-                    case "Купить скины":
-                        commandRegistry.getCommand("buyskinsState").execute(update);
-                        break;
-                    case "Кейсы и игры":
+                    case "\uD83C\uDFB0 Кейсы и игры":
                         sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
                         //commandRegistry.getCommand("casesandgamesstate").execute(update);
                         break;
-                    case "Промокод":
+                    case "\uD83D\uDC68\u200D\uD83D\uDCBB Промокод":
                         commandRegistry.getCommand("promocodestate").execute(update);
                         break;
-                    case "Таблица лидеров":
+                    case "\uD83E\uDD47 Таблица лидеров":
                         commandRegistry.getCommand("leaderboardstate").execute(update);
                         break;
                 }

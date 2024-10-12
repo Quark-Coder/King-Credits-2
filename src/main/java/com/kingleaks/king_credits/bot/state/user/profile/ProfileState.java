@@ -41,14 +41,16 @@ public class ProfileState implements Command {
             returnPhoto.setPhoto(inputFile);
             returnPhoto.setCaption("\uD83D\uDD0E Информация о вас:\n");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
             message.setText("\uD83D\uDD0E Информация о вас:\n");
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(message);
         }
 

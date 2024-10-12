@@ -18,8 +18,7 @@ public class SellingRateService {
         if (optionalSellingRate.isPresent()) {
             SellingRate sellingRate = optionalSellingRate.get();
 
-            return "\uD83D\uDCC8 Актуальный курс \n\n" +
-                    "▫\uFE0F Курс: " + sellingRate.getTenThousandOrMore() +"₽ за 1 кредит\n" +
+            return "▫\uFE0F Курс: " + sellingRate.getTenThousandOrMore() +"₽ за 1 кредит\n" +
                     "(Комиссия на нас)\n" +
                     "Перед покупкой, обязательно " +
                     "<a href=\"https://telegra.ph/Usloviya-pered-pokupkoj--prodazhej-09-19\">ознакомьтесь с условиями – нажми для ознакомления </a>";

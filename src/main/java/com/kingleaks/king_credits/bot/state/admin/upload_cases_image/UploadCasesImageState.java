@@ -28,7 +28,8 @@ public class UploadCasesImageState implements Command {
                 .text("Загрузить картинку кейса")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                .resizeKeyboard(true).build());
         botService.sendMessage(message);
 
         String listCases = casesService.getCasesListWithoutPicAsString();

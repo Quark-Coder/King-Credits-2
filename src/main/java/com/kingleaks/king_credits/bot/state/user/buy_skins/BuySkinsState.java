@@ -38,13 +38,17 @@ public class BuySkinsState implements Command {
             returnPhoto.setPhoto(inputFile);
             returnPhoto.setCaption(stateName);
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
                     .text("Купить скины")
                     .build();
+            message.setReplyMarkup(ReplyKeyboardMarkup.builder()
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(message);
         }
 

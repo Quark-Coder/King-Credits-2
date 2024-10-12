@@ -38,7 +38,8 @@ public class CasesAndGamesState implements Command {
             returnPhoto.setPhoto(inputFile);
             returnPhoto.setCaption("\uD83C\uDFB0 Кейсы и игры");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
@@ -46,7 +47,8 @@ public class CasesAndGamesState implements Command {
                     .text("\uD83C\uDFB0 Кейсы и игры")
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(message);
         }
 

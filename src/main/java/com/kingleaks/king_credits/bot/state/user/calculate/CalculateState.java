@@ -36,9 +36,9 @@ public class CalculateState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("\uD83D\uDCDA Посчитать");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
@@ -46,7 +46,8 @@ public class CalculateState implements Command {
                     .text("\uD83D\uDCDA Посчитать")
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(message);
         }
 

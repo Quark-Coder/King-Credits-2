@@ -42,9 +42,7 @@ public class ReviewsState implements Command {
             List<InlineKeyboardButton> buttons = List.of(urlStore);
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
             markup.setKeyboard(List.of(buttons));
-            returnPhoto.setCaption("\uD83D\uDCC2 Отзывы\n" +
-                    "\n" +
-                    "\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
+            returnPhoto.setCaption("\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
                     "\n" +
                     "Предлагаем ознакомиться с отзывами от наших клиентов. Для этого нажмите кнопку ниже.\n");
             returnPhoto.setReplyMarkup(markup);
@@ -52,9 +50,7 @@ public class ReviewsState implements Command {
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("\uD83D\uDCC2 Отзывы\n" +
-                            "\n" +
-                            "\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
+                    .text("\uD83D\uDC6E\u200D♂\uFE0F Удостоверьтесь в безопасности проведения сделок.\n" +
                             "\n" +
                             "Предлагаем ознакомиться с отзывами от наших клиентов. Для этого нажмите кнопку ниже.\n")
                     .build();

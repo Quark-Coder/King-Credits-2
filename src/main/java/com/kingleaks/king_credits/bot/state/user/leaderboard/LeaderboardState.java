@@ -39,7 +39,8 @@ public class LeaderboardState implements Command {
             returnPhoto.setPhoto(inputFile);
             returnPhoto.setCaption("\uD83D\uDCC3 Список лидеров за все время:\n" + result);
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
@@ -47,7 +48,8 @@ public class LeaderboardState implements Command {
                     .text("\uD83D\uDCC3 Список лидеров за все время:\n" + result)
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendMessage(message);
         }
     }

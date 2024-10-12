@@ -1,13 +1,13 @@
 
 k
-java:S5411"(Use a primitive boolean expression here.(ŞÆê·8í¦›‹§2J$97ae9976-b88f-47b4-a1f3-5c203a4bc2c2
+java:S5411"(Use a primitive boolean expression here.(ŞÆê·8í¦›‹§2J$ffa5f416-a3f1-4212-aa5a-49011fabaa7c
 u
-java:S6126-"2Replace this String concatenation with Text block.(‡Èœ8ù¦›‹§2J$5c4ab4c5-4143-4290-a956-c16f1d81e3b5
-u
-java:S61267"2Replace this String concatenation with Text block.(šû¿¹8û¦›‹§2J$9e16f8ae-f8a1-4e67-9cad-8f5f20a4c138
+java:S6126-"2Replace this String concatenation with Text block.(˜¨¸8ù¦›‹§2J$4069c9d3-1155-4af5-afd4-2dc098ec8dc3
+z
+java:S61265"2Replace this String concatenation with Text block.(‡ûŠ„şÿÿÿÿ8û¦›‹§2J$6d1d8b92-a5b7-4a54-b119-6265214bc09d
 ¬
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup'.(Ù•«ğ8‹Å¤‹§2J$8e31f9c1-b41e-4920-9f84-ac94bf88789a
+java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup'.(Ù•«ğ8‹Å¤‹§2J$1008bc30-4e67-4e87-a761-f65c57a112ec
 ¯
-java:S1128"lRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton'.(ĞíÁî8‹Å¤‹§2J$b3dcd4f2-98a8-4359-be6c-6bd1c4eb6f69
+java:S1128"lRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton'.(ĞíÁî8‹Å¤‹§2J$7681b153-7516-4829-bd83-27989ccc4937
 ±
-java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow'.(Ğ§‰šùÿÿÿÿ8‹Å¤‹§2J$380de3af-3527-485a-baf2-83abde8d45f5
+java:S1128"iRemove this unused import 'org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow'.(Ğ§‰šùÿÿÿÿ8‹Å¤‹§2J$d70e5594-bdac-475a-bb80-012c28c9373d

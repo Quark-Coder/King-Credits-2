@@ -34,25 +34,23 @@ public class SellCreditsState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("\uD83D\uDCB0 Продать кредиты\n" +
-                    "\n" +
-                    "\uD83E\uDD14 Хотите срочно продать кредиты? Мы готовы помочь!\n" +
+            returnPhoto.setCaption("\uD83E\uDD14 Хотите срочно продать кредиты? Мы готовы помочь!\n" +
                     "\n" +
                     "Для этого обратитесь в нашу поддержку: @DreamCredits");
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
             botService.sendPhoto(returnPhoto);
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("\uD83D\uDCB0 Продать кредиты\n" +
-                            "\n" +
-                            "\uD83E\uDD14 Хотите срочно продать кредиты? Мы готовы помочь!\n" +
+                    .text("\uD83E\uDD14 Хотите срочно продать кредиты? Мы готовы помочь!\n" +
                             "\n" +
                             "Для этого обратитесь в нашу поддержку: @DreamCredits")
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Назад")))).build());
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
+                    .resizeKeyboard(true).build());
 
             botService.sendMessage(message);
         }
