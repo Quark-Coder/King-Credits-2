@@ -1,27 +1,27 @@
 
 s
-java:S1066Œ"/Merge this if statement with the enclosing one.(Ë´Ì8¢ïŠŠ§2J$0d4336c5-34a6-4f26-802d-33caacbcb06d
+java:S1066Œ"/Merge this if statement with the enclosing one.(Ë´Ì8¢ïŠŠ§2J$f894661d-29b1-42a4-a46a-c7b68be93d61
 ”
-java:S1192"KDefine a constant instead of duplicating this literal "ĞĞ°Ğ·Ğ°Ğ´" 3 times.(Şëºèûÿÿÿÿ8¥ïŠŠ§2J$921eaa5d-06d7-48a2-9dd9-50860570c4b6
+java:S1192"KDefine a constant instead of duplicating this literal "ĞĞ°Ğ·Ğ°Ğ´" 3 times.(Şëºèûÿÿÿÿ8¥ïŠŠ§2J$0f97113e-51e6-4f56-abae-aa12b5443dd3
 ‹
-java:S1192Œ"GDefine a constant instead of duplicating this literal "/start" 4 times.(Ë´Ì8¥ïŠŠ§2J$3fb8fbf7-56d5-401f-addf-da57d33d831f
+java:S1192Œ"GDefine a constant instead of duplicating this literal "/start" 4 times.(Ë´Ì8¥ïŠŠ§2J$7a1d47a7-ed87-4120-9094-f14c7af4ed16
 
-java:S1192"FDefine a constant instead of duplicating this literal "/home" 3 times.(ŞÒÁÊşÿÿÿÿ8¥ïŠŠ§2J$eafb8850-2c5f-4785-9d20-48f843a6de25
+java:S1192"FDefine a constant instead of duplicating this literal "/home" 3 times.(ŞÒÁÊşÿÿÿÿ8¥ïŠŠ§2J$bc6dcf15-2f8c-424e-af41-1db162c9fe08
 •
-java:S1192 "LDefine a constant instead of duplicating this literal "homecommand" 4 times.(á©²úÿÿÿÿ8¥ïŠŠ§2J$8ddff814-fd1f-4cc2-ba30-5e7f30e14ff3
+java:S1192 "LDefine a constant instead of duplicating this literal "homecommand" 4 times.(á©²úÿÿÿÿ8¥ïŠŠ§2J$904a3e84-b14c-41db-a918-df7cc99ed312
 ‡
-java:S6208Ÿ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¥ïŠŠ§2J$26f84cd3-d851-44a9-bd29-6b3789011bc4
+java:S6208Ÿ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¥ïŠŠ§2J$e9f6391e-4e67-439f-9438-f883a5ea638f
 ‡
-java:S6208µ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¥ïŠŠ§2J$504bf410-3edc-4a77-889f-2587bd937dff
+java:S6208µ"CMerge the previous cases into this one using comma-separated label.(ş†Œ8¥ïŠŠ§2J$44127715-9f0a-4169-bb9d-79887058405e
 ‡
-java:S6208í"CMerge the previous cases into this one using comma-separated label.( ëêÔ8¥ïŠŠ§2J$ed3d6727-e7d1-4e03-af47-b606458976fc
+java:S6208í"CMerge the previous cases into this one using comma-separated label.( ëêÔ8¥ïŠŠ§2J$7e3c1c9e-562f-4669-a7a0-c033a0696d7d
 
-java:S1874Q"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8­ïŠŠ§2J$53bd1380-6869-405d-9b54-05df6dc36651
-j	java:S131›""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8²ïŠŠ§2J$0cf35dbe-531c-4457-a071-75a2c7acefa5
-j	java:S131±""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8³ïŠŠ§2J$b623562b-8db5-47c0-9127-bc7291a54321
+java:S1874Q"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(®É–Ø8­ïŠŠ§2J$83fa423d-0726-4924-85e7-1e293f77d897
+j	java:S131›""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8²ïŠŠ§2J$02c4d1d2-eb74-4560-8935-c61361206c2a
+j	java:S131±""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8³ïŠŠ§2J$0e777c16-4d6c-44aa-a910-d82b0869b800
 v
-java:S6126İ"2Replace this String concatenation with Text block.(«àêƒ8¶ïŠŠ§2J$5cf56a49-c652-4407-a8a8-4e7281733cb7
-j	java:S131é""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8·ïŠŠ§2J$13c2f3bb-8dfd-4523-ae71-48ba62de216d
-	java:S125"<This block of commented-out lines of code should be removed.(—üşº8ş×­‰¨2J$cd8f5257-372c-4854-a213-0b7687d20830
+java:S6126İ"2Replace this String concatenation with Text block.(«àêƒ8¶ïŠŠ§2J$8d226adb-d929-45d4-b407-1f088b51087d
+j	java:S131é""Add a default case to this switch.(Ö‘ò°úÿÿÿÿ8·ïŠŠ§2J$81d42b8d-9616-41ad-879e-19b7f93393f5
+^	java:S125"<This block of commented-out lines of code should be removed.(®Œ…­ûÿÿÿÿ8ŒşşÓ¨2
 j
-java:S1168»"&Return an empty array instead of null.(¥¹ï8ÂïŠŠ§2J$3cc724f0-f62d-4640-b1b2-fcfb55ab446a
+java:S1168»"&Return an empty array instead of null.(¥¹ï8ÂïŠŠ§2J$2119e45d-af14-4bf5-ba5a-b850f94b83ff

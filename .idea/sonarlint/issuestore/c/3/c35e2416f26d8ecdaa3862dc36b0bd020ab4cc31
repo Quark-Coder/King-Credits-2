@@ -1,6 +1,6 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8¢ÚŞ2J$483fe7cd-4899-471c-8c14-05e10358d85e
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ê×şÿÿÿÿ8¢ÚŞ2J$04ed36a7-01ef-42e3-9529-237fef3f9bf5
 “
-java:S2259""KA "NullPointerException" could be thrown; "telegramUsers" is nullable here.(Ä…“àüÿÿÿÿ8ôÜšŞ2J$951dba37-c2e1-4b79-ade4-b1c8ecf6b176
+java:S2259""KA "NullPointerException" could be thrown; "telegramUsers" is nullable here.(Ä…“àüÿÿÿÿ8ôÜšŞ2J$862a0e2e-aa8e-45a7-be9c-bedbba9310a2
 „
-java:S11266"AReplace this if-then-else statement by a single return statement.(Ñìéû8®© Ş2J$e08f2987-2973-42ac-9c24-d03c001f8ac3
+java:S11266"AReplace this if-then-else statement by a single return statement.(Ñìéû8®© Ş2J$f2b49030-ccad-430b-8a25-022c23382645
