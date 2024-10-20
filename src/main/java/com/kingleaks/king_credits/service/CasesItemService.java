@@ -26,7 +26,7 @@ public class CasesItemService {
         Optional<Cases> optionalCases = casesRepository.findById(caseInventory.getCaseId());
         if (optionalCases.isPresent()){
             Cases cases = optionalCases.get();
-            String caseName = cases.getName().name();
+            String caseName = cases.getName();
             List<CasesItem> itemList = casesItemRepository.findAllCasesItemByCaseName(caseName);
             caseInventoryRepository.delete(caseInventory);
             return selectCaseItem(itemList);

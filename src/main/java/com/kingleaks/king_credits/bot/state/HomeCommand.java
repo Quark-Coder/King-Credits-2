@@ -95,7 +95,8 @@ public class HomeCommand implements Command {
                 new KeyboardButton("Загрузить картинку кейса")
         );
         List<KeyboardButton> btn5 = List.of(
-                new KeyboardButton("Загрузить картинку раздела")
+                new KeyboardButton("Загрузить картинку раздела"),
+                new KeyboardButton("Обновить реквизиты оплаты")
         );
 
         keyboard.add(new KeyboardRow(btn1));

@@ -1,6 +1,5 @@
 package com.kingleaks.king_credits.domain.entity;
 
-import com.kingleaks.king_credits.domain.enums.CaseName;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,9 +13,8 @@ public class Cases {
     @Id
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "name")
-    private CaseName name;
+    private String name;
 
     @Column(name = "price")
     private Double price;

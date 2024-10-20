@@ -49,7 +49,7 @@ public class CasesService {
         if (optionalCases.isPresent()) {
             String result = "";
             Cases cases = optionalCases.get();
-            List<CasesItem> casesItemList = casesItemRepository.findAllCasesItemByCaseName(cases.getName().name());
+            List<CasesItem> casesItemList = casesItemRepository.findAllCasesItemByCaseName(cases.getName());
             result = result + cases.getName() + " " + cases.getPrice() + " Руб. Хороший выбор! Вот его содержимое:";
 
             for (CasesItem casesItem : casesItemList){

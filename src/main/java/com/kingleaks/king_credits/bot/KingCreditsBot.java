@@ -180,6 +180,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "Назад":
                 case "Меню":
                     commandRegistry.getCommand("homecommand").execute(update);
+                    stateManager.deleteUserState(update.getMessage().getFrom().getId());
                     break;
                 case "Запросы на пополнение":
                     commandRegistry.getCommand("replenishmentrequestsstate").execute(update);
@@ -207,6 +208,9 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                     break;
                 case "Загрузить картинку раздела":
                     commandRegistry.getCommand("uploadstateimagestate").execute(update);
+                    break;
+                case "Обновить реквизиты оплаты":
+                    commandRegistry.getCommand("paymentdetailsstate").execute(update);
                     break;
                 }
         }

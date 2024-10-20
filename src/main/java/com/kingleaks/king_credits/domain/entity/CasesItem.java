@@ -1,6 +1,5 @@
 package com.kingleaks.king_credits.domain.entity;
 
-import com.kingleaks.king_credits.domain.enums.CaseName;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +25,6 @@ public class CasesItem {
     @Column(name = "photo_data", columnDefinition="bytea")
     private byte[] photoData;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "cases_name")
-    private CaseName caseName;
+    private String caseName;
 }

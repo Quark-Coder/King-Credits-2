@@ -1,6 +1,8 @@
 package com.kingleaks.king_credits.bot.waitingState;
 
+import com.kingleaks.king_credits.domain.entity.PaymentDetails;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
+import com.kingleaks.king_credits.repository.PaymentDetailsRepository;
 import com.kingleaks.king_credits.service.PaymentCheckPhotoService;
 import com.kingleaks.king_credits.service.StateManagerService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 @Component
 @RequiredArgsConstructor
 public class StateWaitingForAmount implements StateWaitingQueryHandler {
+    private final PaymentDetailsRepository paymentDetailsRepository;
     private final PaymentCheckPhotoService paymentCheckPhotoService;
     private final StateManagerService stateManager;
 
@@ -17,16 +20,17 @@ public class StateWaitingForAmount implements StateWaitingQueryHandler {
                                        Long chatId, String messageText, Long telegramUserID){
         if (paymentHistory != null){
             try {
+                PaymentDetails paymentDetails = paymentDetailsRepository.findById(1L).orElse(null);
                 double amount = Double.parseDouble(messageText);
                 paymentCheckPhotoService.createPaymentCheckPhoto(telegramUserID, amount);
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
                 message.setText("\uD83D\uDCCD Для продолжения, оплатите товар любым удобным способом! \n" +
-                        "• Сбербанк (Иван. А)\n" +
-                        "• Карта: 2202203605740234\n" +
+                        "• " + paymentDetails.getNameBankAndUser() +"\n" +
+                        "• Карта: " + paymentDetails.getCardNumber() + "\n" +
                         "\n" +
-                        "• Другие способы оплаты - @DreamCredits\n" +
+                        "• Другие способы оплаты - " + paymentDetails.getOtherPaymentDetails() + "\n" +
                         "\n" +
                         "\n<a href=\"https://telegra.ph/Usloviya-pered-pokupkoj--prodazhej-09-19\">" +
                         "Продолжая, вы автоматически соглашаетесь с условиями – нажми для ознакомления</a>"+
