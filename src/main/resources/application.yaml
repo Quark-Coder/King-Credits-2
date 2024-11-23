@@ -15,9 +15,10 @@ spring:
     user: postgres
     schemas: public
 bot:
-  name: KingCreditsBot
-  token: 7073799477:AAEgoOz51E7VIu0D4L41QK3cLcDg46wVijU
+  name: DreamDropCriticalOps_bot
+  token: 7635813026:AAHnoE2MIWXQzGBBzfRRTpTMRkET1COQ-uo
 telegram:
   channel:
-    username: ${USERNAME:@xrayduru}
-    url: ${URL:https://www.youtube.com/watch?v=vZRsVFgAKS8}
+    username: ${USERNAME:@CriticalOpsLeaks}
+    url-telegram-channel: ${URL:https://t.me/CriticalOpsLeaks}
+    url: ${URL:https://t.me/CriticalOpsLeaks}

@@ -11,6 +11,7 @@ import com.kingleaks.king_credits.service.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -35,6 +36,8 @@ import java.util.List;
 @Component
 @Slf4j
 public class KingCreditsBot extends TelegramLongPollingBot implements BotService {
+    @Value("${telegram.channel.url-telegram-channel}")
+    private String urlTelegramChannel;
     private final BotConfig botConfig;
     private final CommandRegistry commandRegistry;
     private final List<CallbackQueryHandler> callbackQueryHandlers;
@@ -92,6 +95,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 checkCommandForAdmin(update);
             } else if (userStatus.name().equals("BANNED")){
                 checkCommandForBanned(update);
+            } else if (userStatus.name().equals("USER") || userStatus != null){
+                checkCommand(update);
             } else {
                 checkCommand(update);
             }
@@ -225,7 +230,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 message.setText("\uD83D\uDC4B Добрый день! \n" +
                         "\n" +
                         "Прежде чем начать работать с ботом, подпишитесь на канал ниже.\n" +
-                        "\n<a href=\"https://t.me/CriticalOpsLeaks\">Подписаться на канал</a>");
+                        "\n<a href=\""+ urlTelegramChannel +"\">Подписаться на канал</a>");
                 message.setParseMode("HTML");
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                         .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Подписался")))).build());
