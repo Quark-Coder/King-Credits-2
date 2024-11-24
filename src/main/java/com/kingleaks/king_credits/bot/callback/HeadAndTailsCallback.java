@@ -26,9 +26,9 @@ public class HeadAndTailsCallback implements CallbackQueryHandler{
         deleteMessage(callbackQuery);
         SendMessage option = new SendMessage();
         option.setChatId(callbackQuery.getMessage().getChatId());
-        option.setText("Ух, любишь ты рисковать! Это игра - орел и решка." +
-                " Все что от тебя требуется, так это написать сумму," +
-                " которую ты хочешь поставить. Максимальная ставка 5000 рублей.");
+        option.setText("\uD83E\uDE99 Это игра - орел и решка. \n" +
+                "\n" +
+                "Чтобы начать игру нужно выбрать сумму, которую вы хотите поставить. ");
 
         InlineKeyboardButton enterSum = new InlineKeyboardButton();
         enterSum.setText("Ввести сумму ставки");

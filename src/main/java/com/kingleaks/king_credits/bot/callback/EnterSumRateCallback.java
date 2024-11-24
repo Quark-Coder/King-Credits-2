@@ -31,7 +31,9 @@ public class EnterSumRateCallback implements CallbackQueryHandler{
 
         SendMessage option = new SendMessage();
         option.setChatId(callbackQuery.getMessage().getChatId());
-        option.setText("Введите сумму вашей ставки. Максимальная ставка 5000 рублей.");
+        option.setText("\uD83D\uDCB0 Введите сумму вашей ставки\n" +
+                "\n" +
+                "Максимальная ставка 5000 рублей!");
 
         botService.sendMessage(option);
     }

@@ -36,9 +36,9 @@ public class StateWaitingEnteringSumForRate implements StateWaitingQueryHandler{
                     return message;
                 }
 
-                message.setText("Хорошая ставка, деньги списаны с баланса." +
-                        " Выбери в меню орел, либо решку. Получается," +
-                        " я подбрасываю монету и мы начинаем?... (Шанс победы - 50%)");
+                message.setText("❗\uFE0FДеньги списаны с баланса. \n" +
+                        "\n" +
+                        "Выбирайте, орел или решка! Все или ничего…\n");
 
                 InlineKeyboardButton head = new InlineKeyboardButton();
                 head.setText("Орел");

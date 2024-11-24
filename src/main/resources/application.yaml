@@ -4,6 +4,9 @@ spring:
   application:
     name: king_credits
   datasource:
+    username: postgres
+    password: postgres
+
     name: king_credits
     url: jdbc:postgresql://localhost:5432/king_credits
   flyway:
@@ -12,7 +15,6 @@ spring:
     baseline-description: "init"
     locations: classpath:db/migration
     url: jdbc:postgresql://localhost:5432/king_credits
-    user: postgres
     schemas: public
 bot:
   name: KingCreditsBot

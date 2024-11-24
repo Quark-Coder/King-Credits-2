@@ -28,14 +28,17 @@ public class HeadAndTailService {
             headAndTail.setAmount(Double.valueOf(amountRate));
             accountService.replenish(telegramUserId, BigDecimal.valueOf(amountRate));
             headAndTailRepository.save(headAndTail);
-            return "Да ты везунчик! Твой приз - " + amountRate * 2 +
-                    ", мы обновили твой баланс. Спасибо за игру.";
+
+            return "\uD83E\uDD11 Да ты везунчик! \n" +
+                    "\n" +
+                    "Твой приз - "+ amountRate * 2 +". Баланс обновлен, ждем тебя снова!";
+
         } else {
             headAndTail.setStatus(HeadAndTailStatus.DEF);
             headAndTail.setAmount(Double.valueOf(amountRate));
             accountService.withdraw(telegramUserId, BigDecimal.valueOf(amountRate));
             headAndTailRepository.save(headAndTail);
-            return "Не повезло... Главное не расстраивайся! Повезет в следущий раз.";
+            return "\uD83D\uDE22 Не повезло... ";
         }
     }
 
