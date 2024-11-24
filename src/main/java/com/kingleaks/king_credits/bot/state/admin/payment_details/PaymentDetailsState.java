@@ -35,7 +35,7 @@ public class PaymentDetailsState implements Command {
                         "Пример формы: Сбер(Алекс А)_2202203605740234")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
                 .resizeKeyboard(true).build());
 
         botService.sendMessage(message);

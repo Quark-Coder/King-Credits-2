@@ -20,5 +20,5 @@ bot:
 telegram:
   channel:
     username: ${USERNAME:@test_quesrk}
-    url-telegram-channel: ${URL:https://t.me/test_quesrk}
-    url: ${URL:https://www.youtube.com/watch?v=vZRsVFgAKS8}
+    url-telegram-channel: ${URL:https://t.me/CriticalOpsLeaks}
+    url: ${URL:https://t.me/CriticalOpsLeaks}

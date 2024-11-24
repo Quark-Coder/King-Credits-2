@@ -56,6 +56,7 @@ public class CheckReviewsCronJob {
             SendMessage sendMessage = SendMessage.builder()
                     .chatId(admin.getChatId())
                     .text(reviewMessage)
+                    .parseMode("HTML")
                     .build();
 
             review.setStatus(ReviewsStatus.COMPLETED);

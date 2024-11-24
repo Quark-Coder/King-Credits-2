@@ -49,9 +49,9 @@ public class TelegramUsersService {
             return "• Ваш никнейм - " + nickname +
                     "\n• ID пользователя - "  + String.format("%05d", id) +
                     "\n\uD83D\uDED2 Ваш счет:\n" +
-                    "\n• Баланс - " + balance +
-                    "\n• Всего пополнено - " + replenish +
-                    "\n• Всего выведено - " + withdrew;
+                    "\n• Баланс - " + balance + " ₽" +
+                    "\n• Всего пополнено - " + replenish + " ₽" +
+                    "\n• Всего выведено - " + withdrew + " CRDT";
         }
 
         return null;
@@ -66,7 +66,7 @@ public class TelegramUsersService {
         }
     }
 
-    public UserStatus getStatus(Long telegramUserId) {
+    public String getStatus(Long telegramUserId) {
         return telegramUsersRepository.getUserStatusByUserId(telegramUserId);
     }
 

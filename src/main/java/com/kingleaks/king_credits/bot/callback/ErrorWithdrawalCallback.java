@@ -40,7 +40,7 @@ public class ErrorWithdrawalCallback implements CallbackQueryHandler{
 
         SendMessage sendMessageForUser = new SendMessage();
         sendMessageForUser.setChatId(telegramUsers.getChatId());
-        sendMessageForUser.setText("У нас возникли проблемы с выводом ваших кредитов. Пожалуйста свяжитесь с поддержкой по поводу вашего заказа. Поддержка - @KingCredits");
+        sendMessageForUser.setText("У нас возникли проблемы с выводом ваших кредитов. Пожалуйста свяжитесь с поддержкой по поводу вашего заказа. Поддержка - @DreamCredits");
         botService.sendMessage(sendMessageForUser);
     }
 

@@ -5,10 +5,7 @@ import com.kingleaks.king_credits.domain.entity.PaymentCheckPhoto;
 import com.kingleaks.king_credits.domain.entity.StatePaymentHistory;
 import com.kingleaks.king_credits.domain.entity.TelegramUsers;
 import com.kingleaks.king_credits.domain.entity.WithdrawalOfCredits;
-import com.kingleaks.king_credits.service.ReplenishmentRequestsService;
-import com.kingleaks.king_credits.service.StateManagerService;
-import com.kingleaks.king_credits.service.TelegramUsersService;
-import com.kingleaks.king_credits.service.WithdrawalOfCreditsService;
+import com.kingleaks.king_credits.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -28,6 +25,7 @@ public class StateWaitingForSelectWithdrawalRequest implements StateWaitingQuery
     private final WithdrawalOfCreditsService withdrawalOfCreditsService;
     private final TelegramUsersService telegramUsersService;
     private final StateManagerService stateManager;
+    private final CalculateService calculateService;
 
     public SendMessage waitingForSelectWithdrawalRequest(StatePaymentHistory paymentHistory,
                                                          Long chatId, String messageText, Long telegramUserID) {
@@ -60,6 +58,7 @@ public class StateWaitingForSelectWithdrawalRequest implements StateWaitingQuery
                             "\nНомер чека - " + String.format("%05d", selectId) +
                             "\nДата заявки - " + dateTime +
                             "\nСумма - " + amount +
+                            "\nКредиты - " + calculateService.calculateRubInCredits(amount) +
                             "\nНик из игры - " + withdrawalOfCredits.getNickInGame();
 
                     InlineKeyboardButton confirm = new InlineKeyboardButton();

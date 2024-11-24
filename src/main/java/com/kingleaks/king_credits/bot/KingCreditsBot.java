@@ -90,12 +90,12 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
         checkRegister(update);
         checkStateManager(update);
         if (update.hasMessage() && update.getMessage().hasText()){
-            UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
-            if (userStatus.name().equals("ADMIN")){
+            String userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId());
+            if (userStatus.equals("ADMIN")){
                 checkCommandForAdmin(update);
-            } else if (userStatus.name().equals("BANNED")){
+            } else if (userStatus.equals("BANNED")){
                 checkCommandForBanned(update);
-            } else if (userStatus.name().equals("USER") || userStatus != null){
+            } else if (userStatus.equals("USER") || userStatus != null){
                 checkCommand(update);
             } else {
                 checkCommand(update);
@@ -161,7 +161,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "/start":
                 case "/home":
                 case "Назад":
-                case "Меню":
+                case "\uD83D\uDCC3 Меню":
                     commandRegistry.getCommand("homecommand").execute(update);
                     break;
                 case "Пойти нахуй":
@@ -183,7 +183,7 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                 case "/start":
                 case "/home":
                 case "Назад":
-                case "Меню":
+                case "\uD83D\uDCC3 Меню":
                     commandRegistry.getCommand("homecommand").execute(update);
                     stateManager.deleteUserState(update.getMessage().getFrom().getId());
                     break;
@@ -275,8 +275,8 @@ public class KingCreditsBot extends TelegramLongPollingBot implements BotService
                         commandRegistry.getCommand("reviewsstate").execute(update);
                         break;
                     case "\uD83C\uDFB0 Кейсы и игры":
-                        sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
-                        //commandRegistry.getCommand("casesandgamesstate").execute(update);
+                        //sendMessage(new SendMessage(update.getMessage().getChatId().toString(), "❗\uFE0F Раздел временно недоступен."));
+                        commandRegistry.getCommand("casesandgamesstate").execute(update);
                         break;
                     case "\uD83D\uDC68\u200D\uD83D\uDCBB Промокод":
                         commandRegistry.getCommand("promocodestate").execute(update);

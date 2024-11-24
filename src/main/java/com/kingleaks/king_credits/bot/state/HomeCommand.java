@@ -4,6 +4,7 @@ import com.kingleaks.king_credits.bot.BotService;
 import com.kingleaks.king_credits.bot.command.Command;
 import com.kingleaks.king_credits.domain.enums.UserStatus;
 import com.kingleaks.king_credits.repository.StateImageRepository;
+import com.kingleaks.king_credits.service.SellingRateService;
 import com.kingleaks.king_credits.service.TelegramUsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,11 +29,12 @@ public class HomeCommand implements Command {
     private final StateImageRepository stateImageRepository;
     private final BotService botService;
     private final TelegramUsersService telegramUsersService;
+    private final SellingRateService sellingRateService;
 
     @Override
     public void execute(Update update) {
         Long chatId = update.getMessage().getChatId();
-        UserStatus userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId()); // Получаем пользователя из базы данных
+        String userStatus = telegramUsersService.getStatus(update.getMessage().getFrom().getId()); // Получаем пользователя из базы данных
         if (!stateImageRepository.isStateImageHasPictureByName(stateName)){
             byte[] photoData = stateImageRepository.findByNameState(stateName).getPhotoData();
 
@@ -51,12 +53,12 @@ public class HomeCommand implements Command {
                         "\n" +
                         "Dream Shop - это лучший магазин по продаже игровой валюты в Critical Ops! \uD83D\uDE09\n" +
                         "\n" +
-                        "\uD83D\uDCCA Курс – 0.2₽ = 1 CRDT \n")
+                        "\uD83D\uDCCA Курс – " + sellingRateService.getSellingRate().getZeroToThousands() + "₽ = 1 CRDT \n")
                 .build();
 
-        if (userStatus.name().equals("ADMIN")) {
+        if (userStatus.equals("ADMIN")) {
             message.setReplyMarkup(getAdminKeyboard());
-        } else if (userStatus.name().equals("BANNED")) {
+        } else if (userStatus.equals("BANNED")) {
             message.setText("Вас забанили, вы можете пойти нахуй");
             message.setReplyMarkup(getBannedKeyboard());
         } else {

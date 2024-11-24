@@ -29,7 +29,7 @@ public class StateWaitingForWithdrawalNick implements StateWaitingQueryHandler {
                     "\n" +
                     "Ожидайте, мы купим ваш скин в течение дня и уведомим вас об этом!");
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                    .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
                     .resizeKeyboard(true).build());
 
             stateManager.deleteUserState(telegramUserID);

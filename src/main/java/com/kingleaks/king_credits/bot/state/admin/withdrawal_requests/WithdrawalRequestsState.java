@@ -28,7 +28,7 @@ public class WithdrawalRequestsState implements Command {
                 .text("Запросы на вывод")
                 .build();
         message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
                 .resizeKeyboard(true).build());
         botService.sendMessage(message);
 

@@ -40,7 +40,7 @@ public class ErrorRequestCallback implements CallbackQueryHandler{
 
         SendMessage sendMessageForUser = new SendMessage();
         sendMessageForUser.setChatId(telegramUsers.getChatId());
-        sendMessageForUser.setText("Возникли ошибки с пополнением вашего счета, пожалуйста обратитесь в поддержку. Поддержка - @KingCredits");
+        sendMessageForUser.setText("Возникли ошибки с пополнением вашего счета, пожалуйста обратитесь в поддержку. Поддержка - @DreamCredits");
         botService.sendMessage(sendMessageForUser);
     }
 

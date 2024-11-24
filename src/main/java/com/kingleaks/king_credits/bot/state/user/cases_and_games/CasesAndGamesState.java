@@ -60,11 +60,11 @@ public class CasesAndGamesState implements Command {
         InlineKeyboardButton headsAndTails = new InlineKeyboardButton();
         headsAndTails.setText("Орел и решка");
         headsAndTails.setCallbackData("HEADS_AND_TAILS");
-        InlineKeyboardButton cases = new InlineKeyboardButton();
+        /*InlineKeyboardButton cases = new InlineKeyboardButton();
         cases.setText("Кейсы");
-        cases.setCallbackData("CASES");
+        cases.setCallbackData("CASES");*/
 
-        List<InlineKeyboardButton> buttons = List.of(headsAndTails, cases);
+        List<InlineKeyboardButton> buttons = List.of(headsAndTails/*, cases*/);
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         markup.setKeyboard(List.of(buttons));
 

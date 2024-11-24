@@ -27,7 +27,7 @@ public interface TelegramUsersRepository extends JpaRepository<TelegramUsers, Lo
 
     @Query(value = "SELECT t.status FROM telegram_users t " +
             "where t.user_id = :userId", nativeQuery = true)
-    UserStatus getUserStatusByUserId(@Param("userId") Long userId);
+    String getUserStatusByUserId(@Param("userId") Long userId);
 
     @Query(value = "SELECT t.* FROM telegram_users t " +
             "WHERE t.status = 'ADMIN' ", nativeQuery = true)

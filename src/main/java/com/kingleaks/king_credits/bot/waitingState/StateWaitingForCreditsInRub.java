@@ -27,9 +27,9 @@ public class StateWaitingForCreditsInRub implements StateWaitingQueryHandler {
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatId);
-                message.setText(String.format("%.2f", result));
+                message.setText(String.format("%.2f ₽", result));
                 message.setReplyMarkup(ReplyKeyboardMarkup.builder()
-                        .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("Меню"))))
+                        .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
                         .resizeKeyboard(true).build());
 
                 stateManager.deleteUserState(telegramUserID);

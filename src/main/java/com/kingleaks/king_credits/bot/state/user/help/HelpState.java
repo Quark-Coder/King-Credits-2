@@ -34,7 +34,7 @@ public class HelpState implements Command {
             SendPhoto returnPhoto = new SendPhoto();
             returnPhoto.setChatId(chatId.toString());
             returnPhoto.setPhoto(inputFile);
-            returnPhoto.setCaption("По всем вопросам, обращайтесь - @KingLeaksAdmin" );
+            returnPhoto.setCaption("По всем вопросам, обращайтесь - @DreamSupportCR" );
             returnPhoto.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
                     .resizeKeyboard(true).build());
@@ -42,7 +42,7 @@ public class HelpState implements Command {
         } else {
             SendMessage message = SendMessage.builder()
                     .chatId(chatId)
-                    .text("По всем вопросам, обращайтесь - @KingLeaksAdmin" )
+                    .text("По всем вопросам, обращайтесь - @DreamSupportCR" )
                     .build();
             message.setReplyMarkup(ReplyKeyboardMarkup.builder()
                     .keyboardRow(new KeyboardRow(List.of(new KeyboardButton("\uD83D\uDCC3 Меню"))))
